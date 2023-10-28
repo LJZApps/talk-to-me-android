@@ -10,13 +10,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.lnzpk.chat_app.R
 import com.lnzpk.chat_app.old.colors.Colors
 
-class MyBottomSheetDialogFragment(val username: String, val messageView: View): BottomSheetDialogFragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+class MyBottomSheetDialogFragment(val username: String): BottomSheetDialogFragment() {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view: View = inflater.inflate(R.layout.bottom_sheet_concept_2, container, false)
 
         val viewList = view.findViewById<LinearLayout>(R.id.chatasdildhas)
 
-        var testText = TextView(requireContext())
+        val testText = TextView(requireContext())
         testText.text = "This is a test."
 
         viewList.addView(testText)
@@ -31,29 +31,5 @@ class MyBottomSheetDialogFragment(val username: String, val messageView: View): 
         }else{
             setStyle(STYLE_NORMAL, R.style.sheetLight)
         }
-    }
-
-    @Deprecated("Deprecated in Java", ReplaceWith(
-        "super.onActivityCreated(savedInstanceState)",
-        "com.google.android.material.bottomsheet.BottomSheetDialogFragment"
-    )
-    )
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        /*
-
-        val options = listOf<String>(
-            "Share with Friends",
-            "Bookmark",
-            "Add to Favourites",
-            "More Information"
-        )
-
-        listViewOptions.adapter = ArrayAdapter<String>(
-            requireContext(),
-            android.R.layout.simple_list_item_1,
-            options
-        )
-         */
     }
 }

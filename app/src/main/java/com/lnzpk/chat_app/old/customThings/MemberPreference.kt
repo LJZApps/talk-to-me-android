@@ -150,7 +150,7 @@ class MemberPreference(context: Context?) : Preference(context!!) {
             })
     }
 
-    fun adminMember(username: String?, request: Preference?, screen: PreferenceScreen?) {
+    fun adminMember(username: String?, preference: Preference?, preferenceScreen: PreferenceScreen) {
         val database = FirebaseDatabase.getInstance().reference
         database.child("groups/$groupName/members/$username").setValue("1")
             .addOnSuccessListener {
@@ -158,14 +158,14 @@ class MemberPreference(context: Context?) : Preference(context!!) {
                 adminMember!!.setOnClickListener {
                     removeAdmin(
                         username,
-                        preference,
+                        this.preference,
                         preferenceManager.preferenceScreen
                     )
                 }
             }
     }
 
-    fun removeAdmin(username: String?, request: Preference?, screen: PreferenceScreen?) {
+    fun removeAdmin(username: String?, preference: Preference?, preferenceScreen: PreferenceScreen) {
         val database = FirebaseDatabase.getInstance().reference
         database.child("groups/$groupName/members/$username").setValue("0")
             .addOnSuccessListener {
@@ -173,7 +173,7 @@ class MemberPreference(context: Context?) : Preference(context!!) {
                 adminMember!!.setOnClickListener {
                     adminMember(
                         username,
-                        preference,
+                        this.preference,
                         preferenceManager.preferenceScreen
                     )
                 }

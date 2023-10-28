@@ -45,8 +45,8 @@ class chatPreference : Preference {
         }
         val textView = holder.itemView.findViewById<TextView>(R.id.timeTextViewChat)
         val summary = holder.itemView.findViewById<TextView>(android.R.id.summary)
-        val title = holder.itemView.findViewById<TextView>(android.R.id.title)
         val verifiedImage = holder.itemView.findViewById<ImageView>(R.id.verifiedImage)
+
         if (textView != null) {
             if (Colors.isDarkMode(context)) {
                 summary.setTextColor(context.getColor(android.R.color.secondary_text_dark))

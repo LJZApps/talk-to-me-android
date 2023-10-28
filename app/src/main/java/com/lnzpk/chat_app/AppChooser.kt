@@ -58,7 +58,6 @@ class AppChooser : ComponentActivity() {
 fun ChooseApp() {
     val context = LocalContext.current
     val activity = (LocalContext.current as? Activity)
-    var checked by remember { mutableStateOf(true) }
 
     Column {
         Text(

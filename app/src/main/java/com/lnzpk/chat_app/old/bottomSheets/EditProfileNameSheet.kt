@@ -14,7 +14,7 @@ import com.lnzpk.chat_app.old.newDatabase.DBHelper
 
 class EditProfileNameSheet(val username: String): BottomSheetDialogFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view: View = inflater.inflate(R.layout.edit_profile_name_sheet, container, false)
 
         val button = view.findViewById<Button>(R.id.editProfileNameSheetSaveButton)
@@ -43,29 +43,5 @@ class EditProfileNameSheet(val username: String): BottomSheetDialogFragment() {
         }else{
             setStyle(STYLE_NORMAL, R.style.sheetLight)
         }
-    }
-
-    @Deprecated("Deprecated in Java", ReplaceWith(
-        "super.onActivityCreated(savedInstanceState)",
-        "com.google.android.material.bottomsheet.BottomSheetDialogFragment"
-    )
-    )
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        /*
-
-        val options = listOf<String>(
-            "Share with Friends",
-            "Bookmark",
-            "Add to Favourites",
-            "More Information"
-        )
-
-        listViewOptions.adapter = ArrayAdapter<String>(
-            requireContext(),
-            android.R.layout.simple_list_item_1,
-            options
-        )
-         */
     }
 }
