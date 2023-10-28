@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/friendsFriends"
+        android:icon="@drawable/my_friends"
+        android:title="@string/friends_title"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/friendsPublic"
+        android:icon="@drawable/public_user"
+        android:title="@string/publicUser_title"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/friendsRequest"
+        android:icon="@drawable/requests"
+        android:title="@string/requests_title"
+        app:showAsAction="always" />
+</menu>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    tools:context=".old.profile.Profile">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/profileToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toolbar_background"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/new_profile_menu"
+        app:navigationIcon="@drawable/arrow_left"
+        app:subtitle="{USERNAME}"
+        app:title="@string/settings_myProfile" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileToolbar"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profileSettingPictureImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5px"
+                android:layout_marginTop="5px"
+                android:layout_marginRight="5px"
+                android:layout_marginBottom="5px"
+                android:background="@drawable/chat_background_light"
+                android:clickable="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profileSettingPicture"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/no_profile_pic"
+                    ads:layout_constraintBottom_toBottomOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintVertical_bias="0.045" />
+
+                <TextView
+                    android:id="@+id/profileSettingPictureTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:singleLine="true"
+                    android:text="@string/profileSetting_pictureTitle"
+                    android:textAlignment="center"
+                    android:textSize="16.0sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileSettingPicture" />
+
+                <TextView
+                    android:id="@+id/profileSettingPictureSummary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:singleLine="true"
+                    android:text="@string/profileSetting_pictureSummary"
+                    android:textAlignment="center"
+                    android:textSize="13.9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileSettingPictureTitle" />
+
+                <ImageView
+                    android:id="@+id/profileSettingPictureVerified"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    ads:srcCompat="@drawable/ic_staff"
+                    app:layout_constraintBottom_toBottomOf="@+id/profileSettingPicture"
+                    app:layout_constraintEnd_toEndOf="@+id/profileSettingPicture" />
+
+                <TextView
+                    android:id="@+id/profileSettingPictureEmojiBadge"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:alpha="1"
+                    android:text="👨‍💻"
+                    android:textColor="#000000"
+                    android:textSize="19sp"
+                    app:layout_constraintStart_toStartOf="@+id/profileSettingPicture"
+                    app:layout_constraintTop_toTopOf="@+id/profileSettingPicture" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profileSettingName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5px"
+                android:layout_marginTop="5px"
+                android:layout_marginRight="5px"
+                android:layout_marginBottom="5px"
+                android:background="@drawable/chat_background_light"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/profileSettingNameTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:singleLine="true"
+                    android:text="@string/profileSetting_nameTitle"
+                    android:textAlignment="center"
+                    android:textSize="16.0sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/profileSettingNameSummary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="12dp"
+                    android:singleLine="true"
+                    android:text="{PROFILE_NAME}"
+                    android:textAlignment="center"
+                    android:textSize="13.9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileSettingNameTitle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profileSettingInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5px"
+                android:layout_marginTop="5px"
+                android:layout_marginRight="5px"
+                android:layout_marginBottom="5px"
+                android:background="@drawable/chat_background_light"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/profileSettingInformationTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:singleLine="true"
+                    android:text="@string/profileSetting_informationTitle"
+                    android:textAlignment="center"
+                    android:textSize="16.0sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/profileSettingInformationSummary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="12dp"
+                    android:singleLine="true"
+                    android:text="@string/profileSetting_informationSummary"
+                    android:textAlignment="center"
+                    android:textSize="13.9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileSettingInformationTitle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profileSettingDanger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5px"
+                android:layout_marginTop="5px"
+                android:layout_marginRight="5px"
+                android:layout_marginBottom="5px"
+                android:background="@drawable/chat_background_light"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/profileSettingDangerTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:singleLine="true"
+                    android:text="@string/profileSetting_dangerTitle"
+                    android:textAlignment="center"
+                    android:textColor="#FF0000"
+                    android:textSize="16.0sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/profileSettingDangerSummary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="8dp"
+                    android:singleLine="true"
+                    android:text="@string/profileSetting_dangerSummary"
+                    android:textAlignment="center"
+                    android:textSize="13.9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileSettingDangerTitle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

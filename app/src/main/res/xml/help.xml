@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        app:iconSpaceReserved="false"
+        app:key="feedback"
+        app:summary="@string/helpSettings_feedbackSummary"
+        app:title="@string/helpSettings_feedbackTitle" />
+    <!--<Preference
+        app:iconSpaceReserved="false"
+        app:key="news"
+        app:title="Neuigkeiten" />-->
+    <Preference
+        app:iconSpaceReserved="false"
+        app:key="version"
+        app:title="@string/helpSettins_appInfoTitle" />
+</PreferenceScreen>

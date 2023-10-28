@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/logoutProfile"
+        android:title="@string/contextMenu_logout" />
+    <item
+        android:id="@+id/deleteProfile"
+        android:title="@string/contextMenu_deleteProfile" />
+    <item
+        android:id="@+id/changePass"
+        android:title="@string/contextMenu_changePass" />
+</menu>

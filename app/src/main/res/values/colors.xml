@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Basic-colors -->
+    <color name="basicLight">#319EEA</color>
+    <color name="basicDark">#135E91</color>
+
+    <!-- Light Android-colors -->
+    <color name="light_colorPrimary">#319EEA</color>
+    <color name="light_colorPrimaryDark">@color/light_colorPrimary</color>
+    <color name="light_colorAccent">#1F82C6</color>
+    <color name="light_colorSecondary">#319EEA</color>
+
+    <!-- Dark Android-colors -->
+    <color name="dark_colorPrimary">#032A40</color>
+    <color name="dark_colorPrimaryDark">@color/dark_colorPrimary</color>
+    <color name="dark_colorAccent">#004169</color>
+    <color name="dark_colorSecondary"></color>
+
+
+    <!-- Custom-colors -->
+    <color name="darkCat">@color/light_colorPrimary</color>
+    <color name="buttonLight">@color/light_colorPrimary</color>
+    <color name="light">#FFFFFF</color>
+    <color name="dark1">#202020</color>
+    <color name="dark2">#454444</color>
+    <color name="darkText">#B6B6B6</color>
+    <color name="darkFAC">#0F6185</color>
+    <color name="greenText">#26AF01</color>
+    <color name="cardDark">#2B2B2B</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+    <color name="black">#000000</color>
+    <color name="testColor">#80bebebe</color>
+
+    <!-- Text-Colors -->
+    <color name="secondary_text_dark">#bebebe</color>
+    <color name="secondary_text_light">#323232</color>
+
+    <!-- Colors, you can use: colorTertiary, colorSecondary, colorPrimary, colorAccent -->
+
+    <!-- Basic light-mode color: #319EEA -->
+    <!-- Basic dark-mode color: #0E88DC -->
+    <!-- Test dark-mode color: #0b2c42 -->
+</resources>

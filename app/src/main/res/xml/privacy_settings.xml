@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.lnzpk.chat_app.old.customThings.MyPreferenceCategory android:title="@string/privacySettings_privacyTitle">
+
+        <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+            android:key="public_profile"
+            android:summary="@string/privacySettings_publicProfileSummary"
+            android:title="@string/privacySettings_publicProfileTitle" />
+        <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+            android:key="public_chat"
+            android:summary="@string/privacySettings_everyoneMessagesSummary"
+            android:title="@string/privacySettings_everyoneMessagesTitle" />
+        <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+            android:key="public_info"
+            android:summary="@string/privacySettings_publicInfoSummary"
+            android:title="@string/privacySettings_publicInfoTitle" />
+        <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+            android:key="markAsRead"
+            android:title="@string/privacySettings_readReceiptTitle" />
+        <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+            android:key="showOnline"
+            android:title="@string/privacySettings_showOnlineTitle"
+            app:summary="UNDER DEVELOPMENT" />
+        <ListPreference
+            android:defaultValue="everyone"
+            android:entries="@array/lastOnline"
+            android:entryValues="@array/lastOnlineValues"
+            android:key="lastOnline"
+            android:title="@string/privacySettings_lastOnlineTitle" />
+        <Preference
+            app:key="blockedUser"
+            app:summary="{NUM}"
+            app:title="@string/privacySettings_blockedUserTitle" />
+    </com.lnzpk.chat_app.old.customThings.MyPreferenceCategory>
+    <com.lnzpk.chat_app.old.customThings.MyPreferenceCategory android:title="@string/privacySettings_legalTitle">
+        <Preference
+            android:key="privacy"
+            android:title="@string/dataProtection_title" />
+        <Preference
+            android:key="agb"
+            android:title="@string/termsAndConditions_title" />
+        <Preference
+            android:key="takeConfirmBack"
+            android:title="@string/privacySettings_revokeTitle" />
+    </com.lnzpk.chat_app.old.customThings.MyPreferenceCategory>
+</PreferenceScreen>

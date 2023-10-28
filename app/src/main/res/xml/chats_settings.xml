@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.lnzpk.chat_app.old.customThings.MyPreferenceCategory app:title="@string/chatsSettings_displayTitle">
+
+        <Preference
+            android:title="@string/chatsSettings_backgroundTitle"
+            app:key="chat_background" />
+        <ListPreference
+            android:defaultValue="system"
+            android:entries="@array/themes"
+            android:entryValues="@array/themesValues"
+            android:key="app_theme"
+            android:positiveButtonText="@string/chatSettings_themeApply"
+            android:title="@string/chatsSettings_themeTitle"
+            app:positiveButtonText="@string/chatSettings_themeApply" />
+        <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+            android:key="useAccentColors"
+            android:summaryOff="@string/chatSettings_applyColorsSummary1"
+            android:summaryOn="@string/chatSettings_applyColorsSummary2"
+            android:title="@string/chatSettings_applyColorsTitle"
+            app:defaultValue="false" />
+        <Preference
+            android:title="@string/chatSettings_colorsTitle"
+            app:key="accent_color"
+            app:summary="@string/chatSettings_colorsSummary" />
+    </com.lnzpk.chat_app.old.customThings.MyPreferenceCategory>
+
+    <com.lnzpk.chat_app.old.customThings.MyPreferenceCategory android:title="@string/chatSettings_chatSettingsTitle">
+
+        <!-- TODO
+        <com.lnzpk.chat_app.old.customThings.mySwitchPreference
+            android:defaultValue="false"
+            android:key="translate_messages"
+            android:title="Translate users"
+            app:summary="@string/languages_summary" />
+        <ListPreference
+            android:defaultValue="standard"
+            android:entries="@array/languages"
+            android:entryValues="@array/languagesValues"
+            android:key="chat_lang"
+            android:title="@string/languages_title" />
+            -->
+        <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+            android:key="enterToSendSwitch"
+            android:summary="@string/chatSettings_enterSummary"
+            android:title="@string/chatSettings_enterTitle" />
+        <!--
+        <com.lnzpk.chat_app.old.customThings.mySwitchPreference
+            android:key="chatsOfflineSwitch"
+            android:summary="Wenn aktiviert, werden deine Chats in deinem Handy gespeichert, sodass du sie auch offline abrufen kannst."
+            android:title="Chats offline speichern" />
+        <Preference
+            app:key="deleteOfflineChats"
+            app:summary="Hiermit werden alle deine Chats, die offline gespeichert wurden, gelöscht"
+            app:title="Offline-gespeicherte Chats löschen" />
+            -->
+    </com.lnzpk.chat_app.old.customThings.MyPreferenceCategory>
+</PreferenceScreen>

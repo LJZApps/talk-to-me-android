@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/appChooser">
+
+    <activity
+        android:id="@+id/appChooser"
+        android:name="com.lnzpk.chat_app.AppChooser"
+        android:label="AppChooser" />
+    <activity
+        android:id="@+id/loginAndRegister"
+        android:name="com.lnzpk.chat_app.rewrite.activities.main.LoginAndRegister"
+        android:label="LoginAndRegister" />
+    <action
+        android:id="@+id/j987987"
+        app:destination="@id/loginAndRegister"
+        app:popUpTo="@id/mobile_navigation" />
+    <activity
+        android:id="@+id/openChat"
+        android:name="com.lnzpk.chat_app.old.chat.OpenChat"
+        android:label="chat_layout"
+        tools:layout="@layout/chat_layout" />
+    <activity
+        android:id="@+id/startIcon"
+        android:name="com.lnzpk.chat_app.old.main.StartIcon"
+        android:label="start_icon"
+        tools:layout="@layout/start_icon" />
+</navigation>

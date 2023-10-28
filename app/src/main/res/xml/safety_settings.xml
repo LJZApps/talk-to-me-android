@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        app:key="appSecurity"
+        app:summary="@string/securitySettings_fingerprintSummary"
+        app:title="@string/securitySettings_fingerprintTitle" />
+    <Preference
+        app:allowDividerAbove="true"
+        app:key="2fa"
+        app:title="@string/securitySettings_2faTitle" />
+</PreferenceScreen>

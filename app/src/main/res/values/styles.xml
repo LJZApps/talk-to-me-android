@@ -1,0 +1,354 @@
+<resources>
+    <style parent="Theme.AppCompat.Light.NoActionBar" name="AppTheme">
+        <item name="colorPrimary">@color/basicLight</item>
+        <item name="colorPrimaryDark">@color/basicLight</item>
+        <item name="colorAccent">@color/basicLight</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+    </style>
+
+    <!-- Light-Theme -->
+    <style name="lightTheme">
+        <item name="colorPrimary">@color/basicLight</item>
+        <item name="colorPrimaryDark">@color/basicLight</item>
+        <item name="colorAccent">@color/basicLight</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="titleTextColor">@color/black</item>
+    </style>
+
+    <!-- Dark-Theme -->
+    <style name="darkTheme">
+        <item name="colorPrimary">#021723</item>
+        <item name="colorPrimaryDark">#021723</item>
+        <item name="colorAccent">#004169</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:subMenuArrow">@color/light</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+        <item name="android:actionModeCloseButtonStyle">@android:color/white</item>
+        <item name="itemBackground">@color/black</item>
+        <item name="textColorAlertDialogListItem">@color/light</item>
+        <item name="android:buttonBarPositiveButtonStyle">@color/darkText</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_background</item>
+    </style>
+
+    <!-- Bottom-Sheets Theme -->
+    <style name="sheetDark" parent="Theme.Design.BottomSheetDialog">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+        <item name="colorSecondary">@color/dark_colorSecondary</item>
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="sheetLight" parent="Theme.Design.BottomSheetDialog">
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="colorAccent">@color/light_colorAccent</item>
+        <item name="colorSecondary">@color/light_colorSecondary</item>
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <!-- Toolbar-Theme -->
+    <style name="MyActionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#fff</item>
+    </style>
+    <style name="offlineSubtitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">14dp</item>
+    </style>
+    <style name="onlineSubtitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">16dp</item>
+    </style>
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+    </style>
+
+    <!-- Start-Style -->
+    <style name="startStyleLight" >
+        <item name="colorPrimaryDark">@color/light</item>
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorAccent">@color/light_colorAccent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="startStyleDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:textColor">@color/light</item>
+    </style>
+
+    <!-- Home-styles -->
+    <style name="homeLight">
+        <item name="colorPrimary">@color/basicLight</item>
+        <item name="colorPrimaryDark">@color/basicLight</item>
+        <item name="colorAccent">@color/basicLight</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="titleTextColor">@color/black</item>
+    </style>
+    <style name="homeDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:subMenuArrow">@color/light</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+        <item name="android:actionModeCloseButtonStyle">@android:color/white</item>
+        <item name="itemBackground">@color/black</item>
+        <item name="textColorAlertDialogListItem">@color/light</item>
+        <item name="android:buttonBarPositiveButtonStyle">@color/darkText</item>
+    </style>
+
+    <!-- Settings-Style -->
+    <style name="settingsLight">
+        <item name="colorPrimary">@color/basicLight</item>
+        <item name="colorPrimaryDark">@color/basicLight</item>
+        <item name="colorAccent">@color/basicLight</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="titleTextColor">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="settingsDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="itemBackground">@color/black</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+        <item name="android:buttonBarPositiveButtonStyle">@color/darkText</item>
+        <item name="textColorAlertDialogListItem">@color/light</item>
+        <item name="android:actionModeCloseButtonStyle">@android:color/white</item>
+    </style>
+
+    > loginAndRegister-styles
+    <style name="loginAndRegisterLight">
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="colorAccent">@color/light_colorAccent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="loginAndRegisterDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="android:buttonBarPositiveButtonStyle">@color/darkText</item>
+        <item name="android:textColorHint">@color/darkText</item>
+        <item name="android:editTextColor">@color/light</item>
+        <item name="android:textColorSecondary">@color/light</item>
+        <item name="editTextBackground">@color/light</item>
+    </style>
+
+    > feedback-styles
+    <style name="feedbackLight">
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="colorAccent">@color/light_colorAccent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:buttonBarPositiveButtonStyle">@color/light_colorAccent</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="feedbackDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:subMenuArrow">@color/light</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="itemBackground">@color/light</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+        <item name="buttonBarPositiveButtonStyle">@color/darkText</item>
+        <item name="editTextBackground">@color/light</item>
+        <item name="android:textColorHint">@color/darkText</item>
+        <item name="android:editTextColor">@color/light</item>
+        <item name="android:windowBackground">@color/black</item>
+    </style>
+
+    > contacts-styles
+    <style name="contactsDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="itemBackground">@color/black</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+        <item name="android:buttonBarPositiveButtonStyle">@color/darkText</item>
+        <item name="textColorAlertDialogListItem">@color/light</item>
+        <item name="backgroundColor">@color/black</item>
+    </style>
+    <style name="contactsLight" >
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="colorAccent">@color/light_colorAccent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:buttonBarPositiveButtonStyle">@color/light_colorAccent</item>
+    </style>
+
+    > chat-styles
+    <style name="chatLight">
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="colorAccent">@color/light_colorAccent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="chatDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+        <item name="colorSecondary">@color/dark_colorSecondary</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:subMenuArrow">@color/light</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="itemBackground">@color/light</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+        <item name="textColorAlertDialogListItem">@color/light</item>
+    </style>
+
+    > changePass-styles
+    <style name="changePassLight">
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="colorAccent">@color/light_colorAccent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+    <style name="changePassDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:subMenuArrow">@color/light</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="itemBackground">@color/light</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+        <item name="backgroundTint">@color/darkFAC</item>
+    </style>
+
+    > delAccount-styles
+    <style name="delAccountLight">
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="colorAccent">@color/light_colorAccent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="delAccountDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:subMenuArrow">@color/light</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+    </style>
+
+    > profile-styles
+    <style name="profileLight">
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="colorAccent">@color/light_colorAccent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="profileDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:subMenuArrow">@color/light</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+    </style>
+
+    > authentication-styles
+    <style name="authenticationLight">
+        <item name="colorPrimary">@color/light_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="colorAccent">@color/light_colorAccent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="tint">@android:color/black</item>
+    </style>
+    <style name="authenticationDark">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="titleTextColor">@color/light</item>
+        <item name="android:subMenuArrow">@color/light</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">@color/light</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+        <item name="tint">@android:color/white</item>
+    </style>
+
+    <style name="chat_text_message_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="chat_date_category">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="chat_timings">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

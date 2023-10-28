@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/replyToMyGroupMessage"
+        android:title="@string/contextMenu_messageReply" />
+    <item
+        android:id="@+id/copyMyGroupText"
+        android:title="@string/contextMenu_messageCopy" />
+    <item
+        android:id="@+id/deleteMyGroupMessage"
+        android:title="@string/contextMenu_messageDelete" />
+</menu>

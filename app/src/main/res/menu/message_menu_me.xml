@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/replyToMessage"
+        android:title="@string/contextMenu_messageReply" />
+    <item
+        android:id="@+id/editMessage"
+        android:title="@string/contextMenu_messageEdit" />
+    <item
+        android:id="@+id/copyMessage"
+        android:title="@string/contextMenu_messageCopy" />
+    <item
+        android:id="@+id/deleteMessage"
+        android:icon="@drawable/mulleimer"
+        android:title="@string/contextMenu_messageDelete" />
+</menu>

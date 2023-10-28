@@ -1,0 +1,64 @@
+<resources>
+    <!-- Theme-Entries -->
+    <string-array name="themes">
+        <item>@string/themeSystem</item>
+        <item>@string/themeLight</item>
+        <item>@string/themeDark</item>
+    </string-array>
+
+    <!-- Theme-Values-->
+    <string-array name="themesValues">
+        <item>system</item>
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+
+
+    <!-- Languages-Entries -->
+    <string-array name="languages">
+        <item>@string/languages_systemDefault</item>
+        <item>@string/languages_german</item>
+        <item>@string/languages_english</item>
+    </string-array>
+
+    <!-- Languages-Values -->
+    <string-array name="languagesValues">
+        <item>standard</item>
+        <item>de</item>
+        <item>en</item>
+    </string-array>
+
+
+    <string-array name="searchBy">
+        <item>Benutzername</item>
+        <item>Name</item>
+    </string-array>
+
+    <!-- Fingerprint-Values -->
+    <string-array name="fingerprint_times">
+        <item>@string/fingerprintLock_instantly</item>
+        <item>@string/fingerprintLock_1min</item>
+        <item>@string/fingerprintLock_10min</item>
+        <item>@string/fingerprintLock_custom</item>
+    </string-array>
+
+    <string-array name="fingerprint_new_values">
+        <item>instantly</item>
+        <item>1min</item>
+        <item>10min</item>
+        <item>custom</item>
+    </string-array>
+
+    <!-- Last-Online-Values -->
+    <string-array name="lastOnline">
+        <item>@string/lastOnline_everyone</item>
+        <item>@string/lastOnline_myFriends</item>
+        <item>@string/lastOnline_none</item>
+    </string-array>
+
+    <string-array name="lastOnlineValues">
+        <item>everyone</item>
+        <item>justFriends</item>
+        <item>none</item>
+    </string-array>
+</resources>

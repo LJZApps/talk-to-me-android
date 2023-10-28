@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        app:key="discord"
+        app:summary="Trete meinen Discord-Server bei für weiteren Support!"
+        app:title="Discord" />
+    <Preference
+        app:key="about_the_dev"
+        app:title="Über den Entwickler..."
+        app:summary="Hier sind einige Informationen zum Entwickler dieser App" />
+</PreferenceScreen>

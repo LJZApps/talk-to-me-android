@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.lnzpk.chat_app.old.customThings.MyPreferenceCategory android:title="@string/settings_myProfile">
+
+        <com.lnzpk.chat_app.old.customThings.chatPreference
+            app:key="profile"
+            app:summary="@string/loading"
+            app:title="@string/loading" />
+    </com.lnzpk.chat_app.old.customThings.MyPreferenceCategory>
+    <com.lnzpk.chat_app.old.customThings.MyPreferenceCategory
+        android:key="cat1"
+        android:title="@string/mainSettings_moreSettings"
+        app:allowDividerAbove="false">
+        <Preference
+            app:key="userSettings"
+            app:summary="@string/mainSettings_privacySummary"
+            app:title="@string/mainSettings_privacyTitle" />
+        <Preference
+            app:key="safety"
+            app:summary="@string/mainSettings_securitySummary"
+            app:title="@string/mainSettings_securityTitle" />
+        <Preference
+            android:title="@string/mainSettings_chatsTitle"
+            app:key="design"
+            app:summary="@string/mainSettings_chatsSummary" />
+        <Preference
+            app:key="notificationsSettings"
+            app:summary="@string/mainSettings_notificationsSummary"
+            app:title="@string/mainSettings_notificationsTitle" />
+        <Preference
+            app:key="postSettings"
+            app:summary="@string/mainSettings_postsSummary"
+            app:title="@string/mainSettings_postsTitle" />
+        <Preference
+            app:key="help"
+            app:summary="@string/mainSettings_helpSummary"
+            app:title="@string/mainSettings_helpTitle" />
+        <!--<Preference
+            app:key="admin"
+            app:summary="Here you can moderate the App.\nSTAFF ONLY"
+            app:title="Admin-Center" />-->
+        <!--<Preference
+            app:key="other"
+            app:title="Sonstiges" />-->
+    </com.lnzpk.chat_app.old.customThings.MyPreferenceCategory>
+</PreferenceScreen>
