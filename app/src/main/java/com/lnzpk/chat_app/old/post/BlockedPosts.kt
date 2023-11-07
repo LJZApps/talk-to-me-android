@@ -130,14 +130,13 @@ class BlockedPosts : AppCompatActivity() {
                         }
                         cardHolder.card!!.setOnClickListener(View.OnClickListener { v1: View? ->
                             val intent = Intent(this@BlockedPosts, OpenPost::class.java)
-                            intent.putExtra("title", title)
+                                .putExtra("title", title)
                                 .putExtra("message", message)
                                 .putExtra("from", from)
                                 .putExtra("date", date)
                                 .putExtra("time", time)
                                 .putExtra("key", key)
                             startActivity(intent)
-                            //overridePendingTransition(R.anim.slide_in_left, R.anim.fade_in)
                         })
                         cardHolder.card!!.setOnLongClickListener(OnLongClickListener { v1: View? ->
                             val menu = PopupMenu(this@BlockedPosts, v1)

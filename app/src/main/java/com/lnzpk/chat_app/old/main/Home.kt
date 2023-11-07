@@ -73,7 +73,6 @@ class Home : AppCompatActivity() {
     var username: String? = null
     var darkMode = false
     var onPosts: Boolean? = null
-    //var preferences: SharedPreferences? = null
     var requestsBadge: TextView? = null
     var next = ""
     private var specifyNext = ""
