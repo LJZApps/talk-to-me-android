@@ -52,7 +52,6 @@ class AppChooser : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
 fun ChooseApp() {
