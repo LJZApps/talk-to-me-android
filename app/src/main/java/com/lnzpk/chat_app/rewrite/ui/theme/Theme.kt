@@ -26,16 +26,6 @@ private val LightColorScheme = lightColorScheme(
     primary = Purple40,
     secondary = PurpleGrey40,
     tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
 )
 
 @Composable
@@ -55,14 +45,11 @@ fun TalkToMeTheme(
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
-        /* getting the current window by tapping into the Activity */
         val currentWindow = (view.context as? Activity)?.window
             ?: throw Exception("Not in an activity - unable to get Window reference")
 
         SideEffect {
-            /* the default code did the same cast here - might as well use our new variable! */
             currentWindow.statusBarColor = colorScheme.primary.toArgb()
-            /* accessing the insets controller to change appearance of the status bar, with 100% less deprecation warnings */
             WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightStatusBars =
                 darkTheme
         }
