@@ -14,10 +14,6 @@ plugins {
 }
 
 android {
-    val properties = Properties().apply {
-        load(FileInputStream(File(rootProject.rootDir, "local.properties")))
-    }
-
     compileSdk = 34
 
     buildFeatures {
@@ -60,16 +56,12 @@ android {
             setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"))
         }
     }
-
-    kapt {
-        correctErrorTypes = true
-    }
 }
 
 
 dependencies {
     val roomVersion = "2.6.1"
-    val compose_version = "1.6.0"
+    val compose_version = "1.6.1"
 
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
@@ -116,18 +108,13 @@ dependencies {
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$roomVersion")
 
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
-    implementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
+    implementation(project.dependencies.platform("androidx.compose:compose-bom:2024.02.00"))
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
-    implementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
-    androidTestImplementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
-    androidTestImplementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
-    androidTestImplementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
     constraints {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
             because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
@@ -146,26 +133,21 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.10.1")
     implementation("com.google.firebase:firebase-database-ktx:20.3.0")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
-    implementation("androidx.compose.ui:ui:1.6.0")
+    implementation("androidx.compose.ui:ui:1.6.1")
     implementation("com.google.android.gms:play-services-wallet:19.2.1")
     implementation("androidx.activity:activity-ktx:1.8.2")
     debugImplementation("androidx.compose.ui:ui-tooling")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
 
-    implementation("androidx.compose.material3:material3:1.2.0-rc01")
-    implementation("androidx.compose.material3:material3-window-size-class:1.2.0-rc01")
+    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("androidx.compose.material3:material3-window-size-class:1.2.0")
     // TODO Add an link preview library
 
-    //implementation fileTree(org.gradle.internal.impldep.bsh.commands.dir: "libs", include = "*.jar"])
     implementation("com.google.firebase:firebase-perf:20.5.1")
 
     implementation("com.google.android.play:core:1.10.3")
 
-
-    //api("com.theartofdev.edmodo:android-image-cropper:2.8.0")
-    //implementation("com.theartofdev.edmodo:android-image-cropper:2.8.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
-    //implementation("com.github.danielnilsson9:color-picker-view:1.4.0@aar")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.google.firebase:firebase-auth:22.3.1")
     implementation(project.dependencies.platform("com.google.firebase:firebase-bom:32.3.1"))

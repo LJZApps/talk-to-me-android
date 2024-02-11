@@ -2614,8 +2614,7 @@ class OpenChat : AppCompatActivity() {
                                                                 v[0]!!.setOnClickListener { v1: View? ->
                                                                     if (v1 != null) {
                                                                         MyBottomSheetDialogFragment(
-                                                                            fromUsername,
-                                                                            v1
+                                                                            fromUsername
                                                                         ).apply {
                                                                             show(
                                                                                 supportFragmentManager,

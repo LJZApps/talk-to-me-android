@@ -9,7 +9,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.Date
 
-private const val BASE_URL = "http://talk-to-me.dev.local/"
+// For home development, use: http://192.168.2.230:8000/
+// For public testing and release, use: http://talktome.trainee.2peaches.de/
+private const val BASE_URL = "http://192.168.2.230:8000/"
 object ApiClient {
 
     private val client = OkHttpClient.Builder()

@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lnzpk.chat_app.old.main.StartIcon
+import com.lnzpk.chat_app.rewrite.getstarted.ActivityGetStarted
 import com.lnzpk.chat_app.rewrite.ui.components.AppSelect
 import com.lnzpk.chat_app.rewrite.ui.components.TextDescription
 import com.lnzpk.chat_app.rewrite.ui.theme.TalkToMeTheme
@@ -52,7 +53,6 @@ class AppChooser : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
 fun ChooseApp() {
@@ -82,7 +82,8 @@ fun ChooseApp() {
             modifier = Modifier.padding(5.dp)
                 .fillMaxWidth(),
             onClick = {
-               // TODO open compose app
+                context.startActivity(Intent(context, ActivityGetStarted::class.java))
+                activity?.finish()
             }
         )
 

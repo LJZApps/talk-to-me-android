@@ -30,10 +30,9 @@
         android:theme="@style/AppTheme"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".rewrite.activities.main.LoginAndRegister"
+            android:name=".rewrite.getstarted.ActivityGetStarted"
             android:exported="false"
-            android:label="@string/title_activity_login_and_register"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".AppChooser"
             android:exported="true">
@@ -43,19 +42,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".rewrite.activities.StartActivity"
-            android:exported="true"
-            android:permission="com.lnzpk.chat_app.permission.START_APP">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
         </activity>
         <activity
             android:name=".old.main.StartIcon"
