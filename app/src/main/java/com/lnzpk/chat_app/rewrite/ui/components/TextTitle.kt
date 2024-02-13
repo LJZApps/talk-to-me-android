@@ -16,7 +16,7 @@ fun TextTitle(
     Text(
         text = text,
         style = TextStyle(
-            textAlign = TextAlign.Left,
+            textAlign = TextAlign.Center,
             fontSize = 25.sp,
             fontWeight = FontWeight.ExtraBold
         ),

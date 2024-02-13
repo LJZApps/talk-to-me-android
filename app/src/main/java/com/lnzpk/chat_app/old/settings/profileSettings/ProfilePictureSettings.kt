@@ -2,17 +2,9 @@ package com.lnzpk.chat_app.old.settings.profileSettings
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.provider.FontRequest
-import androidx.emoji.text.EmojiCompat
-import androidx.emoji.text.FontRequestEmojiCompatConfig
 import androidx.preference.PreferenceManager
 import com.lnzpk.chat_app.R
-import com.vanniktech.emoji.EmojiManager
-import com.vanniktech.emoji.EmojiPopup
-import com.vanniktech.emoji.googlecompat.GoogleCompatEmojiProvider
 
 
 class ProfilePictureSettings : AppCompatActivity() {
@@ -25,25 +17,7 @@ class ProfilePictureSettings : AppCompatActivity() {
             setLightMode()
         }
 
-        EmojiManager.install(GoogleCompatEmojiProvider(EmojiCompat.init(FontRequestEmojiCompatConfig(this, FontRequest(
-            "com.google.android.gms.fonts",
-            "com.google.android.gms",
-            "Noto Color Emoji Compat",
-            R.array.com_google_android_gms_fonts_certs,
-        )).setReplaceAll(true))))
-
         setContentView(R.layout.profile_picture_settings)
-
-        val rootView = findViewById<ConstraintLayout>(R.id.profilePicSettingsRootView)
-        val emojiEditText: EditText = findViewById(R.id.openProfileEmojiBadge2)
-        val emojiPopup = EmojiPopup(rootView, emojiEditText)
-        emojiEditText.isClickable = false
-        emojiEditText.setOnClickListener{
-
-            emojiPopup.toggle() // Toggles visibility of the Popup.
-            //emojiPopup.dismiss() // Dismisses the Popup.
-            //emojiPopup.isShowing // Returns true when Popup is showing.
-        }
     }
 
     fun setLightMode() {

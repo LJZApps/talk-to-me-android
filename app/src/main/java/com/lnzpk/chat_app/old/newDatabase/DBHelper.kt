@@ -528,6 +528,21 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLit
         return count > 0
     }
 
+    fun resetColors() {
+        val db = this.writableDatabase
+
+        if (tableExists("app_colors_dark")) {
+            db.execSQL("DROP TABLE 'app_colors_dark'")
+        }
+
+        if (tableExists("app_colors_light")) {
+            db.execSQL("DROP TABLE 'app_colors_light'")
+        }
+
+        db.close()
+    }
+
+
     fun saveColor(colorName: String, colorValue: String, colorTheme: String){
         val db = this.writableDatabase
 

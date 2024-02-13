@@ -21,7 +21,7 @@ fun TextDescription(
         style = TextStyle(
             fontSize = 18.sp
         ),
-        textAlign = TextAlign.Start,
+        textAlign = TextAlign.Left,
         modifier = modifier
     )
 }

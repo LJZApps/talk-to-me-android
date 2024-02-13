@@ -1,55 +1,89 @@
 package com.lnzpk.chat_app.old.settings
 
-import android.content.Context
 import android.content.DialogInterface
-import android.content.res.ColorStateList
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.Switch
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.constraintlayout.utils.widget.MockView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.preference.PreferenceManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.lnzpk.chat_app.R
-import com.lnzpk.chat_app.old.colors.Colors
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.lnzpk.chat_app.old.newDatabase.DBHelper
-import com.vanniktech.ui.view.ColorPickerView
+import com.lnzpk.chat_app.rewrite.ui.components.TextDescription
+import com.lnzpk.chat_app.rewrite.ui.components.TextTitle
+import com.lnzpk.chat_app.rewrite.ui.theme.TalkToMeTheme
 
 class AccentColorExpertSettings : AppCompatActivity() {
-    var toolbar: Toolbar? = null
-    var buttonColor = 0
-    var toolbarColor = 0
-    var floatingActionButtonColor = 0
-    var switchColor = 0
-    var seekBarColor = 0
-    var groupTextColor = 0
-    var itemColor = 0
-    var messageBubbleColor = 0
-    var dateGroupMessageColor = 0
-    var messageEditTextColor = 0
-    var messageReplyColor = 0
-    var messageReplyBubbleColor = 0
-    var badgeColor = 0
-    lateinit var db: DBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (Colors.isDarkMode(this)) {
-            setDarkMode()
-        } else {
-            setLightMode()
+
+        val db = DBHelper(this, null)
+
+        setContent {
+            TalkToMeTheme {
+                Scaffold { innerPadding ->
+                    ConstraintLayout(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding)
+                    ) {
+                        val (
+                            titleRef,
+                            descriptionRef,
+                            resetAndBackRef
+                        ) = createRefs()
+
+                        TextTitle(
+                            text = "This setting has been removed.",
+                            modifier = Modifier.constrainAs(titleRef) {
+                                top.linkTo(parent.top, 12.dp)
+                                start.linkTo(parent.start)
+                                end.linkTo(parent.end)
+                            }
+                        )
+
+                        TextDescription(
+                            text = "Because we are rebuilding the app from scratch, we have to remove some outdated features so that we can add new ones.\n" +
+                                    "With this update, the color settings have been removed.\n" +
+                                    "\n" +
+                                    "We apologize for any inconvenience.",
+                            modifier = Modifier.constrainAs(descriptionRef) {
+                                top.linkTo(titleRef.bottom, 6.dp)
+                                start.linkTo(parent.start, 12.dp)
+                                end.linkTo(parent.end, 12.dp)
+
+                                width = Dimension.fillToConstraints
+                            }
+                        )
+
+                        Button(
+                            onClick = {
+                                db.resetColors()
+
+                                finish()
+                            },
+                            modifier = Modifier.constrainAs(resetAndBackRef) {
+                                bottom.linkTo(parent.bottom, 12.dp)
+                                start.linkTo(parent.start, 12.dp)
+                                end.linkTo(parent.end, 12.dp)
+
+                                width = Dimension.fillToConstraints
+                            }
+                        ) {
+                            Text(text = "Reset colors and go back")
+                        }
+                    }
+                }
+            }
         }
+
+        /*
         setContentView(R.layout.accent_color_expert_settings)
         toolbar = findViewById(R.id.accentColorExpertToolbar)
 
@@ -82,234 +116,237 @@ class AccentColorExpertSettings : AppCompatActivity() {
         }
 
         config()
+         */
     }
-
-    fun setMessageReplyBubbleColor(replyBubble: RelativeLayout) {
-        try {
-            if(Colors.isDarkMode(this)){
-                if(db.getColor("messageReplyBubbleColor", "dark").toInt() != 0){
-                    replyBubble.backgroundTintList = ColorStateList.valueOf(db.getColor("messageReplyBubbleColor", "dark").toInt())
-                    messageReplyBubbleColor = db.getColor("messageReplyBubbleColor", "dark").toInt()
+    /*
+        fun setMessageReplyBubbleColor(replyBubble: RelativeLayout) {
+            try {
+                if(Colors.isDarkMode(this)){
+                    if(db.getColor("messageReplyBubbleColor", "dark").toInt() != 0){
+                        replyBubble.backgroundTintList = ColorStateList.valueOf(db.getColor("messageReplyBubbleColor", "dark").toInt())
+                        messageReplyBubbleColor = db.getColor("messageReplyBubbleColor", "dark").toInt()
+                    }
+                }else{
+                    if(db.getColor("messageReplyBubbleColor", "light").toInt() != 0){
+                        replyBubble.backgroundTintList = ColorStateList.valueOf(db.getColor("messageReplyBubbleColor", "light").toInt())
+                        messageReplyBubbleColor = db.getColor("messageReplyBubbleColor", "light").toInt()
+                    }
                 }
-            }else{
-                if(db.getColor("messageReplyBubbleColor", "light").toInt() != 0){
-                    replyBubble.backgroundTintList = ColorStateList.valueOf(db.getColor("messageReplyBubbleColor", "light").toInt())
-                    messageReplyBubbleColor = db.getColor("messageReplyBubbleColor", "light").toInt()
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    fun setFabColor(context: Context, fab: FloatingActionButton) {
-        var db = DBHelper(context, null)
-        try {
-            if(Colors.isDarkMode(context)){
-                if(db.getColor("floatingActionButtonColor", "dark").toInt() != 0){
-                    fab.backgroundTintList = ColorStateList.valueOf(db.getColor("floatingActionButtonColor", "dark").toInt())
-                    fab.rippleColor = db.getColor("floatingActionButtonColor", "dark").toInt()
+        fun setFabColor(context: Context, fab: FloatingActionButton) {
+            var db = DBHelper(context, null)
+            try {
+                if(Colors.isDarkMode(context)){
+                    if(db.getColor("floatingActionButtonColor", "dark").toInt() != 0){
+                        fab.backgroundTintList = ColorStateList.valueOf(db.getColor("floatingActionButtonColor", "dark").toInt())
+                        fab.rippleColor = db.getColor("floatingActionButtonColor", "dark").toInt()
+                    }
+                }else{
+                    if(db.getColor("floatingActionButtonColor", "light").toInt() != 0){
+                        fab.backgroundTintList = ColorStateList.valueOf(db.getColor("floatingActionButtonColor", "light").toInt())
+                        fab.rippleColor = db.getColor("floatingActionButtonColor", "light").toInt()
+                    }
                 }
-            }else{
-                if(db.getColor("floatingActionButtonColor", "light").toInt() != 0){
-                    fab.backgroundTintList = ColorStateList.valueOf(db.getColor("floatingActionButtonColor", "light").toInt())
-                    fab.rippleColor = db.getColor("floatingActionButtonColor", "light").toInt()
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    fun setButtonColor(context: Context, button: Button) {
-        var db = DBHelper(context, null)
-        try {
-            if(Colors.isDarkMode(context)){
-                if(db.getColor("buttonColor", "dark").toInt() != 0){
-                    button.backgroundTintList = ColorStateList.valueOf(db.getColor("buttonColor", "dark").toInt())
+        fun setButtonColor(context: Context, button: Button) {
+            var db = DBHelper(context, null)
+            try {
+                if(Colors.isDarkMode(context)){
+                    if(db.getColor("buttonColor", "dark").toInt() != 0){
+                        button.backgroundTintList = ColorStateList.valueOf(db.getColor("buttonColor", "dark").toInt())
+                    }
+                }else{
+                    if(db.getColor("buttonColor", "light").toInt() != 0){
+                        button.backgroundTintList = ColorStateList.valueOf(db.getColor("buttonColor", "light").toInt())
+                    }
                 }
-            }else{
-                if(db.getColor("buttonColor", "light").toInt() != 0){
-                    button.backgroundTintList = ColorStateList.valueOf(db.getColor("buttonColor", "light").toInt())
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    fun setNavBarColor(context: Context, navigationView: BottomNavigationView) {
-        var db = DBHelper(context, null)
-        try {
-            if(Colors.isDarkMode(context)){
-                if(db.getColor("navigationItemColor", "dark").toInt() != 0){
-                    navigationView.itemTextColor = ColorStateList.valueOf(db.getColor("navigationItemColor", "dark").toInt())
-                    navigationView.itemIconTintList = ColorStateList.valueOf(db.getColor("navigationItemColor", "dark").toInt())
+        fun setNavBarColor(context: Context, navigationView: BottomNavigationView) {
+            var db = DBHelper(context, null)
+            try {
+                if(Colors.isDarkMode(context)){
+                    if(db.getColor("navigationItemColor", "dark").toInt() != 0){
+                        navigationView.itemTextColor = ColorStateList.valueOf(db.getColor("navigationItemColor", "dark").toInt())
+                        navigationView.itemIconTintList = ColorStateList.valueOf(db.getColor("navigationItemColor", "dark").toInt())
+                    }
+                }else{
+                    if(db.getColor("navigationItemColor", "light").toInt() != 0){
+                        navigationView.itemTextColor = ColorStateList.valueOf(db.getColor("navigationItemColor", "light").toInt())
+                        navigationView.itemIconTintList = ColorStateList.valueOf(db.getColor("navigationItemColor", "dark").toInt())
+                    }
                 }
-            }else{
-                if(db.getColor("navigationItemColor", "light").toInt() != 0){
-                    navigationView.itemTextColor = ColorStateList.valueOf(db.getColor("navigationItemColor", "light").toInt())
-                    navigationView.itemIconTintList = ColorStateList.valueOf(db.getColor("navigationItemColor", "dark").toInt())
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    fun setToolbarColor(toolbar: Toolbar) {
-        var db = DBHelper(this, null)
-        try {
-            if(Colors.isDarkMode(this)){
-                if(db.getColor("toolbarColor", "dark").toInt() != 0){
-                    toolbar.backgroundTintList = ColorStateList.valueOf(db.getColor("toolbarColor", "dark").toInt())
+        fun setToolbarColor(toolbar: Toolbar) {
+            var db = DBHelper(this, null)
+            try {
+                if(Colors.isDarkMode(this)){
+                    if(db.getColor("toolbarColor", "dark").toInt() != 0){
+                        toolbar.backgroundTintList = ColorStateList.valueOf(db.getColor("toolbarColor", "dark").toInt())
+                    }
+                }else{
+                    if(db.getColor("toolbarColor", "light").toInt() != 0){
+                        toolbar.backgroundTintList = ColorStateList.valueOf(db.getColor("toolbarColor", "light").toInt())
+                    }
                 }
-            }else{
-                if(db.getColor("toolbarColor", "light").toInt() != 0){
-                    toolbar.backgroundTintList = ColorStateList.valueOf(db.getColor("toolbarColor", "light").toInt())
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    fun setBadgeColor(context: Context, textView: TextView) {
-        var db = DBHelper(context, null)
-        try {
-            if(Colors.isDarkMode(context)){
-                if(db.getColor("badgeColor", "dark").toInt() != 0){
-                    textView.backgroundTintList = ColorStateList.valueOf(db.getColor("badgeColor", "dark").toInt())
+        fun setBadgeColor(context: Context, textView: TextView) {
+            var db = DBHelper(context, null)
+            try {
+                if(Colors.isDarkMode(context)){
+                    if(db.getColor("badgeColor", "dark").toInt() != 0){
+                        textView.backgroundTintList = ColorStateList.valueOf(db.getColor("badgeColor", "dark").toInt())
+                    }
+                }else{
+                    if(db.getColor("badgeColor", "light").toInt() != 0){
+                        textView.backgroundTintList = ColorStateList.valueOf(db.getColor("badgeColor", "light").toInt())
+                    }
                 }
-            }else{
-                if(db.getColor("badgeColor", "light").toInt() != 0){
-                    textView.backgroundTintList = ColorStateList.valueOf(db.getColor("badgeColor", "light").toInt())
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    fun setMessageReplyColor(constraintLayout: ConstraintLayout) {
-        try {
-            if(Colors.isDarkMode(this)){
-                if(db.getColor("messageReplyColor", "dark").toInt() != 0){
-                    constraintLayout.backgroundTintList = ColorStateList.valueOf(db.getColor("messageReplyColor", "dark").toInt())
-                    messageReplyColor = db.getColor("messageReplyColor", "dark").toInt()
+        fun setMessageReplyColor(constraintLayout: ConstraintLayout) {
+            try {
+                if(Colors.isDarkMode(this)){
+                    if(db.getColor("messageReplyColor", "dark").toInt() != 0){
+                        constraintLayout.backgroundTintList = ColorStateList.valueOf(db.getColor("messageReplyColor", "dark").toInt())
+                        messageReplyColor = db.getColor("messageReplyColor", "dark").toInt()
+                    }
+                }else{
+                    if(db.getColor("messageReplyColor", "light").toInt() != 0){
+                        constraintLayout.backgroundTintList = ColorStateList.valueOf(db.getColor("messageReplyColor", "light").toInt())
+                        messageReplyColor = db.getColor("messageReplyColor", "light").toInt()
+                    }
                 }
-            }else{
-                if(db.getColor("messageReplyColor", "light").toInt() != 0){
-                    constraintLayout.backgroundTintList = ColorStateList.valueOf(db.getColor("messageReplyColor", "light").toInt())
-                    messageReplyColor = db.getColor("messageReplyColor", "light").toInt()
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    fun setRelativeMessageColor(frameLayout: RelativeLayout) {
-        try {
-            if (Colors.isDarkMode(this)) {
-                if (db.getColor("messageBubbleColor", "dark").toInt() != 0) {
-                    frameLayout.backgroundTintList = ColorStateList.valueOf(
-                        db.getColor("messageBubbleColor", "dark").toInt()
-                    )
+        fun setRelativeMessageColor(frameLayout: RelativeLayout) {
+            try {
+                if (Colors.isDarkMode(this)) {
+                    if (db.getColor("messageBubbleColor", "dark").toInt() != 0) {
+                        frameLayout.backgroundTintList = ColorStateList.valueOf(
+                            db.getColor("messageBubbleColor", "dark").toInt()
+                        )
+                    }
+                } else {
+                    if (db.getColor("messageBubbleColor", "light").toInt() != 0) {
+                        frameLayout.backgroundTintList = ColorStateList.valueOf(
+                            db.getColor("messageBubbleColor", "light").toInt()
+                        )
+                    }
                 }
-            } else {
-                if (db.getColor("messageBubbleColor", "light").toInt() != 0) {
-                    frameLayout.backgroundTintList = ColorStateList.valueOf(
-                        db.getColor("messageBubbleColor", "light").toInt()
-                    )
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    fun setConstraintMessageColor(frameLayout: ConstraintLayout) {
-        try {
-            if (Colors.isDarkMode(this)) {
-                if (db.getColor("messageBubbleColor", "dark").toInt() != 0) {
-                    frameLayout.backgroundTintList = ColorStateList.valueOf(
-                        db.getColor("messageBubbleColor", "dark").toInt()
-                    )
+        fun setConstraintMessageColor(frameLayout: ConstraintLayout) {
+            try {
+                if (Colors.isDarkMode(this)) {
+                    if (db.getColor("messageBubbleColor", "dark").toInt() != 0) {
+                        frameLayout.backgroundTintList = ColorStateList.valueOf(
+                            db.getColor("messageBubbleColor", "dark").toInt()
+                        )
+                    }
+                } else {
+                    if (db.getColor("messageBubbleColor", "light").toInt() != 0) {
+                        frameLayout.backgroundTintList = ColorStateList.valueOf(
+                            db.getColor("messageBubbleColor", "light").toInt()
+                        )
+                    }
                 }
-            } else {
-                if (db.getColor("messageBubbleColor", "light").toInt() != 0) {
-                    frameLayout.backgroundTintList = ColorStateList.valueOf(
-                        db.getColor("messageBubbleColor", "light").toInt()
-                    )
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    fun setMessageEtColor(editText: LinearLayout) {
-        try {
-            if (Colors.isDarkMode(this)) {
-                if (db.getColor("messageEditTextColor", "dark").toInt() != 0) {
-                    editText.backgroundTintList = ColorStateList.valueOf(
-                        db.getColor("messageEditTextColor", "dark").toInt()
-                    )
+        fun setMessageEtColor(editText: LinearLayout) {
+            try {
+                if (Colors.isDarkMode(this)) {
+                    if (db.getColor("messageEditTextColor", "dark").toInt() != 0) {
+                        editText.backgroundTintList = ColorStateList.valueOf(
+                            db.getColor("messageEditTextColor", "dark").toInt()
+                        )
+                    }
+                } else {
+                    if (db.getColor("messageEditTextColor", "light").toInt() != 0) {
+                        editText.backgroundTintList = ColorStateList.valueOf(
+                            db.getColor("messageEditTextColor", "light").toInt()
+                        )
+                    }
                 }
-            } else {
-                if (db.getColor("messageEditTextColor", "light").toInt() != 0) {
-                    editText.backgroundTintList = ColorStateList.valueOf(
-                        db.getColor("messageEditTextColor", "light").toInt()
-                    )
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    fun setDateMessageBubbleColor(textView: TextView) {
-        var db = DBHelper(this, null)
-        try {
-            if (Colors.isDarkMode(this)) {
-                if (db.getColor("dateGroupMessageColor", "dark").toInt() != 0) {
-                    textView.backgroundTintList = ColorStateList.valueOf(db.getColor("dateGroupMessageColor", "dark").toInt()
-                    )
+        fun setDateMessageBubbleColor(textView: TextView) {
+            var db = DBHelper(this, null)
+            try {
+                if (Colors.isDarkMode(this)) {
+                    if (db.getColor("dateGroupMessageColor", "dark").toInt() != 0) {
+                        textView.backgroundTintList = ColorStateList.valueOf(db.getColor("dateGroupMessageColor", "dark").toInt()
+                        )
+                    }
+                } else {
+                    if (db.getColor("dateGroupMessageColor", "light").toInt() != 0) {
+                        textView.backgroundTintList = ColorStateList.valueOf(db.getColor("dateGroupMessageColor", "light").toInt()
+                        )
+                    }
                 }
-            } else {
-                if (db.getColor("dateGroupMessageColor", "light").toInt() != 0) {
-                    textView.backgroundTintList = ColorStateList.valueOf(db.getColor("dateGroupMessageColor", "light").toInt()
-                    )
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
+            db.close()
         }
-        db.close()
-    }
 
-    private fun setGroupTextColor(textView: TextView) {
-        try {
-            if (Colors.isDarkMode(this)){
-                if(db.getColor("groupTextColor", "dark").toInt() != 0){
-                    textView.setTextColor(db.getColor("groupTextColor", "dark").toInt())
+        private fun setGroupTextColor(textView: TextView) {
+            try {
+                if (Colors.isDarkMode(this)){
+                    if(db.getColor("groupTextColor", "dark").toInt() != 0){
+                        textView.setTextColor(db.getColor("groupTextColor", "dark").toInt())
+                    }
+                }else{
+                    if(db.getColor("groupTextColor", "light").toInt() != 0){
+                        textView.setTextColor(db.getColor("groupTextColor", "light").toInt())
+                    }
                 }
-            }else{
-                if(db.getColor("groupTextColor", "light").toInt() != 0){
-                    textView.setTextColor(db.getColor("groupTextColor", "light").toInt())
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
 
-    private fun setSwitchColor(switch1: Switch) {
-        try {
-            if (Colors.isDarkMode(this)){
-                if(db.getColor("switchColor", "dark").toInt() != 0){
-                    switch1.trackTintList = ColorStateList.valueOf(db.getColor("switchColor", "dark").toInt())
-                    switch1.thumbTintList = ColorStateList.valueOf(db.getColor("switchColor", "dark").toInt())
+        private fun setSwitchColor(switch1: Switch) {
+            try {
+                if (Colors.isDarkMode(this)){
+                    if(db.getColor("switchColor", "dark").toInt() != 0){
+                        switch1.trackTintList = ColorStateList.valueOf(db.getColor("switchColor", "dark").toInt())
+                        switch1.thumbTintList = ColorStateList.valueOf(db.getColor("switchColor", "dark").toInt())
+                    }
+                }else{
+                    if(db.getColor("switchColor", "light").toInt() != 0){
+                        switch1.trackTintList = ColorStateList.valueOf(db.getColor("switchColor", "light").toInt())
+                        switch1.thumbTintList = ColorStateList.valueOf(db.getColor("switchColor", "light").toInt())
+                    }
                 }
-            }else{
-                if(db.getColor("switchColor", "light").toInt() != 0){
-                    switch1.trackTintList = ColorStateList.valueOf(db.getColor("switchColor", "light").toInt())
-                    switch1.thumbTintList = ColorStateList.valueOf(db.getColor("switchColor", "light").toInt())
-                }
+            } catch (e: Exception) {
             }
-        } catch (e: Exception) {
         }
-    }
+     */
 
+    /*
     fun resetColors() {
         AlertDialog.Builder(this)
             .setTitle("Akzentfarben zurücksetzen")
@@ -328,12 +365,14 @@ class AccentColorExpertSettings : AppCompatActivity() {
                 messageEditTextColor = 0
                 messageReplyColor = 0
                 messageReplyBubbleColor = 0
-                saveConfig()
+                //saveConfig()
             }
             .setNegativeButton("Nein", null)
             .show()
     }
+     */
 
+    /*
     fun saveConfig() {
         if (Colors.isDarkMode(this)) {
             try {
@@ -481,7 +520,9 @@ class AccentColorExpertSettings : AppCompatActivity() {
             }
         }
     }
+     */
 
+    /*
     fun config() {
         toolbarColor = if(Colors.isDarkMode(this)){
             db.getColor("toolbarColor", "dark").toInt()
@@ -765,26 +806,5 @@ class AccentColorExpertSettings : AppCompatActivity() {
                 .show()
         }
     }
-
-    fun setLightMode() {
-        setTheme(R.style.settingsLight)
-    }
-
-    fun setDarkMode() {
-        setTheme(R.style.settingsDark)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.accent_color_expert_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> finish()
-            R.id.accentColorExpertSave -> saveConfig()
-            R.id.resetExpertAccentColors -> {}
-        }
-        return super.onOptionsItemSelected(item)
-    }
+     */
 }

@@ -16,8 +16,8 @@
             app:positiveButtonText="@string/chatSettings_themeApply" />
         <com.lnzpk.chat_app.old.customThings.MySwitchPreference
             android:key="useAccentColors"
-            android:summaryOff="@string/chatSettings_applyColorsSummary1"
-            android:summaryOn="@string/chatSettings_applyColorsSummary2"
+            android:enabled="false"
+            android:summary="This setting has been disabled with 0.4"
             android:title="@string/chatSettings_applyColorsTitle"
             app:defaultValue="false" />
         <Preference
