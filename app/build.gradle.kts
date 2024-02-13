@@ -64,33 +64,33 @@ android {
 
 
 dependencies {
-    val roomVersion = "2.6.0"
-    val compose_version = "1.6.0-alpha08"
+    val roomVersion = "2.6.1"
+    val compose_version = "1.6.0-rc01"
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.compose.ui:ui:$compose_version")
     implementation("androidx.compose.material:material:$compose_version")
     implementation("androidx.compose.ui:ui-tooling:$compose_version")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0-alpha03")
-    implementation("androidx.activity:activity-compose:1.8.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation("androidx.activity:activity-compose:1.8.2")
 
-    implementation("androidx.databinding:viewbinding:8.1.2")
+    implementation("androidx.databinding:viewbinding:8.2.1")
 
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 
     implementation("com.github.alorma:compose-settings-ui-m3:1.0.1")
 
 
-    implementation("com.android.billingclient:billing-ktx:6.0.1")
-    implementation("com.google.firebase:firebase-config-ktx:21.5.0")
+    implementation("com.android.billingclient:billing-ktx:6.1.0")
+    implementation("com.google.firebase:firebase-config-ktx:21.6.0")
 
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     // To use Kotlin Symbol Processing (KSP)
-    ksp("androidx.room:room-compiler:2.6.0")
+    ksp("androidx.room:room-compiler:2.6.1")
 
     // optional - RxJava2 support for Room
     implementation("androidx.room:room-rxjava2:$roomVersion")
@@ -104,14 +104,14 @@ dependencies {
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$roomVersion")
 
-    implementation("androidx.navigation:navigation-compose:2.7.4")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.8.0")
+    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation("androidx.activity:activity-compose:1.8.2")
     implementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
-    implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.0")
     implementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
     androidTestImplementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
     androidTestImplementation(project.dependencies.platform("androidx.compose:compose-bom:2023.09.01"))
@@ -125,27 +125,27 @@ dependencies {
         }
     }
 
-    implementation("androidx.work:work-runtime-ktx:2.8.1")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     implementation("com.vanniktech:emoji-google-compat:0.17.0")
 
     // Extensions = ViewModel + LiveData
     implementation("android.arch.lifecycle:extensions:1.1.1")
-    implementation("com.google.firebase:firebase-firestore-ktx:24.9.1")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.10.0")
     implementation("com.google.firebase:firebase-database-ktx:20.3.0")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
-    implementation("androidx.compose.ui:ui:1.6.0-alpha08")
+    implementation("androidx.compose.ui:ui:1.6.0-rc01")
     implementation("com.google.android.gms:play-services-wallet:19.2.1")
-    implementation("androidx.activity:activity-ktx:1.8.0")
+    implementation("androidx.activity:activity-ktx:1.8.2")
     debugImplementation("androidx.compose.ui:ui-tooling")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
 
-    implementation("androidx.compose.material3:material3:1.2.0-alpha10")
-    implementation("androidx.compose.material3:material3-window-size-class:1.2.0-alpha10")
+    implementation("androidx.compose.material3:material3:1.2.0-beta02")
+    implementation("androidx.compose.material3:material3-window-size-class:1.2.0-beta02")
     // TODO Add an link preview library
 
     //implementation fileTree(org.gradle.internal.impldep.bsh.commands.dir: "libs", include = "*.jar"])
-    implementation("com.google.firebase:firebase-perf:20.5.0")
+    implementation("com.google.firebase:firebase-perf:20.5.1")
 
     implementation("com.google.android.play:core:1.10.3")
 
@@ -155,28 +155,28 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
     //implementation("com.github.danielnilsson9:color-picker-view:1.4.0@aar")
     implementation("com.google.code.gson:gson:2.10.1")
-    implementation("com.google.firebase:firebase-auth:22.2.0")
+    implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation(project.dependencies.platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("androidx.biometric:biometric:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.firebase:firebase-database:20.3.0")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.gridlayout:gridlayout:1.0.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.firebase:firebase-firestore:24.9.1")
+    implementation("com.google.firebase:firebase-firestore:24.10.0")
     implementation("androidx.mediarouter:mediarouter:1.6.0")
 
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation("com.google.firebase:firebase-analytics:21.4.0")
+    implementation("com.google.firebase:firebase-analytics:21.5.0")
     implementation("net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3")
-    implementation("com.google.firebase:firebase-crashlytics:18.5.1")
+    implementation("com.google.firebase:firebase-crashlytics:18.6.0")
 }
 repositories {
     mavenCentral()
