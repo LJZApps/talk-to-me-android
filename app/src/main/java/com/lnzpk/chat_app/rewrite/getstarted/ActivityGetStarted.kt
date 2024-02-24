@@ -3,28 +3,51 @@ package com.lnzpk.chat_app.rewrite.getstarted
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Snackbar
-import androidx.compose.material3.SnackbarHost
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.Chat
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.Groups
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.lnzpk.chat_app.rewrite.ui.components.TextDescription
-import com.lnzpk.chat_app.rewrite.ui.components.TextTitle
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.lnzpk.chat_app.R
+import com.lnzpk.chat_app.rewrite.getstarted.pages.GetStartedMain
+import com.lnzpk.chat_app.rewrite.getstarted.pages.GetStartedNews
+import com.lnzpk.chat_app.rewrite.getstarted.pages.GetStartedSetup
 import com.lnzpk.chat_app.rewrite.ui.theme.TalkToMeTheme
-import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "ActivityGetStarted"
+
+@AndroidEntryPoint
 class ActivityGetStarted : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,65 +55,58 @@ class ActivityGetStarted : AppCompatActivity() {
 
         setContent {
             val snackbarHostState = remember { SnackbarHostState() }
-            val scope = rememberCoroutineScope()
+            val navController = rememberNavController()
+            val vm: GetStartedViewModel = hiltViewModel()
 
             TalkToMeTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    snackbarHost = { SnackbarHost(snackbarHostState) }
-                ) {innerPadding ->
-                    ConstraintLayout (
+                    snackbarHost = { SnackbarHost(snackbarHostState) },
+                ) { innerPadding ->
+                    ConstraintLayout(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(innerPadding)
                     ) {
                         val (
-                            titleRef,
-                            descriptionRef,
-                            nextButtonRef
+                            contentRef
                         ) = createRefs()
 
-                        TextTitle(
-                            text = "Welcome to the new\nTalk to me!",
-                            modifier = Modifier.constrainAs(titleRef) {
-                                top.linkTo(parent.top, 12.dp)
-                                start.linkTo(parent.start, 12.dp)
-                                end.linkTo(parent.end, 12.dp)
-                            }
-                        )
+                        NavHost(
+                            navController = navController,
+                            modifier = Modifier.constrainAs(contentRef) {
+                                start.linkTo(parent.start)
+                                top.linkTo(parent.top)
+                                end.linkTo(parent.end)
+                                bottom.linkTo(parent.bottom)
 
-                        TextDescription(
-                            text = "With this update, we made some huge improvements to the app.\n\n" +
-                                    "The app got a brand new design while adding many new features.",
-                            modifier = Modifier.constrainAs(descriptionRef) {
-                                top.linkTo(titleRef.bottom, 12.dp)
-                                start.linkTo(parent.start, 12.dp)
-                                end.linkTo(parent.end, 12.dp)
-
-                                width = Dimension.fillToConstraints
-                            }
-                        )
-
-                        Button(
-                            onClick = {
-
+                                width = Dimension.matchParent
+                                height = Dimension.fillToConstraints
                             },
-                            modifier = Modifier.constrainAs(nextButtonRef) {
-                                bottom.linkTo(parent.bottom, 12.dp)
-                                start.linkTo(parent.start, 12.dp)
-                                end.linkTo(parent.end, 12.dp)
-
-                                width = Dimension.fillToConstraints
-                            }
+                            startDestination = GET_STARTED_MAIN
                         ) {
-                            Text(
-                                text = "Get started"
-                            )
+                            composable(route = GET_STARTED_MAIN) {
+                                GetStartedMain(
+                                    navController = navController,
+                                    vm = vm
+                                )
+                            }
+                            composable(route = GET_STARTED_NEWS) {
+                                GetStartedNews(
+                                    navController = navController,
+                                    vm = vm
+                                )
+                            }
+                            composable(route = GET_STARTED_SETUP) {
+                                GetStartedSetup(
+                                    navController = navController,
+                                    vm = vm
+                                )
+                            }
                         }
                     }
                 }
             }
         }
     }
-
 }

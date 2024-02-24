@@ -7,6 +7,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
     id("com.google.gms.google-services")
+    id("com.google.dagger.hilt.android")
     kotlin("plugin.serialization")
 }
 
@@ -53,15 +54,23 @@ android {
             setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"))
         }
     }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 
 dependencies {
     val roomVersion = "2.6.1"
-    val compose_version = "1.6.1"
+    val compose_version = "1.6.2"   // For AppWidgets support
+    implementation("androidx.glance:glance-appwidget:1.0.0")
+
+    // For interop APIs with Material 3
+    implementation("androidx.glance:glance-material3:1.0.0")
 
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+    kapt("androidx.hilt:hilt-compiler:1.1.0")
 
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
@@ -70,12 +79,12 @@ dependencies {
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("androidx.compose.material:material-icons-extended:$compose_version")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.compose.ui:ui:$compose_version")
-    implementation("androidx.compose.material:material:$compose_version")
     implementation("androidx.compose.ui:ui-tooling:$compose_version")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
