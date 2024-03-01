@@ -1,4 +1,4 @@
-package com.lnzpk.chat_app.rewrite.getstarted
+package com.lnzpk.chat_app.rewrite.modules.getstarted
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

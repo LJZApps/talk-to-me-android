@@ -52,7 +52,8 @@ fun TalkToMeTheme(
     if (!view.isInEditMode) {
         SideEffect {
             (view.context as Activity).window.statusBarColor = colorScheme.background.toArgb()
-            (view.context as Activity).window.navigationBarColor = colorScheme.surfaceColorAtElevation(3.dp).toArgb()
+//            (view.context as Activity).window.navigationBarColor = colorScheme.surfaceColorAtElevation(3.dp).toArgb()
+            (view.context as Activity).window.navigationBarColor = colorScheme.background.toArgb()
             ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = !darkTheme
         }
     }

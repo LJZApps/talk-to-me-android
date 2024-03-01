@@ -1,6 +1,6 @@
-package com.lnzpk.chat_app.rewrite.api
+package com.lnzpk.chat_app.rewrite.data.api
 
-import com.lnzpk.chat_app.rewrite.api.services.LoginService
+import com.lnzpk.chat_app.rewrite.data.api.services.LoginService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -11,7 +11,7 @@ import java.util.Date
 
 // For home development, use: http://192.168.2.230:8000/
 // For public testing and release, use: http://talktome.trainee.2peaches.de/
-private const val BASE_URL = "http://192.168.2.230:8000/"
+private const val BASE_URL = "http://172.18.121.229:8000/"
 object ApiClient {
 
     private val client = OkHttpClient.Builder()

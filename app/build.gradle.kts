@@ -59,10 +59,20 @@ android {
     }
 }
 
-
 dependencies {
     val roomVersion = "2.6.1"
-    val compose_version = "1.6.2"   // For AppWidgets support
+    val compose_version = "1.6.2"
+    val composeDestinationsVersion = "1.10.1"
+
+    // Compose destinations
+    implementation("io.github.raamcosta.compose-destinations:core:$composeDestinationsVersion")
+    ksp("io.github.raamcosta.compose-destinations:ksp:$composeDestinationsVersion")
+
+    // Arrow
+    implementation(platform("io.arrow-kt:arrow-stack:1.1.2"))
+    implementation("io.arrow-kt:arrow-core")
+
+    // For AppWidgets support
     implementation("androidx.glance:glance-appwidget:1.0.0")
 
     // For interop APIs with Material 3
@@ -70,9 +80,9 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
-    kapt("androidx.hilt:hilt-compiler:1.1.0")
+    kapt("androidx.hilt:hilt-compiler:1.2.0")
 
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
     implementation("com.squareup.moshi:moshi-adapters:1.12.0")
@@ -89,7 +99,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
 
-    implementation("androidx.databinding:viewbinding:8.2.2")
+    implementation("androidx.databinding:viewbinding:8.3.0")
 
     implementation("com.android.billingclient:billing-ktx:6.1.0")
 
@@ -110,14 +120,15 @@ dependencies {
 
     // Extensions = ViewModel + LiveData
     implementation("android.arch.lifecycle:extensions:1.1.1")
-    implementation("com.google.firebase:firebase-firestore-ktx:24.10.2")
-    implementation("com.google.firebase:firebase-database-ktx:20.3.0")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.10.3")
+    implementation("com.google.firebase:firebase-database-ktx:20.3.1")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
 
-    implementation("androidx.compose.material3:material3:1.1.2") // FIXME - DO NOT UPDATE TO 1.2.0 (No MaterialYou colors)
-    implementation("androidx.compose.material3:material3-window-size-class:1.1.2") // FIXME - DO NOT UPDATE TO 1.2.0 (No MaterialYou colors)
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.35.0-alpha")
+    implementation("androidx.compose.material3:material3:1.1.2") // FIXME Remember Version 1.1.2
+    implementation("androidx.compose.material3:material3-window-size-class:1.1.2") // FIXME Remember Version 1.1.2
 
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.google.code.gson:gson:2.10.1")

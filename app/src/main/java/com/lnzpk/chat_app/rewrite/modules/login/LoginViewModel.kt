@@ -1,4 +1,4 @@
-package com.lnzpk.chat_app.rewrite.login
+package com.lnzpk.chat_app.rewrite.modules.login
 
 import androidx.lifecycle.ViewModel
 

@@ -14,7 +14,6 @@
     <color name="dark_colorPrimary">#032A40</color>
     <color name="dark_colorPrimaryDark">@color/dark_colorPrimary</color>
     <color name="dark_colorAccent">#004169</color>
-    <color name="dark_colorSecondary"></color>
 
 
     <!-- Custom-colors -->
@@ -35,10 +34,4 @@
     <!-- Text-Colors -->
     <color name="secondary_text_dark">#bebebe</color>
     <color name="secondary_text_light">#323232</color>
-
-    <!-- Colors, you can use: colorTertiary, colorSecondary, colorPrimary, colorAccent -->
-
-    <!-- Basic light-mode color: #319EEA -->
-    <!-- Basic dark-mode color: #0E88DC -->
-    <!-- Test dark-mode color: #0b2c42 -->
 </resources>

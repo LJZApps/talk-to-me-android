@@ -37,13 +37,7 @@ class ChatContextSheet(val chatUsername: String): BottomSheetDialogFragment() {
         }
 
         holder.title!!.text = chatUsername
-        //TODO("Profile request to get data")
         holder.summary!!.text = "PLACEHOLDER"
-
-        //dismiss()
-
-        //(messageView?.parent as? ViewGroup)?.removeView(messageView)
-        //viewList.addView(messageView)
 
         return view
     }

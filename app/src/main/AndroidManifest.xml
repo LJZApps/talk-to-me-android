@@ -31,7 +31,7 @@
         android:theme="@style/AppTheme"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".rewrite.getstarted.ActivityGetStarted"
+            android:name="com.lnzpk.chat_app.rewrite.modules.getstarted.ActivityGetStarted"
             android:exported="false" />
         <activity
             android:name=".AppChooser"
