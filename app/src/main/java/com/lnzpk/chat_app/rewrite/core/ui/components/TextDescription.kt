@@ -15,7 +15,7 @@ fun TextDescription(
     Text(
         text = text,
         style = TextStyle(
-            fontSize = 18.sp
+            fontSize = 16.sp
         ),
         textAlign = TextAlign.Left,
         modifier = modifier

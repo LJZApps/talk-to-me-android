@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="com.android.vending.BILLING" />
 
+    <!-- FIXME DELETE android:usesCleartextTraffic="true" FOR RELEASE!!! VERY IMPORTANT!!! -->
     <application
         android:name=".TalkToMeApplication"
         android:allowBackup="true"
@@ -29,7 +30,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="tiramisu">
+        tools:targetApi="tiramisu"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".rewrite.main.ActivityMain"
             android:exported="true" >

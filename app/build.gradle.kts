@@ -11,6 +11,7 @@ plugins {
     id("kotlin-kapt")
     id("com.google.gms.google-services")
     id("com.google.dagger.hilt.android")
+    id("kotlinx-serialization")
     kotlin("plugin.serialization")
 }
 
@@ -75,6 +76,10 @@ dependencies {
     val roomVersion = "2.6.1"
     val compose_version = "1.6.2"
     val composeDestinationsVersion = "1.10.1"
+
+    // KotlinX Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 
     // Compose destinations
     implementation("io.github.raamcosta.compose-destinations:core:$composeDestinationsVersion")
