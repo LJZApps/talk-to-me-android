@@ -31,11 +31,8 @@
         android:theme="@style/AppTheme"
         tools:targetApi="tiramisu">
         <activity
-            android:name="com.lnzpk.chat_app.rewrite.modules.getstarted.ActivityGetStarted"
-            android:exported="false" />
-        <activity
-            android:name=".AppChooser"
-            android:exported="true">
+            android:name=".rewrite.main.ActivityMain"
+            android:exported="true" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,6 +40,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".rewrite.app.module.versionchooser.AppChooser"
+            android:exported="true">
+
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+
         <activity
             android:name=".old.main.StartIcon"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -58,21 +67,27 @@
             </intent-filter>
             -->
         </activity>
+
         <activity
             android:name=".old.admin.AdminCenter"
             android:exported="false" />
+
         <activity
             android:name=".old.settings.profileSettings.ProfilePictureSettings"
             android:exported="false" />
+
         <activity
             android:name=".old.settings.profileSettings.DangerZoneSettings"
             android:exported="false" />
+
         <activity
             android:name=".old.settings.profileSettings.InformationSettings"
             android:exported="false" />
+
         <activity
             android:name=".old.settings.profileSettings.NameSettings"
             android:exported="false" />
+
         <activity
             android:name=".old.settings.profileSettings.PreviewProfile"
             android:exported="false" />

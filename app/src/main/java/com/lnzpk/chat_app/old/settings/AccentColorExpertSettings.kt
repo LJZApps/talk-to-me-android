@@ -1,6 +1,5 @@
 package com.lnzpk.chat_app.old.settings
 
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -14,9 +13,9 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.lnzpk.chat_app.old.newDatabase.DBHelper
-import com.lnzpk.chat_app.rewrite.ui.components.TextDescription
-import com.lnzpk.chat_app.rewrite.ui.components.TextTitle
-import com.lnzpk.chat_app.rewrite.ui.theme.TalkToMeTheme
+import com.lnzpk.chat_app.rewrite.core.ui.components.TextDescription
+import com.lnzpk.chat_app.rewrite.core.ui.components.TextTitle
+import com.lnzpk.chat_app.rewrite.core.ui.theme.TalkToMeTheme
 
 class AccentColorExpertSettings : AppCompatActivity() {
 

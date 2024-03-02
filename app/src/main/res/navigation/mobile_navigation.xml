@@ -7,7 +7,7 @@
 
     <activity
         android:id="@+id/appChooser"
-        android:name="com.lnzpk.chat_app.AppChooser"
+        android:name="com.lnzpk.chat_app.rewrite.app.module.versionchooser.AppChooser"
         android:label="AppChooser" />
     <activity
         android:id="@+id/loginAndRegister"

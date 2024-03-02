@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.google.devtools.ksp")
     id("com.android.application")
@@ -12,6 +15,10 @@ plugins {
 }
 
 android {
+    val properties = Properties().apply {
+        load(FileInputStream(File(rootProject.rootDir, "app.properties")))
+    }
+
     compileSdk = 34
 
     buildFeatures {
@@ -31,7 +38,7 @@ android {
     defaultConfig {
         namespace = "com.lnzpk.chat_app"
         applicationId = "com.lnzpk.chat_app"
-        minSdk = 26
+        minSdk = 31
         targetSdk = 34
         versionCode = 61
         versionName = "0.4"
@@ -46,6 +53,8 @@ android {
     buildTypes {
         named("debug") {
             isDebuggable = true
+
+            buildConfigField("String", "BASE_URL", "\"${properties.getProperty("DEBUG_BASE_URL")}\"")
         }
 
         named("release") {
@@ -59,7 +68,10 @@ android {
     }
 }
 
+val okHttpVersion by extra("4.12.0")
+
 dependencies {
+    implementation("androidx.compose.material3:material3-android:1.2.0")
     val roomVersion = "2.6.1"
     val compose_version = "1.6.2"
     val composeDestinationsVersion = "1.10.1"
@@ -78,8 +90,12 @@ dependencies {
     // For interop APIs with Material 3
     implementation("androidx.glance:glance-material3:1.0.0")
 
-    implementation("com.google.dagger:hilt-android:2.50")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    // OkHttp
+    implementation("com.squareup.okhttp3:okhttp:$okHttpVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okHttpVersion")
+
+    implementation("com.google.dagger:hilt-android:2.51")
+    kapt("com.google.dagger:hilt-android-compiler:2.51")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
