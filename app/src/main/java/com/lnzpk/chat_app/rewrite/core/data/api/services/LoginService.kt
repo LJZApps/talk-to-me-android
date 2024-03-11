@@ -6,9 +6,11 @@ import retrofit2.http.Query
 
 interface LoginService {
 
-    @POST("/api/v1/login")
+    @POST("/api/login")
     suspend fun login(
-        @Query("username") username: String,
+        @Query("email") username: String,
         @Query("password") password: String,
     ): LoginResponse
+
+    
 }

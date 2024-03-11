@@ -14,4 +14,6 @@ class AppViewModel @Inject constructor(
 ) : ViewModel() {
     private val _isLoggedIn = MutableStateFlow(true)
     val isLoggedIn = _isLoggedIn.asStateFlow()
+
+    // Function to check, if a user is logged in, is coming soon.
 }

@@ -1,4 +1,4 @@
-package de.twopeaches.meindeal.core.data.api.core.adapters
+package com.lnzpk.chat_app.rewrite.core.data.api.core.adapters
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter

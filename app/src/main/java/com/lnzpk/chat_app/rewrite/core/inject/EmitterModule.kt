@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import de.twopeaches.meindeal.core.data.emitter.NetworkErrorEmitter
+import com.lnzpk.chat_app.rewrite.core.data.emitter.NetworkErrorEmitter
 import javax.inject.Singleton
 
 @Module

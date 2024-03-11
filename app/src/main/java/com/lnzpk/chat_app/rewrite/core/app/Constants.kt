@@ -1,6 +1,6 @@
-package de.twopeaches.meindeal.core.app
+package com.lnzpk.chat_app.rewrite.core.app
 
 /**
- * Logging tag: "MeinDealApp"
+ * Logging tag: "TalkToMe"
  */
 const val TAG = "TalkToMe"

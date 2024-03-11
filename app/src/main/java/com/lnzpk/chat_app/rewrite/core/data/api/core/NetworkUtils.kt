@@ -1,7 +1,7 @@
 package com.lnzpk.chat_app.rewrite.core.data.api.core
 
 import com.squareup.moshi.Moshi
-import de.twopeaches.meindeal.core.data.api.responses.common.SuccessResponse
+import com.lnzpk.chat_app.rewrite.core.data.api.responses.common.SuccessResponse
 
 object NetworkUtils {
 

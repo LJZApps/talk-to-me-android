@@ -5,8 +5,9 @@ import com.lnzpk.chat_app.rewrite.core.data.api.services.LoginService
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonEncodingException
 import com.squareup.moshi.Moshi
-import de.twopeaches.meindeal.core.app.TAG
-import de.twopeaches.meindeal.core.data.emitter.NetworkErrorEmitter
+import com.lnzpk.chat_app.rewrite.core.app.TAG
+import com.lnzpk.chat_app.rewrite.core.data.api.core.exceptions.RequestFailedException
+import com.lnzpk.chat_app.rewrite.core.data.emitter.NetworkErrorEmitter
 import okhttp3.internal.http2.ConnectionShutdownException
 import retrofit2.HttpException
 import retrofit2.Retrofit
@@ -40,6 +41,7 @@ class ApiClient constructor(
                     is ConnectionShutdownException -> networkErrorEmitter.emitNoInternet()
                     is JsonDataException -> networkErrorEmitter.emitInvalidResponse()
                     is JsonEncodingException -> networkErrorEmitter.emitInvalidResponse()
+                    is RequestFailedException -> networkErrorEmitter.emitRequestFailed(e.errorMessage)
                     is HttpException -> networkErrorEmitter.emitHttpError(
                         errorMessage = NetworkUtils.parseSuccessResponse(
                             moshi = moshi,

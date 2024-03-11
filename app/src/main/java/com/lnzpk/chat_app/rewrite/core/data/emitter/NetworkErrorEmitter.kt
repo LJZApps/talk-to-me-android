@@ -1,4 +1,4 @@
-package de.twopeaches.meindeal.core.data.emitter
+package com.lnzpk.chat_app.rewrite.core.data.emitter
 
 import com.lnzpk.chat_app.rewrite.core.data.api.core.NetworkError
 import kotlinx.coroutines.flow.MutableStateFlow

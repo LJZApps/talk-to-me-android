@@ -1,7 +1,6 @@
 package com.lnzpk.chat_app.rewrite.app.module.login.pages
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -16,7 +15,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.lnzpk.chat_app.rewrite.app.module.login.LoginViewModel
 import com.lnzpk.chat_app.rewrite.core.navigation.LoginNavGraph
-import com.lnzpk.chat_app.rewrite.core.ui.components.TextDescription
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
