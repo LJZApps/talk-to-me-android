@@ -1,4 +1,4 @@
-package com.lnzpk.chat_app.rewrite.core.data.repositories.login
+package com.lnzpk.chat_app.rewrite.core.data.api.responses.login
 
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json

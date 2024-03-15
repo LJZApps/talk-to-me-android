@@ -1,8 +1,10 @@
 package com.lnzpk.chat_app.rewrite.core.data.api.services
 
-import com.lnzpk.chat_app.rewrite.core.data.repositories.login.LoginResponse
+import com.lnzpk.chat_app.rewrite.core.data.api.responses.login.LoginResponse
+import com.lnzpk.chat_app.rewrite.core.data.api.responses.register.RegisterResponse
 import retrofit2.http.POST
 import retrofit2.http.Query
+import java.util.*
 
 interface LoginService {
 
@@ -12,5 +14,10 @@ interface LoginService {
         @Query("password") password: String,
     ): LoginResponse
 
-    
+    @POST("/api/register")
+    suspend fun register(
+        @Query("display_name") displayName: String,
+        @Query("username") username: String,
+        @Query("birthday") birthday: Date
+    ): RegisterResponse
 }
