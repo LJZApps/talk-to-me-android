@@ -125,7 +125,7 @@ dependencies {
     implementation("com.android.billingclient:billing-ktx:6.1.0")
 
     // Room
-    ksp("androidx.room:room-compiler:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-rxjava2:$roomVersion")
     implementation("androidx.room:room-rxjava3:$roomVersion")
     implementation("androidx.room:room-guava:$roomVersion")
