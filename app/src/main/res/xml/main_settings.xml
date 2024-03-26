@@ -2,14 +2,14 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.lnzpk.chat_app.old.customThings.MyPreferenceCategory android:title="@string/settings_myProfile">
+    <de.ljz.talktome.old.customThings.MyPreferenceCategory android:title="@string/settings_myProfile">
 
-        <com.lnzpk.chat_app.old.customThings.chatPreference
+        <de.ljz.talktome.old.customThings.chatPreference
             app:key="profile"
             app:summary="@string/loading"
             app:title="@string/loading" />
-    </com.lnzpk.chat_app.old.customThings.MyPreferenceCategory>
-    <com.lnzpk.chat_app.old.customThings.MyPreferenceCategory
+    </de.ljz.talktome.old.customThings.MyPreferenceCategory>
+    <de.ljz.talktome.old.customThings.MyPreferenceCategory
         android:key="cat1"
         android:title="@string/mainSettings_moreSettings"
         app:allowDividerAbove="false">
@@ -44,5 +44,5 @@
         <!--<Preference
             app:key="other"
             app:title="Sonstiges" />-->
-    </com.lnzpk.chat_app.old.customThings.MyPreferenceCategory>
+    </de.ljz.talktome.old.customThings.MyPreferenceCategory>
 </PreferenceScreen>

@@ -37,12 +37,12 @@ android {
     }
 
     defaultConfig {
-        namespace = "com.lnzpk.chat_app"
-        applicationId = "com.lnzpk.chat_app"
+        namespace = "de.ljz.talktome"
+        applicationId = "de.ljz.talktome"
         minSdk = 31
         targetSdk = 34
-        versionCode = 61
-        versionName = "0.4"
+        versionCode = 1
+        versionName = "0.1"
         resourceConfigurations += listOf("de", "en")
     }
 

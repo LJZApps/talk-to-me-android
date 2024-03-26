@@ -10,7 +10,7 @@ Talk to me is a free and open source chat app. It is completely free for everyon
 
 # Where can I find this App?
 ### Android
-- Google Play Store: https://play.google.com/store/apps/details?id=com.lnzpk.chat_app
+- Google Play Store: https://play.google.com/store/apps/details?id=de.ljz.talktome
 
 ### iOS/MacOS/iPadOS
 > IN DEVELOPMENT
