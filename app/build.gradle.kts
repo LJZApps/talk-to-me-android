@@ -72,9 +72,8 @@ android {
 val okHttpVersion by extra("4.12.0")
 
 dependencies {
-    implementation("androidx.compose.material3:material3-android:1.2.0")
     val roomVersion = "2.6.1"
-    val compose_version = "1.6.2"
+    val compose_version = "1.6.4"
     val composeDestinationsVersion = "1.10.1"
 
     // KotlinX Serialization
@@ -120,12 +119,12 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
 
-    implementation("androidx.databinding:viewbinding:8.3.0")
+    implementation("androidx.databinding:viewbinding:8.3.1")
 
-    implementation("com.android.billingclient:billing-ktx:6.1.0")
+    implementation("com.android.billingclient:billing-ktx:6.2.0")
 
     // Room
-    kapt("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-rxjava2:$roomVersion")
     implementation("androidx.room:room-rxjava3:$roomVersion")
     implementation("androidx.room:room-guava:$roomVersion")
@@ -134,7 +133,7 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     implementation("androidx.navigation:navigation-compose:2.7.7")
-    implementation(project.dependencies.platform("androidx.compose:compose-bom:2024.03.00")) // FIXME - DO NOT UPDATE TO 2024.02 (No MaterialYou colors)
+    implementation(project.dependencies.platform("androidx.compose:compose-bom:2024.01.00")) // FIXME - DO NOT UPDATE TO 2024.02 (No MaterialYou colors)
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.21")

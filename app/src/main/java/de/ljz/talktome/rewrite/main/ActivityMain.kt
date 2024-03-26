@@ -10,7 +10,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -35,7 +34,6 @@ class ActivityMain : AppCompatActivity() {
             val snackbarHostState = remember { SnackbarHostState() }
             val navController = rememberNavController()
             val vm: AppViewModel by viewModels()
-            val tooltipState = rememberTooltipState(isPersistent = true)
 
             val isLoggedIn = vm.isLoggedIn.collectAsState()
 

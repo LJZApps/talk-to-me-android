@@ -4,7 +4,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Login
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Login
+import androidx.compose.material.icons.filled.ManageAccounts
+import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
@@ -42,7 +45,7 @@ fun LoginMain(
         ) = createRefs()
 
         Icon(
-            imageVector = Icons.AutoMirrored.Filled.Login,
+            imageVector = Icons.Outlined.AccountCircle,
             contentDescription = null,
             modifier = Modifier.constrainAs(iconRef) {
                 top.linkTo(parent.top, 12.dp)
@@ -54,7 +57,7 @@ fun LoginMain(
         Text(
             text = "Let's start with your account",
             modifier = Modifier.constrainAs(titleRef) {
-                top.linkTo(iconRef.bottom, 12.dp)
+                top.linkTo(iconRef.bottom, 6.dp)
                 start.linkTo(parent.start, 12.dp)
                 end.linkTo(parent.end, 12.dp)
 
