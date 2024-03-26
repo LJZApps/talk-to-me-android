@@ -1,7 +1,12 @@
 package de.ljz.talktome.rewrite.app.module.login.pages
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Login
+import androidx.compose.material.icons.filled.Login
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,16 +34,27 @@ fun LoginMain(
             .fillMaxSize()
     ) {
         val (
+            iconRef,
             titleRef,
             descriptionRef,
             registerButtonRef,
             loginButtonRef
         ) = createRefs()
 
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.Login,
+            contentDescription = null,
+            modifier = Modifier.constrainAs(iconRef) {
+                top.linkTo(parent.top, 12.dp)
+                start.linkTo(parent.start, 12.dp)
+            }
+                .size(40.dp)
+        )
+
         Text(
             text = "Let's start with your account",
             modifier = Modifier.constrainAs(titleRef) {
-                top.linkTo(parent.top, 12.dp)
+                top.linkTo(iconRef.bottom, 12.dp)
                 start.linkTo(parent.start, 12.dp)
                 end.linkTo(parent.end, 12.dp)
 
@@ -46,23 +62,21 @@ fun LoginMain(
             },
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Left
         )
 
         Text(
             text = "Easily create a new account or log in with your existing one to get started right away.",
             modifier = Modifier.constrainAs(descriptionRef) {
-                top.linkTo(titleRef.bottom)
+                top.linkTo(titleRef.bottom, 6.dp)
                 start.linkTo(parent.start, 12.dp)
                 end.linkTo(parent.end, 12.dp)
-                bottom.linkTo(registerButtonRef.top)
 
                 width = Dimension.fillToConstraints
             },
             style = TextStyle(
                 fontSize = 16.sp
             ),
-            textAlign = TextAlign.Center,
         )
 
         Button(

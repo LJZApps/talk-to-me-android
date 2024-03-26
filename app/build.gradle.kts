@@ -134,7 +134,7 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     implementation("androidx.navigation:navigation-compose:2.7.7")
-    implementation(project.dependencies.platform("androidx.compose:compose-bom:2024.01.00")) // FIXME - DO NOT UPDATE TO 2024.02 (No MaterialYou colors)
+    implementation(project.dependencies.platform("androidx.compose:compose-bom:2024.03.00")) // FIXME - DO NOT UPDATE TO 2024.02 (No MaterialYou colors)
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.21")
