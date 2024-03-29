@@ -13,6 +13,7 @@ plugins {
     kotlin("plugin.serialization")
 }
 
+
 android {
     val properties = Properties().apply {
         load(FileInputStream(File(rootProject.rootDir, "local.properties")))
@@ -39,8 +40,8 @@ android {
         applicationId = "com.lnzpk.chat_app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 60
-        versionName = "EarlyAccess-0.3.5"
+        versionCode = 61
+        versionName = "Legacy"
         resourceConfigurations += listOf("de", "en")
     }
 
@@ -77,8 +78,6 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.8.2")
 
     implementation("androidx.databinding:viewbinding:8.2.1")
-
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 
     implementation("com.github.alorma:compose-settings-ui-m3:1.0.1")
 

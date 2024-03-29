@@ -5,7 +5,7 @@
     android:id="@+id/feedbackScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".old.settings.Feedback">
+    tools:context=".settings.Feedback">
 
     <TextView
         android:id="@+id/textView9"

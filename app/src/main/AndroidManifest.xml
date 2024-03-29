@@ -29,70 +29,46 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="tiramisu">
-        <activity
-            android:name=".rewrite.activities.main.LoginAndRegister"
-            android:exported="false"
-            android:label="@string/title_activity_login_and_register"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".AppChooser"
-            android:exported="true">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".rewrite.activities.StartActivity"
-            android:exported="true"
-            android:permission="com.lnzpk.chat_app.permission.START_APP">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
-        <activity
-            android:name=".old.main.StartIcon"
+            android:name="com.lnzpk.chat_app.main.StartIcon"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
+            android:screenOrientation="portrait">
 
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
+
         <activity
-            android:name=".old.admin.AdminCenter"
+            android:name="com.lnzpk.chat_app.admin.AdminCenter"
             android:exported="false" />
+
         <activity
-            android:name=".old.settings.profileSettings.ProfilePictureSettings"
+            android:name="com.lnzpk.chat_app.settings.profileSettings.ProfilePictureSettings"
             android:exported="false" />
+
         <activity
-            android:name=".old.settings.profileSettings.DangerZoneSettings"
+            android:name="com.lnzpk.chat_app.settings.profileSettings.DangerZoneSettings"
             android:exported="false" />
+
         <activity
-            android:name=".old.settings.profileSettings.InformationSettings"
+            android:name="com.lnzpk.chat_app.settings.profileSettings.InformationSettings"
             android:exported="false" />
+
         <activity
-            android:name=".old.settings.profileSettings.NameSettings"
+            android:name="com.lnzpk.chat_app.settings.profileSettings.NameSettings"
             android:exported="false" />
+
         <activity
-            android:name=".old.settings.profileSettings.PreviewProfile"
+            android:name="com.lnzpk.chat_app.settings.profileSettings.PreviewProfile"
             android:exported="false" />
 
         <receiver
-            android:name=".old.service.ServiceStarterReceiver"
+            android:name="com.lnzpk.chat_app.service.ServiceStarterReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -100,12 +76,13 @@
         </receiver>
 
         <service
-            android:name=".old.service.StatusJob"
+            android:name="com.lnzpk.chat_app.service.StatusJob"
             android:enabled="true"
             android:label="Status"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
         <service
-            android:name=".old.service.NotificationJob"
+            android:name="com.lnzpk.chat_app.service.NotificationJob"
             android:enabled="true"
             android:label="Notifications"
             android:permission="android.permission.BIND_JOB_SERVICE" />
@@ -115,39 +92,47 @@
             android:value="langid" />
 
         <activity
-            android:name=".old.twoFA.TwoFaChange"
+            android:name="com.lnzpk.chat_app.twoFA.TwoFaChange"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
+
         <activity
-            android:name=".old.settings.AgbScreen"
+            android:name="com.lnzpk.chat_app.settings.AgbScreen"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
+
         <activity
-            android:name=".old.main.ConfirmDataProtection"
+            android:name="com.lnzpk.chat_app.main.ConfirmDataProtection"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
+
         <activity
-            android:name=".old.settings.NotificationSettings"
+            android:name="com.lnzpk.chat_app.settings.NotificationSettings"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
+
         <activity
-            android:name=".old.friends.SearchUser"
+            android:name="com.lnzpk.chat_app.friends.SearchUser"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
+
         <activity
-            android:name=".old.settings.BlockedUser"
+            android:name="com.lnzpk.chat_app.settings.BlockedUser"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
+
         <activity
-            android:name=".old.group.InviteFriends"
+            android:name="com.lnzpk.chat_app.group.InviteFriends"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
+
         <activity
-            android:name=".old.group.OpenGroupBanner"
+            android:name="com.lnzpk.chat_app.group.OpenGroupBanner"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
+
         <activity
-            android:name=".old.group.OpenGroupLogo"
+            android:name="com.lnzpk.chat_app.group.OpenGroupLogo"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
 
@@ -162,44 +147,50 @@
         </provider>
 
         <activity
-            android:name=".old.post.LikedPosts"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".old.profile.OpenProfilePicture"
+            android:name="com.lnzpk.chat_app.post.LikedPosts"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
 
-        <receiver android:name=".old.service.NotificationReply" />
-
         <activity
-            android:name=".old.service.AcceptNotifications"
+            android:name="com.lnzpk.chat_app.profile.OpenProfilePicture"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
 
-        <receiver android:name=".old.service.NotificationActions" />
+        <receiver android:name="com.lnzpk.chat_app.service.NotificationReply" />
 
         <activity
-            android:name=".old.settings.PostSettings"
+            android:name="com.lnzpk.chat_app.service.AcceptNotifications"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false" />
+
+        <receiver android:name="com.lnzpk.chat_app.service.NotificationActions" />
+
+        <activity
+            android:name="com.lnzpk.chat_app.settings.PostSettings"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
+
         <activity
-            android:name=".old.group.GroupMembers"
+            android:name="com.lnzpk.chat_app.group.GroupMembers"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
+
         <activity
-            android:name=".old.group.EditGroup"
+            android:name="com.lnzpk.chat_app.group.EditGroup"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
+
         <activity
-            android:name=".old.group.NewGroup"
+            android:name="com.lnzpk.chat_app.group.NewGroup"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
+
         <activity
-            android:name=".old.group.OpenGroupChat"
+            android:name="com.lnzpk.chat_app.group.OpenGroupChat"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.group.OpenGroupInfo"
+            android:name="com.lnzpk.chat_app.group.OpenGroupInfo"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false">
             <intent-filter>
@@ -207,110 +198,142 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".old.group.PublicGroups"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.AccentColorExpertSettings"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-
-        <service android:name=".old.service.StatusService" />
 
         <activity
-            android:name=".old.post.BlockedPosts"
+            android:name="com.lnzpk.chat_app.group.PublicGroups"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.post.PostComments"
+            android:name="com.lnzpk.chat_app.settings.AccentColorExpertSettings"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
+        <service android:name="com.lnzpk.chat_app.service.StatusService" />
+
         <activity
-            android:name=".old.post.EditPost"
+            android:name="com.lnzpk.chat_app.post.BlockedPosts"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.post.MyPosts"
+            android:name="com.lnzpk.chat_app.post.PostComments"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.settings.OtherSettings"
+            android:name="com.lnzpk.chat_app.post.EditPost"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
+
         <activity
-            android:name=".old.settings.BackgroundSettings"
+            android:name="com.lnzpk.chat_app.post.MyPosts"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.settings.DesignSettings"
+            android:name="com.lnzpk.chat_app.settings.OtherSettings"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.settings.AppVersionScreen"
+            android:name="com.lnzpk.chat_app.settings.BackgroundSettings"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
+
         <activity
-            android:name=".old.settings.HelpSettings"
+            android:name="com.lnzpk.chat_app.settings.DesignSettings"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.twoFA.TwoFaCheck"
+            android:name="com.lnzpk.chat_app.settings.AppVersionScreen"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.twoFA.TwoFaDeactivate"
+            android:name="com.lnzpk.chat_app.settings.HelpSettings"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.twoFA.TwoFaActivate"
+            android:name="com.lnzpk.chat_app.twoFA.TwoFaCheck"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.twoFA.TwoFA"
+            android:name="com.lnzpk.chat_app.twoFA.TwoFaDeactivate"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.settings.AppSecurityActivity"
+            android:name="com.lnzpk.chat_app.twoFA.TwoFaActivate"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.settings.SafetySettings"
+            android:name="com.lnzpk.chat_app.twoFA.TwoFA"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.settings.AppAuthentication"
+            android:name="com.lnzpk.chat_app.settings.AppSecurityActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.profile.OpenProfile"
+            android:name="com.lnzpk.chat_app.settings.SafetySettings"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+
+        <activity
+            android:name="com.lnzpk.chat_app.settings.AppAuthentication"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+
+        <activity
+            android:name="com.lnzpk.chat_app.profile.OpenProfile"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
+
         <activity
-            android:name=".old.settings.DataProtection"
+            android:name="com.lnzpk.chat_app.settings.DataProtection"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.post.NewPost"
+            android:name="com.lnzpk.chat_app.post.NewPost"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.post.OpenPost"
+            android:name="com.lnzpk.chat_app.post.OpenPost"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.profile.Profile"
+            android:name="com.lnzpk.chat_app.profile.Profile"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.profile.DelAccount"
+            android:name="com.lnzpk.chat_app.profile.DelAccount"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.settings.ChangePass"
+            android:name="com.lnzpk.chat_app.settings.ChangePass"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.friends.Friends"
+            android:name="com.lnzpk.chat_app.friends.Friends"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.settings.Feedback"
+            android:name="com.lnzpk.chat_app.settings.Feedback"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.chat.OpenChat"
+            android:name="com.lnzpk.chat_app.chat.OpenChat"
             android:configChanges="keyboardHidden|orientation|screenSize|colorMode" />
+
         <activity
-            android:name=".old.settings.SetPrivacySettings"
+            android:name="com.lnzpk.chat_app.settings.SetPrivacySettings"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.settings.Settings"
+            android:name="com.lnzpk.chat_app.settings.Settings"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.main.Home"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="fullSensor" />
+            android:name="com.lnzpk.chat_app.main.Home"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
-            android:name=".old.main.LoginAndRegister"
+            android:name="com.lnzpk.chat_app.main.LoginAndRegister"
             android:configChanges="keyboardHidden|orientation|screenSize" />
 
         <service
-            android:name=".old.service.Notification"
+            android:name="com.lnzpk.chat_app.service.Notification"
             android:launchMode="singleTop" />
 
         <meta-data

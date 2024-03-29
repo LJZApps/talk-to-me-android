@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:summary="Die App wird nach dem du ">
 
-    <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+    <com.lnzpk.chat_app.customThings.MySwitchPreference
         android:key="fingerprint_switch"
         app:title="@string/fingerprint_activate" />
     <ListPreference

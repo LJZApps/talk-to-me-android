@@ -5,7 +5,7 @@
     android:id="@+id/profilePicSettingsRootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".old.settings.profileSettings.ProfilePictureSettings">
+    tools:context=".settings.profileSettings.ProfilePictureSettings">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

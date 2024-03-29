@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+    <com.lnzpk.chat_app.customThings.MySwitchPreference
         android:key="getNotification"
         android:title="@string/notifySettings_receiveTitle"
         app:iconSpaceReserved="false" />
-    <com.lnzpk.chat_app.old.customThings.MyPreferenceCategory
+    <com.lnzpk.chat_app.customThings.MyPreferenceCategory
         app:iconSpaceReserved="false"
         app:title="@string/notifySettings_reciveFromTitle">
-        <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+        <com.lnzpk.chat_app.customThings.MySwitchPreference
             app:iconSpaceReserved="false"
             app:key="notiMessages"
             app:title="@string/notifySettings_messagesTitle" />
-        <com.lnzpk.chat_app.old.customThings.MySwitchPreference
+        <com.lnzpk.chat_app.customThings.MySwitchPreference
             app:iconSpaceReserved="false"
             app:key="notiRequests"
             app:title="@string/chatSettings_requestsTitle" />
-    </com.lnzpk.chat_app.old.customThings.MyPreferenceCategory>
+    </com.lnzpk.chat_app.customThings.MyPreferenceCategory>
 </PreferenceScreen>

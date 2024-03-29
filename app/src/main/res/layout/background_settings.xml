@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context=".old.settings.BackgroundSettings">
+    tools:context=".settings.BackgroundSettings">
 
     <ImageView
         android:id="@+id/currentBgImage"

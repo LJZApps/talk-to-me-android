@@ -5,7 +5,7 @@
     android:id="@+id/loginScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".old.main.LoginAndRegister">
+    tools:context=".main.LoginAndRegister">
 
     <TextView
         android:id="@+id/textView5"
