@@ -65,7 +65,7 @@ android {
 
 dependencies {
     val roomVersion = "2.6.1"
-    val compose_version = "1.6.0-rc01"
+    val compose_version = "1.6.4"
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -76,15 +76,15 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
 
-    implementation("androidx.databinding:viewbinding:8.2.1")
+    implementation("androidx.databinding:viewbinding:8.3.1")
 
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 
     implementation("com.github.alorma:compose-settings-ui-m3:1.0.1")
 
 
-    implementation("com.android.billingclient:billing-ktx:6.1.0")
-    implementation("com.google.firebase:firebase-config-ktx:21.6.0")
+    implementation("com.android.billingclient:billing-ktx:6.2.0")
+    implementation("com.google.firebase:firebase-config-ktx:21.6.3")
 
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
