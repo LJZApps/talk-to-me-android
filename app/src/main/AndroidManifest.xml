@@ -19,139 +19,30 @@
     <!-- FIXME DELETE android:usesCleartextTraffic="true" FOR RELEASE!!! VERY IMPORTANT!!! -->
     <application
         android:name=".TalkToMeApplication"
-        android:allowBackup="true"
         android:appCategory="social"
         android:directBootAware="true"
-        android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:localeConfig="@xml/locale_config"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="tiramisu"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".rewrite.main.ActivityMain"
-            android:exported="true" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".rewrite.app.module.versionchooser.AppChooser"
             android:exported="true">
 
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-
-        <activity
-            android:name=".old.main.StartIcon"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
-
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
-
-        <activity
-            android:name=".old.admin.AdminCenter"
-            android:exported="false" />
-
-        <activity
-            android:name=".old.settings.profileSettings.ProfilePictureSettings"
-            android:exported="false" />
-
-        <activity
-            android:name=".old.settings.profileSettings.DangerZoneSettings"
-            android:exported="false" />
-
-        <activity
-            android:name=".old.settings.profileSettings.InformationSettings"
-            android:exported="false" />
-
-        <activity
-            android:name=".old.settings.profileSettings.NameSettings"
-            android:exported="false" />
-
-        <activity
-            android:name=".old.settings.profileSettings.PreviewProfile"
-            android:exported="false" />
-
-        <receiver
-            android:name=".old.service.ServiceStarterReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <service
-            android:name=".old.service.StatusJob"
-            android:enabled="true"
-            android:label="Status"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-        <service
-            android:name=".old.service.NotificationJob"
-            android:enabled="true"
-            android:label="Notifications"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="langid" />
-
-        <activity
-            android:name=".old.twoFA.TwoFaChange"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".old.settings.AgbScreen"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".old.main.ConfirmDataProtection"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".old.settings.NotificationSettings"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".old.friends.SearchUser"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".old.settings.BlockedUser"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".old.group.InviteFriends"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".old.group.OpenGroupBanner"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".old.group.OpenGroupLogo"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -162,158 +53,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-
-        <activity
-            android:name=".old.post.LikedPosts"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".old.profile.OpenProfilePicture"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-
-        <receiver android:name=".old.service.NotificationReply" />
-
-        <activity
-            android:name=".old.service.AcceptNotifications"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false" />
-
-        <receiver android:name=".old.service.NotificationActions" />
-
-        <activity
-            android:name=".old.settings.PostSettings"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true" />
-        <activity
-            android:name=".old.group.GroupMembers"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true" />
-        <activity
-            android:name=".old.group.EditGroup"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true" />
-        <activity
-            android:name=".old.group.NewGroup"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true" />
-        <activity
-            android:name=".old.group.OpenGroupChat"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.group.OpenGroupInfo"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".old.group.PublicGroups"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.AccentColorExpertSettings"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-
-        <service android:name=".old.service.StatusService" />
-
-        <activity
-            android:name=".old.post.BlockedPosts"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.post.PostComments"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.post.EditPost"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.post.MyPosts"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.OtherSettings"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.BackgroundSettings"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.DesignSettings"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.AppVersionScreen"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.HelpSettings"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.twoFA.TwoFaCheck"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.twoFA.TwoFaDeactivate"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.twoFA.TwoFaActivate"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.twoFA.TwoFA"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.AppSecurityActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.SafetySettings"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.AppAuthentication"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.profile.OpenProfile"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true" />
-        <activity
-            android:name=".old.settings.DataProtection"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.post.NewPost"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.post.OpenPost"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.profile.Profile"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.profile.DelAccount"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.ChangePass"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.friends.Friends"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.Feedback"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.chat.OpenChat"
-            android:configChanges="keyboardHidden|orientation|screenSize|colorMode" />
-        <activity
-            android:name=".old.settings.SetPrivacySettings"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.settings.Settings"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".old.main.Home"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="fullSensor" />
-        <activity
-            android:name=".old.main.LoginAndRegister"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-
-        <service
-            android:name=".old.service.Notification"
-            android:launchMode="singleTop" />
 
         <meta-data
             android:name="preloaded_fonts"
