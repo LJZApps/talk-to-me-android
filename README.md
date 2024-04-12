@@ -1,4 +1,4 @@
-[![wakatime](https://wakatime.com/badge/github/LJZApps/talk-to-me.svg)](https://wakatime.com/badge/github/LJZApps/talk-to-me)
+[![wakatime](https://wakatime.com/badge/user/73446b93-260f-49f0-8fde-c38bca4d02c9/project/018b7bfe-9e26-4f61-8cd5-9d121067dec8.svg)](https://wakatime.com/badge/user/73446b93-260f-49f0-8fde-c38bca4d02c9/project/018b7bfe-9e26-4f61-8cd5-9d121067dec8)
 # What is Talk to me?
 Talk to me is a free and open source chat app. It is completely free for everyone.
 
