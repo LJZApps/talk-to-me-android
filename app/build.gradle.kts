@@ -62,6 +62,8 @@ android {
             isDebuggable = false
             isMinifyEnabled = false
             setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"))
+
+            buildConfigField("String", "BASE_URL", "\"${properties.getProperty("RELEASE_BASE_URL")}\"")
         }
     }
     kapt {
