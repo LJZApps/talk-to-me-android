@@ -10,7 +10,7 @@ import javax.inject.Inject
 class AppViewModel @Inject constructor(
 
 ) : ViewModel() {
-  private val _isLoggedIn = MutableStateFlow(true)
+  private val _isLoggedIn = MutableStateFlow(false)
   val isLoggedIn = _isLoggedIn.asStateFlow()
 
   // Function to check, if a user is logged in, is coming soon.

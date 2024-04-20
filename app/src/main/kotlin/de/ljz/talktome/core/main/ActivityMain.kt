@@ -61,7 +61,7 @@ class ActivityMain : AppCompatActivity() {
             modifier = Modifier
               .fillMaxSize()
               .padding(innerPadding),
-            startRoute = if (isLoggedIn.value) NavGraphs.getStarted else LoginAndRegisterScreenDestination
+            startRoute = if (isLoggedIn.value) NavGraphs.getStarted else NavGraphs.loginAndRegister
           )
         }
       }
