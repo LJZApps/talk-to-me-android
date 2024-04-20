@@ -18,7 +18,7 @@
 
     <!-- FIXME DELETE android:usesCleartextTraffic="true" FOR RELEASE!!! VERY IMPORTANT!!! -->
     <application
-        android:name=".TalkToMeApplication"
+        android:name=".core.application.App"
         android:appCategory="social"
         android:directBootAware="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,7 +30,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".rewrite.main.ActivityMain"
+            android:name=".core.main.ActivityMain"
             android:exported="true">
 
             <intent-filter>
