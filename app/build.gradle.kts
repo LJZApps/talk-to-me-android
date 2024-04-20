@@ -74,12 +74,12 @@ android {
 val okHttpVersion by extra("4.12.0")
 val roomVersion by extra("2.6.1")
 val composeVersion by extra("1.6.5")
-val composeDestinationsVersion by extra("1.10.1")
+val composeDestinationsVersion by extra("1.10.2")
 
 dependencies {
     // KotlinX Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
     // Compose destinations
     ksp("io.github.raamcosta.compose-destinations:ksp:$composeDestinationsVersion")
@@ -100,9 +100,9 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:$okHttpVersion")
 
     // Dagger & Hilt
-    kapt("com.google.dagger:hilt-android-compiler:2.51")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
-    implementation("com.google.dagger:hilt-android:2.51")
+    implementation("com.google.dagger:hilt-android:2.51.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     // Moshi
@@ -159,7 +159,7 @@ dependencies {
     implementation(project.dependencies.platform("com.google.firebase:firebase-bom:32.3.1"))
 
     // Other
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.21")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.23")
     implementation("com.android.billingclient:billing-ktx:6.2.0")
 }
 repositories {
