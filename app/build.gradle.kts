@@ -39,11 +39,11 @@ android {
     defaultConfig {
         namespace = "de.ljz.talktome"
         applicationId = "de.ljz.talktome"
-        minSdk = 31
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "0.1"
-        resourceConfigurations += listOf("de", "en")
+        resourceConfigurations += listOf("en", "de")
     }
 
     compileOptions {
@@ -79,7 +79,7 @@ val composeDestinationsVersion by extra("1.10.1")
 dependencies {
     // KotlinX Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
     // Compose destinations
     ksp("io.github.raamcosta.compose-destinations:ksp:$composeDestinationsVersion")
@@ -154,8 +154,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
     // Firebase
-    implementation("com.google.firebase:firebase-analytics:21.6.1")
-    implementation("com.google.firebase:firebase-crashlytics:18.6.3")
+    implementation("com.google.firebase:firebase-analytics:21.6.2")
+    implementation("com.google.firebase:firebase-crashlytics:18.6.4")
     implementation(project.dependencies.platform("com.google.firebase:firebase-bom:32.3.1"))
 
     // Other

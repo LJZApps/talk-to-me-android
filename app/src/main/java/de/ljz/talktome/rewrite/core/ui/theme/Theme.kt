@@ -19,42 +19,42 @@ import androidx.core.view.ViewCompat
 import com.google.android.material.color.MaterialColors
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFFFFF200),
+  primary = Color(0xFFFFF200),
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40
+  primary = Purple40
 
 )
 
 @Composable
 fun TalkToMeTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+  darkTheme: Boolean = isSystemInDarkTheme(),
+  // Dynamic color is available on Android 12+
+  dynamicColor: Boolean = true,
+  content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+  val colorScheme = when {
+    dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+      val context = LocalContext.current
+      if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
     }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            (view.context as Activity).window.statusBarColor = colorScheme.background.toArgb()
+    darkTheme -> DarkColorScheme
+    else -> LightColorScheme
+  }
+  val view = LocalView.current
+  if (!view.isInEditMode) {
+    SideEffect {
+      (view.context as Activity).window.statusBarColor = colorScheme.background.toArgb()
 //            (view.context as Activity).window.navigationBarColor = colorScheme.surfaceColorAtElevation(3.dp).toArgb()
-            (view.context as Activity).window.navigationBarColor = colorScheme.background.toArgb()
-            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = !darkTheme
-        }
+      (view.context as Activity).window.navigationBarColor = colorScheme.background.toArgb()
+      ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = !darkTheme
     }
+  }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+  MaterialTheme(
+    colorScheme = colorScheme,
+    typography = Typography,
+    content = content
+  )
 }

@@ -9,15 +9,15 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun TextDescription(
-    text: String,
-    modifier: Modifier = Modifier
+  text: String,
+  modifier: Modifier = Modifier
 ) {
-    Text(
-        text = text,
-        style = TextStyle(
-            fontSize = 16.sp
-        ),
-        textAlign = TextAlign.Left,
-        modifier = modifier
-    )
+  Text(
+    text = text,
+    style = TextStyle(
+      fontSize = 16.sp
+    ),
+    textAlign = TextAlign.Left,
+    modifier = modifier
+  )
 }

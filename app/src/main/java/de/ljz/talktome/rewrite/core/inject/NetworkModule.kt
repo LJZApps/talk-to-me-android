@@ -21,58 +21,58 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    @Singleton
-    @Provides
-    fun provideMoshi(): Moshi {
-        return Moshi.Builder()
-            .add(StringToDateAdapter())
-            .add(KotlinJsonAdapterFactory())
-            .build()
-    }
+  @Singleton
+  @Provides
+  fun provideMoshi(): Moshi {
+    return Moshi.Builder()
+      .add(StringToDateAdapter())
+      .add(KotlinJsonAdapterFactory())
+      .build()
+  }
 
-    @Singleton
-    @Provides
-    fun provideRetrofit(
-        okHttpClient: OkHttpClient,
-        moshi: Moshi
-    ): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
-            .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
-    }
+  @Singleton
+  @Provides
+  fun provideRetrofit(
+    okHttpClient: OkHttpClient,
+    moshi: Moshi
+  ): Retrofit {
+    return Retrofit.Builder()
+      .baseUrl(BuildConfig.BASE_URL)
+      .client(okHttpClient)
+      .addConverterFactory(MoshiConverterFactory.create(moshi))
+      .build()
+  }
 
-    @Singleton
-    @Provides
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder().apply {
-            callTimeout(Duration.ofMinutes(3))
-            connectTimeout(Duration.ofMinutes(3))
-            readTimeout(Duration.ofMinutes(3))
-            writeTimeout(Duration.ofMinutes(3))
+  @Singleton
+  @Provides
+  fun provideOkHttpClient(): OkHttpClient {
+    return OkHttpClient.Builder().apply {
+      callTimeout(Duration.ofMinutes(3))
+      connectTimeout(Duration.ofMinutes(3))
+      readTimeout(Duration.ofMinutes(3))
+      writeTimeout(Duration.ofMinutes(3))
 
-            if (BuildConfig.DEBUG) {
-                addNetworkInterceptor(
-                    HttpLoggingInterceptor().apply {
-                        this.level = HttpLoggingInterceptor.Level.BODY
-                    }
-                )
-            }
-        }.build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideApiClient(
-        moshi: Moshi,
-        retrofit: Retrofit,
-        networkErrorEmitter: NetworkErrorEmitter
-    ): ApiClient {
-        return ApiClient(
-            moshi = moshi,
-            retrofit = retrofit,
-            networkErrorEmitter = networkErrorEmitter
+      if (BuildConfig.DEBUG) {
+        addNetworkInterceptor(
+          HttpLoggingInterceptor().apply {
+            this.level = HttpLoggingInterceptor.Level.BODY
+          }
         )
-    }
+      }
+    }.build()
+  }
+
+  @Singleton
+  @Provides
+  fun provideApiClient(
+    moshi: Moshi,
+    retrofit: Retrofit,
+    networkErrorEmitter: NetworkErrorEmitter
+  ): ApiClient {
+    return ApiClient(
+      moshi = moshi,
+      retrofit = retrofit,
+      networkErrorEmitter = networkErrorEmitter
+    )
+  }
 }

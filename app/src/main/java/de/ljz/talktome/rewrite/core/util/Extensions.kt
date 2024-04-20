@@ -17,28 +17,28 @@ import androidx.compose.ui.input.pointer.pointerInput
 
 enum class ButtonState { Pressed, Idle }
 fun Modifier.bounceClick() = composed {
-    var buttonState by remember { mutableStateOf(ButtonState.Idle) }
-    val scale by animateFloatAsState(if (buttonState == ButtonState.Pressed) 0.70f else 1f)
+  var buttonState by remember { mutableStateOf(ButtonState.Idle) }
+  val scale by animateFloatAsState(if (buttonState == ButtonState.Pressed) 0.70f else 1f)
 
-    this
-        .graphicsLayer {
-            scaleX = scale
-            scaleY = scale
+  this
+    .graphicsLayer {
+      scaleX = scale
+      scaleY = scale
+    }
+    .clickable(
+      interactionSource = remember { MutableInteractionSource() },
+      indication = null,
+      onClick = {  }
+    )
+    .pointerInput(buttonState) {
+      awaitPointerEventScope {
+        buttonState = if (buttonState == ButtonState.Pressed) {
+          waitForUpOrCancellation()
+          ButtonState.Idle
+        } else {
+          awaitFirstDown(false)
+          ButtonState.Pressed
         }
-        .clickable(
-            interactionSource = remember { MutableInteractionSource() },
-            indication = null,
-            onClick = {  }
-        )
-        .pointerInput(buttonState) {
-            awaitPointerEventScope {
-                buttonState = if (buttonState == ButtonState.Pressed) {
-                    waitForUpOrCancellation()
-                    ButtonState.Idle
-                } else {
-                    awaitFirstDown(false)
-                    ButtonState.Pressed
-                }
-            }
-        }
+      }
+    }
 }

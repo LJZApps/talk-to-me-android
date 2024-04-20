@@ -35,126 +35,126 @@ import kotlinx.coroutines.launch
 @Destination
 @Composable
 fun GetStartedNews(
-    modifier: Modifier = Modifier,
-    vm: GetStartedViewModel,
-    navigator: DestinationsNavigator,
+  modifier: Modifier = Modifier,
+  vm: GetStartedViewModel,
+  navigator: DestinationsNavigator,
 ) {
-    ConstraintLayout(
-        modifier = modifier.fillMaxSize()
-    ) {
-        val featurePages = listOf(
-            "first",
-            "second",
-            "third"
-        )
-        val pagerState = rememberPagerState(initialPage = 0, pageCount = { featurePages.size })
-        val coroutineScope = rememberCoroutineScope()
-        val (
-            titleRef,
-            pagerRef,
-            dotsRef,
-            nextAndSkipButtonRef,
-            getStartedButtonRef
-        ) = createRefs()
+  ConstraintLayout(
+    modifier = modifier.fillMaxSize()
+  ) {
+    val featurePages = listOf(
+      "first",
+      "second",
+      "third"
+    )
+    val pagerState = rememberPagerState(initialPage = 0, pageCount = { featurePages.size })
+    val coroutineScope = rememberCoroutineScope()
+    val (
+      titleRef,
+      pagerRef,
+      dotsRef,
+      nextAndSkipButtonRef,
+      getStartedButtonRef
+    ) = createRefs()
 
-        Text(
-            text = "Features",
-            modifier = Modifier
-                .constrainAs(titleRef) {
-                    top.linkTo(parent.top)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
+    Text(
+      text = "Features",
+      modifier = Modifier
+        .constrainAs(titleRef) {
+          top.linkTo(parent.top)
+          start.linkTo(parent.start)
+          end.linkTo(parent.end)
 
-                    width = Dimension.fillToConstraints
-                }
-                .padding(8.dp),
-            fontSize = 25.sp,
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Bold
-        )
-
-        HorizontalPager(
-            state = pagerState,
-            modifier = Modifier.constrainAs(pagerRef) {
-                top.linkTo(titleRef.bottom)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-                if (pagerState.currentPage == featurePages.lastIndex) {
-                    bottom.linkTo(getStartedButtonRef.top)
-                } else {
-                    bottom.linkTo(nextAndSkipButtonRef.top)
-                }
-
-                width = Dimension.fillToConstraints
-                height = Dimension.fillToConstraints
-            }
-        ) { page ->
-            ElevatedCard(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .fillMaxSize()
-            ) {
-            }
+          width = Dimension.fillToConstraints
         }
+        .padding(8.dp),
+      fontSize = 25.sp,
+      textAlign = TextAlign.Center,
+      fontWeight = FontWeight.Bold
+    )
 
+    HorizontalPager(
+      state = pagerState,
+      modifier = Modifier.constrainAs(pagerRef) {
+        top.linkTo(titleRef.bottom)
+        start.linkTo(parent.start)
+        end.linkTo(parent.end)
         if (pagerState.currentPage == featurePages.lastIndex) {
-            Button(
-                onClick = {},
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .constrainAs(getStartedButtonRef) {
-                        top.linkTo(pagerRef.bottom)
-                        start.linkTo(parent.start, 8.dp)
-                        end.linkTo(parent.end, 8.dp)
-                        bottom.linkTo(parent.bottom, 8.dp)
-
-                        width = Dimension.fillToConstraints
-                    },
-            ) {
-                Text(text = "Setup your account")
-            }
+          bottom.linkTo(getStartedButtonRef.top)
         } else {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .constrainAs(nextAndSkipButtonRef) {
-                        top.linkTo(pagerRef.bottom)
-                        start.linkTo(parent.start, 8.dp)
-                        end.linkTo(parent.end, 8.dp)
-                        bottom.linkTo(parent.bottom, 8.dp)
-
-                        width = Dimension.fillToConstraints
-                    },
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                OutlinedButton(
-                    onClick = {
-                        coroutineScope.launch {
-                            pagerState.animateScrollToPage(featurePages.lastIndex)
-                        }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                        .padding(end = 4.dp),
-                ) {
-                    Text(text = "Skip")
-                }
-
-                Button(
-                    onClick = {
-                        coroutineScope.launch {
-                            pagerState.animateScrollToPage(pagerState.currentPage + 1)
-                        }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                        .padding(start = 4.dp),
-                ) {
-                    Text(text = "Next")
-                }
-            }
+          bottom.linkTo(nextAndSkipButtonRef.top)
         }
+
+        width = Dimension.fillToConstraints
+        height = Dimension.fillToConstraints
+      }
+    ) { page ->
+      ElevatedCard(
+        modifier = Modifier
+          .padding(8.dp)
+          .fillMaxSize()
+      ) {
+      }
     }
+
+    if (pagerState.currentPage == featurePages.lastIndex) {
+      Button(
+        onClick = {},
+        modifier = Modifier
+          .fillMaxWidth()
+          .constrainAs(getStartedButtonRef) {
+            top.linkTo(pagerRef.bottom)
+            start.linkTo(parent.start, 8.dp)
+            end.linkTo(parent.end, 8.dp)
+            bottom.linkTo(parent.bottom, 8.dp)
+
+            width = Dimension.fillToConstraints
+          },
+      ) {
+        Text(text = "Setup your account")
+      }
+    } else {
+      Row(
+        modifier = Modifier
+          .fillMaxWidth()
+          .constrainAs(nextAndSkipButtonRef) {
+            top.linkTo(pagerRef.bottom)
+            start.linkTo(parent.start, 8.dp)
+            end.linkTo(parent.end, 8.dp)
+            bottom.linkTo(parent.bottom, 8.dp)
+
+            width = Dimension.fillToConstraints
+          },
+        horizontalArrangement = Arrangement.SpaceBetween
+      ) {
+        OutlinedButton(
+          onClick = {
+            coroutineScope.launch {
+              pagerState.animateScrollToPage(featurePages.lastIndex)
+            }
+          },
+          modifier = Modifier
+            .fillMaxWidth()
+            .weight(1f)
+            .padding(end = 4.dp),
+        ) {
+          Text(text = "Skip")
+        }
+
+        Button(
+          onClick = {
+            coroutineScope.launch {
+              pagerState.animateScrollToPage(pagerState.currentPage + 1)
+            }
+          },
+          modifier = Modifier
+            .fillMaxWidth()
+            .weight(1f)
+            .padding(start = 4.dp),
+        ) {
+          Text(text = "Next")
+        }
+      }
+    }
+  }
 }

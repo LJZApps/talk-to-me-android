@@ -12,16 +12,16 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object EmitterModule {
 
-    @Singleton
-    @Provides
-    fun provideNetworkErrorEmitter(): NetworkErrorEmitter {
-        return NetworkErrorEmitter()
-    }
+  @Singleton
+  @Provides
+  fun provideNetworkErrorEmitter(): NetworkErrorEmitter {
+    return NetworkErrorEmitter()
+  }
 
-    @Singleton
-    @Provides
-    fun provideErrorEmitter(): ErrorEmitter {
-        return ErrorEmitter()
-    }
+  @Singleton
+  @Provides
+  fun provideErrorEmitter(): ErrorEmitter {
+    return ErrorEmitter()
+  }
 
 }

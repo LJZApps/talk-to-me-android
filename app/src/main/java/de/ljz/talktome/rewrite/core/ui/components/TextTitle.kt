@@ -10,16 +10,16 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun TextTitle(
-    text: String,
-    modifier: Modifier = Modifier
+  text: String,
+  modifier: Modifier = Modifier
 ) {
-    Text(
-        text = text,
-        style = TextStyle(
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp,
-            fontWeight = FontWeight.ExtraBold
-        ),
-        modifier = modifier
-    )
+  Text(
+    text = text,
+    style = TextStyle(
+      textAlign = TextAlign.Center,
+      fontSize = 25.sp,
+      fontWeight = FontWeight.ExtraBold
+    ),
+    modifier = modifier
+  )
 }

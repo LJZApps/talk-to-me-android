@@ -17,70 +17,70 @@ import javax.inject.Singleton
 
 @Singleton
 class ApiClient constructor(
-    private val moshi: Moshi,
-    private val retrofit: Retrofit,
-    private val networkErrorEmitter: NetworkErrorEmitter,
+  private val moshi: Moshi,
+  private val retrofit: Retrofit,
+  private val networkErrorEmitter: NetworkErrorEmitter,
 ) {
-    val loginService: LoginService = retrofit.create(LoginService::class.java)
+  val loginService: LoginService = retrofit.create(LoginService::class.java)
 
-    suspend fun <T> call(
-        block: suspend () -> T,
-        onSuccess: suspend (T) -> Unit,
-        onError: (suspend (Exception) -> Unit)? = null,
-        emitErrors: Boolean = true
-    ) {
-        try {
-            onSuccess(block.invoke())
-        } catch (e: Exception) {
-            Log.e(TAG, e.stackTraceToString())
+  suspend fun <T> call(
+    block: suspend () -> T,
+    onSuccess: suspend (T) -> Unit,
+    onError: (suspend (Exception) -> Unit)? = null,
+    emitErrors: Boolean = true
+  ) {
+    try {
+      onSuccess(block.invoke())
+    } catch (e: Exception) {
+      Log.e(TAG, e.stackTraceToString())
 
-            if (emitErrors) {
-                when (e) {
-                    is UnknownHostException -> networkErrorEmitter.emitNoInternet()
-                    is SocketTimeoutException -> networkErrorEmitter.emitNoInternet()
-                    is ConnectionShutdownException -> networkErrorEmitter.emitNoInternet()
-                    is JsonDataException -> networkErrorEmitter.emitInvalidResponse()
-                    is JsonEncodingException -> networkErrorEmitter.emitInvalidResponse()
-                    is RequestFailedException -> networkErrorEmitter.emitRequestFailed(e.errorMessage)
-                    is HttpException -> networkErrorEmitter.emitHttpError(
-                        errorMessage = NetworkUtils.parseSuccessResponse(
-                            moshi = moshi,
-                            response = e.response()?.errorBody()?.string() ?: ""
-                        )?.message
-                    )
-                }
-            }
-
-            onError?.invoke(e)
+      if (emitErrors) {
+        when (e) {
+          is UnknownHostException -> networkErrorEmitter.emitNoInternet()
+          is SocketTimeoutException -> networkErrorEmitter.emitNoInternet()
+          is ConnectionShutdownException -> networkErrorEmitter.emitNoInternet()
+          is JsonDataException -> networkErrorEmitter.emitInvalidResponse()
+          is JsonEncodingException -> networkErrorEmitter.emitInvalidResponse()
+          is RequestFailedException -> networkErrorEmitter.emitRequestFailed(e.errorMessage)
+          is HttpException -> networkErrorEmitter.emitHttpError(
+            errorMessage = NetworkUtils.parseSuccessResponse(
+              moshi = moshi,
+              response = e.response()?.errorBody()?.string() ?: ""
+            )?.message
+          )
         }
+      }
+
+      onError?.invoke(e)
     }
+  }
 
-    suspend fun <T> callWithReturn(
-        block: suspend () -> T,
-        onError: (suspend (Exception) -> Unit)? = null,
-        emitErrors: Boolean = true
-    ): T? {
-        try {
-            return block.invoke()
-        } catch (e: Exception) {
-            if (emitErrors) {
-                when (e) {
-                    is UnknownHostException -> networkErrorEmitter.emitNoInternet()
-                    is SocketTimeoutException -> networkErrorEmitter.emitNoInternet()
-                    is ConnectionShutdownException -> networkErrorEmitter.emitNoInternet()
-                    is JsonDataException -> networkErrorEmitter.emitInvalidResponse()
-                    is JsonEncodingException -> networkErrorEmitter.emitInvalidResponse()
-                    is HttpException -> networkErrorEmitter.emitHttpError(
-                        errorMessage = NetworkUtils.parseSuccessResponse(
-                            moshi = moshi,
-                            response = e.response()?.errorBody()?.string() ?: ""
-                        )?.message
-                    )
-                }
-            }
-            onError?.invoke(e)
-
-            return null
+  suspend fun <T> callWithReturn(
+    block: suspend () -> T,
+    onError: (suspend (Exception) -> Unit)? = null,
+    emitErrors: Boolean = true
+  ): T? {
+    try {
+      return block.invoke()
+    } catch (e: Exception) {
+      if (emitErrors) {
+        when (e) {
+          is UnknownHostException -> networkErrorEmitter.emitNoInternet()
+          is SocketTimeoutException -> networkErrorEmitter.emitNoInternet()
+          is ConnectionShutdownException -> networkErrorEmitter.emitNoInternet()
+          is JsonDataException -> networkErrorEmitter.emitInvalidResponse()
+          is JsonEncodingException -> networkErrorEmitter.emitInvalidResponse()
+          is HttpException -> networkErrorEmitter.emitHttpError(
+            errorMessage = NetworkUtils.parseSuccessResponse(
+              moshi = moshi,
+              response = e.response()?.errorBody()?.string() ?: ""
+            )?.message
+          )
         }
+      }
+      onError?.invoke(e)
+
+      return null
     }
+  }
 }

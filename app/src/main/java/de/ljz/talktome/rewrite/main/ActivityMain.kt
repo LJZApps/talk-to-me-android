@@ -26,46 +26,46 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ActivityMain : AppCompatActivity() {
 
-    @OptIn(ExperimentalMaterial3Api::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+  @OptIn(ExperimentalMaterial3Api::class)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
 
-        setContent {
-            val snackbarHostState = remember { SnackbarHostState() }
-            val navController = rememberNavController()
-            val vm: AppViewModel by viewModels()
+    setContent {
+      val snackbarHostState = remember { SnackbarHostState() }
+      val navController = rememberNavController()
+      val vm: AppViewModel by viewModels()
 
-            val isLoggedIn = vm.isLoggedIn.collectAsState()
+      val isLoggedIn = vm.isLoggedIn.collectAsState()
 
-            TalkToMeTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    snackbarHost = { SnackbarHost(snackbarHostState) },
-                ) { innerPadding ->
-                    DestinationsNavHost(
-                        navGraph = NavGraphs.root,
-                        navController = navController,
-                        dependenciesContainerBuilder = {
-                            dependency(NavGraphs.getStarted) {
-                                val parentEntry = remember(navBackStackEntry) {
-                                    navController.getBackStackEntry(NavGraphs.getStarted.route)
-                                }
-                                hiltViewModel<GetStartedViewModel>(parentEntry)
-                            }
-                            dependency(NavGraphs.login) {
-                                val parentEntry = remember(navBackStackEntry) {
-                                    navController.getBackStackEntry(NavGraphs.login.route)
-                                }
-                                hiltViewModel<LoginViewModel>(parentEntry)
-                            }
-                        },
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding),
-                        startRoute = if (isLoggedIn.value) NavGraphs.getStarted else NavGraphs.login
-                    )
+      TalkToMeTheme {
+        Scaffold(
+          modifier = Modifier.fillMaxSize(),
+          snackbarHost = { SnackbarHost(snackbarHostState) },
+        ) { innerPadding ->
+          DestinationsNavHost(
+            navGraph = NavGraphs.root,
+            navController = navController,
+            dependenciesContainerBuilder = {
+              dependency(NavGraphs.getStarted) {
+                val parentEntry = remember(navBackStackEntry) {
+                  navController.getBackStackEntry(NavGraphs.getStarted.route)
                 }
-            }
+                hiltViewModel<GetStartedViewModel>(parentEntry)
+              }
+              dependency(NavGraphs.login) {
+                val parentEntry = remember(navBackStackEntry) {
+                  navController.getBackStackEntry(NavGraphs.login.route)
+                }
+                hiltViewModel<LoginViewModel>(parentEntry)
+              }
+            },
+            modifier = Modifier
+              .fillMaxSize()
+              .padding(innerPadding),
+            startRoute = if (isLoggedIn.value) NavGraphs.getStarted else NavGraphs.login
+          )
         }
+      }
     }
+  }
 }

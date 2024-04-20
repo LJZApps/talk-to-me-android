@@ -6,5 +6,5 @@ import com.ramcosta.composedestinations.annotation.RootNavGraph
 @RootNavGraph(start = true)
 @NavGraph
 annotation class GetStartedNavGraph(
-    val start: Boolean = false
+  val start: Boolean = false
 )

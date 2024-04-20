@@ -16,26 +16,26 @@ import androidx.compose.ui.unit.sp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppSelect(
-    modifier: Modifier = Modifier,
-    title: String = "TITLE",
-    onClick: () -> Unit
+  modifier: Modifier = Modifier,
+  title: String = "TITLE",
+  onClick: () -> Unit
 ) {
-    ElevatedCard (
-        modifier = modifier,
-        onClick = onClick
+  ElevatedCard (
+    modifier = modifier,
+    onClick = onClick
+  ) {
+    Column (
+      modifier = Modifier.padding(20.dp)
     ) {
-        Column (
-            modifier = Modifier.padding(20.dp)
-        ) {
-            Text(
-                text = title,
-                fontSize = 20.sp,
-                style = TextStyle(
-                    fontWeight = FontWeight.Bold
-                ),
-            )
-        }
+      Text(
+        text = title,
+        fontSize = 20.sp,
+        style = TextStyle(
+          fontWeight = FontWeight.Bold
+        ),
+      )
     }
+  }
 }
 
 @Preview
@@ -43,8 +43,8 @@ fun AppSelect(
 fun AppSelectPreview(
 
 ) {
-    AppSelect(
-        title = "Hallo",
-        onClick = {}
-    )
+  AppSelect(
+    title = "Hallo",
+    onClick = {}
+  )
 }
