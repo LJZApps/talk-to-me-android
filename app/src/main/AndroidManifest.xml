@@ -18,16 +18,17 @@
 
     <!-- FIXME DELETE android:usesCleartextTraffic="true" FOR RELEASE!!! VERY IMPORTANT!!! -->
     <application
-        android:name=".core.application.App"
-        android:appCategory="social"
-        android:directBootAware="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:localeConfig="@xml/locale_config"
-        android:roundIcon="@mipmap/ic_launcher"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+            android:name=".core.application.App"
+            android:appCategory="social"
+            android:directBootAware="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:localeConfig="@xml/locale_config"
+            android:roundIcon="@mipmap/ic_launcher"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            android:usesCleartextTraffic="true"
+            tools:targetApi="tiramisu">
 
         <activity
             android:name=".core.main.ActivityMain"
