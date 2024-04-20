@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.akinci.androidtemplate.ui.navigation.animations.SlideHorizontallyAnimation
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import de.ljz.talktome.core.compose.UIModePreviews
@@ -33,7 +34,7 @@ import de.ljz.talktome.ui.features.loginAndRegister.LoginViewModel
 import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
 
 @LoginAndRegisterNavGraph(start = true)
-@Destination
+@Destination(style = SlideHorizontallyAnimation::class)
 @Composable
 fun LoginAndRegisterScreen(
   navigator: DestinationsNavigator,

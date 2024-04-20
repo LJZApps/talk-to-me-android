@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/openGroupInfoMenuButton"
-        android:title="@string/groupChat_openGroupInfo" />
-    <item
-        android:id="@+id/backgroundMenuButton"
-        android:title="@string/chatsSettings_backgroundTitle" />
-</menu>
