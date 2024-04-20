@@ -6,7 +6,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class MviViewModel<State: Any, Action: Any, Effect: Any>(
+abstract class MviViewModel<State: Any, Action: Any, Effect: Any>(
   initialState: State
 ) : ViewModel() {
 
@@ -25,7 +25,7 @@ class MviViewModel<State: Any, Action: Any, Effect: Any>(
     _state.update { block(it) }
   }
 
-  protected fun updateEffect(effect: Effect) {
+  protected fun sendEffect(effect: Effect) {
     viewModelScope.launch { _effect.send(effect) }
   }
 }

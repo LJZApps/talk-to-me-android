@@ -1,4 +1,4 @@
-package de.ljz.talktome.ui.features.login.pages
+package de.ljz.talktome.ui.features.loginAndRegister.pages
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
@@ -9,7 +9,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -17,16 +19,50 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import de.ljz.talktome.ui.features.login.LoginViewModel
-import de.ljz.talktome.ui.navigation.LoginNavGraph
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import de.ljz.talktome.core.compose.UIModePreviews
+import de.ljz.talktome.core.mvi.EffectCollector
+import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
+import de.ljz.talktome.ui.features.destinations.RegisterScreenDestination
+import de.ljz.talktome.ui.features.loginAndRegister.LoginViewContract.Action
+import de.ljz.talktome.ui.features.loginAndRegister.LoginViewContract.Effect
+import de.ljz.talktome.ui.features.loginAndRegister.LoginViewContract.State
+import de.ljz.talktome.ui.features.loginAndRegister.LoginViewModel
+import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
 
-@LoginNavGraph(start = true)
+@LoginAndRegisterNavGraph(start = true)
 @Destination
 @Composable
-fun LoginMain(
+fun LoginAndRegisterScreen(
+  navigator: DestinationsNavigator,
   modifier: Modifier = Modifier,
   vm: LoginViewModel
+) {
+  val context = LocalContext.current
+
+  val uiState: State by vm.state.collectAsStateWithLifecycle()
+
+  EffectCollector(effect = vm.effect) { effect ->
+    when (effect) {
+      Effect.NavigateRegisterScreen -> navigator.navigate(RegisterScreenDestination)
+      Effect.NavigateBack -> navigator.navigateUp()
+    }
+  }
+
+  LoginAndRegisterScreenContent(
+    uiState = uiState,
+    onAction = vm::onAction,
+    modifier = modifier
+  )
+}
+
+@Composable
+private fun LoginAndRegisterScreenContent(
+  uiState: State,
+  onAction: (Action) -> Unit,
+  modifier: Modifier = Modifier,
 ) {
   ConstraintLayout(
     modifier = modifier
@@ -43,10 +79,11 @@ fun LoginMain(
     Icon(
       imageVector = Icons.Outlined.AccountCircle,
       contentDescription = null,
-      modifier = Modifier.constrainAs(iconRef) {
-        top.linkTo(parent.top, 12.dp)
-        start.linkTo(parent.start, 12.dp)
-      }
+      modifier = Modifier
+        .constrainAs(iconRef) {
+          top.linkTo(parent.top, 12.dp)
+          start.linkTo(parent.start, 12.dp)
+        }
         .size(40.dp)
     )
 
@@ -79,7 +116,9 @@ fun LoginMain(
     )
 
     Button(
-      onClick = { /*TODO*/ },
+      onClick = {
+        onAction(Action.OnOpenRegisterButtonClick)
+      },
       modifier = Modifier.constrainAs(registerButtonRef) {
         bottom.linkTo(loginButtonRef.top, 8.dp)
         start.linkTo(parent.start, 12.dp)
@@ -93,8 +132,7 @@ fun LoginMain(
 
     OutlinedButton(
       onClick = {
-        //navigator.navigate() to login screen
-        vm.login()
+        onAction(Action.OnLoginButtonClick)
       },
       modifier = Modifier.constrainAs(loginButtonRef) {
         bottom.linkTo(parent.bottom, 12.dp)
@@ -106,5 +144,16 @@ fun LoginMain(
     ) {
       Text(text = "Login")
     }
+  }
+}
+
+@UIModePreviews
+@Composable
+private fun LoginScreenPreview() {
+  TalkToMeTheme {
+    LoginAndRegisterScreenContent(
+      uiState = State(),
+      onAction = {}
+    )
   }
 }

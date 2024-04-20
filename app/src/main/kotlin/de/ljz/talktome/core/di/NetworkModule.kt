@@ -1,13 +1,13 @@
 package de.ljz.talktome.core.di
 
-import de.ljz.talktome.BuildConfig
-import de.ljz.talktome.data.api.core.ApiClient
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import de.ljz.talktome.BuildConfig
+import de.ljz.talktome.data.api.core.ApiClient
 import de.ljz.talktome.data.api.core.adapters.StringToDateAdapter
 import de.ljz.talktome.data.emitter.NetworkErrorEmitter
 import okhttp3.OkHttpClient

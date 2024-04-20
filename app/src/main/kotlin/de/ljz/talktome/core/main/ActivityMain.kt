@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -15,18 +14,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
-import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
-import de.ljz.talktome.ui.features.login.LoginViewModel
-import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.navigation.dependency
 import dagger.hilt.android.AndroidEntryPoint
+import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
 import de.ljz.talktome.ui.features.NavGraphs
+import de.ljz.talktome.ui.features.destinations.LoginAndRegisterScreenDestination
+import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
+import de.ljz.talktome.ui.features.loginAndRegister.LoginViewModel
 
 @AndroidEntryPoint
 class ActivityMain : AppCompatActivity() {
 
-  @OptIn(ExperimentalMaterial3Api::class)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
@@ -52,9 +51,9 @@ class ActivityMain : AppCompatActivity() {
                 }
                 hiltViewModel<GetStartedViewModel>(parentEntry)
               }
-              dependency(NavGraphs.login) {
+              dependency(NavGraphs.loginAndRegister) {
                 val parentEntry = remember(navBackStackEntry) {
-                  navController.getBackStackEntry(NavGraphs.login.route)
+                  navController.getBackStackEntry(NavGraphs.loginAndRegister.route)
                 }
                 hiltViewModel<LoginViewModel>(parentEntry)
               }
@@ -62,7 +61,7 @@ class ActivityMain : AppCompatActivity() {
             modifier = Modifier
               .fillMaxSize()
               .padding(innerPadding),
-            startRoute = if (isLoggedIn.value) NavGraphs.getStarted else NavGraphs.login
+            startRoute = if (isLoggedIn.value) NavGraphs.getStarted else LoginAndRegisterScreenDestination
           )
         }
       }

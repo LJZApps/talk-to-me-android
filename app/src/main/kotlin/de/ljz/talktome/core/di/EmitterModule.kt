@@ -1,10 +1,10 @@
 package de.ljz.talktome.core.di
 
-import de.ljz.talktome.data.emitter.ErrorEmitter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import de.ljz.talktome.data.emitter.ErrorEmitter
 import de.ljz.talktome.data.emitter.NetworkErrorEmitter
 import javax.inject.Singleton
 

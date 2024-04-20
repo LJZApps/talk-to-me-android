@@ -1,11 +1,7 @@
 package de.ljz.talktome.ui.features.getstarted.pages
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Button
@@ -21,10 +17,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
-import de.ljz.talktome.ui.navigation.GetStartedNavGraph
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
+import de.ljz.talktome.ui.navigation.GetStartedNavGraph
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)

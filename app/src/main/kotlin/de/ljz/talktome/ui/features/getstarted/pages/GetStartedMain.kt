@@ -21,13 +21,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import de.ljz.talktome.R
+import de.ljz.talktome.ui.features.NavGraphs
 import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
 import de.ljz.talktome.ui.navigation.GetStartedNavGraph
 import de.ljz.talktome.util.bounceClick
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import de.ljz.talktome.ui.features.destinations.LoginMainDestination
 
 @GetStartedNavGraph(start = true)
 @Destination
@@ -76,7 +76,7 @@ fun GetStartedMain(
 
       Button(
         onClick = {
-          navigator.navigate(LoginMainDestination)
+          navigator.navigate(NavGraphs.loginAndRegister)
         },
         modifier = Modifier
           .padding(top = 24.dp)

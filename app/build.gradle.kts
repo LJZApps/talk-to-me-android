@@ -152,6 +152,8 @@ dependencies {
     // Lifecycle
     implementation("android.arch.lifecycle:extensions:1.1.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
 
     // Firebase
     implementation("com.google.firebase:firebase-analytics:21.6.2")

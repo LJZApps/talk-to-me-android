@@ -1,14 +1,9 @@
 package de.ljz.talktome.data.api.core.adapters
 
-import com.squareup.moshi.FromJson
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.JsonReader
-import com.squareup.moshi.JsonWriter
-import com.squareup.moshi.ToJson
+import com.squareup.moshi.*
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
 private const val FORMAT = "yyyy-MM-dd'T'HH:mm:ssXXX"
 
