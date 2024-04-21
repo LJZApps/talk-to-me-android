@@ -19,8 +19,11 @@ class NetworkErrorEmitter {
         _channel.emit(NetworkError.InvalidResponse)
     }
 
-    suspend fun emitRequestFailed(errorMessage: String?) {
-        _channel.emit(NetworkError.RequestFailed(errorMessage))
+    suspend fun emitRequestFailed(errorCode: String?, errorMessage: String?) {
+        _channel.emit(NetworkError.RequestFailed(
+          errorCode = errorCode,
+          errorMessage = errorMessage
+        ))
     }
 
     suspend fun emitHttpError(errorMessage: String?) {

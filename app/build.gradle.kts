@@ -75,6 +75,7 @@ val okHttpVersion by extra("4.12.0")
 val roomVersion by extra("2.6.1")
 val composeVersion by extra("1.6.5")
 val composeDestinationsVersion by extra("1.10.2")
+val ktorVersion by extra("2.2.1")
 
 dependencies {
     // KotlinX Serialization
@@ -112,6 +113,12 @@ dependencies {
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+
+    // Ktor Client
+    implementation("io.ktor:ktor-client-core:$ktorVersion")
+    implementation("io.ktor:ktor-client-cio:$ktorVersion")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
     // Room
     ksp("androidx.room:room-compiler:2.6.1")

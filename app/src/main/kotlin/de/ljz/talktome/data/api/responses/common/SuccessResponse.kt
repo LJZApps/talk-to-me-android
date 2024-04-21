@@ -8,6 +8,9 @@ data class SuccessResponse(
     @Json(name = "success")
     val success: Boolean?,
 
-    @Json(name = "message")
+    @Json(name = "error_code")
+    val errorCode: String?,
+
+    @Json(name = "error_message")
     val message: String?
 )

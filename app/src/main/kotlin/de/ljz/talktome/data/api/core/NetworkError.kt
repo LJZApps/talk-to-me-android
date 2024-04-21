@@ -13,7 +13,7 @@ sealed class NetworkError {
     override fun hashCode() = Random.nextInt()
   }
 
-  data class RequestFailed(val errorMessage: String?) : NetworkError() {
+  data class RequestFailed(val errorCode: String?, val errorMessage: String?) : NetworkError() {
     override fun equals(other: Any?) = false
     override fun hashCode() = Random.nextInt()
   }

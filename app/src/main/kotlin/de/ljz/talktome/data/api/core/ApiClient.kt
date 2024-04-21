@@ -16,7 +16,7 @@ import java.net.UnknownHostException
 import javax.inject.Singleton
 
 @Singleton
-class ApiClient constructor(
+class ApiClient(
   private val moshi: Moshi,
   private val retrofit: Retrofit,
   private val networkErrorEmitter: NetworkErrorEmitter,
@@ -41,7 +41,7 @@ class ApiClient constructor(
           is ConnectionShutdownException -> networkErrorEmitter.emitNoInternet()
           is JsonDataException -> networkErrorEmitter.emitInvalidResponse()
           is JsonEncodingException -> networkErrorEmitter.emitInvalidResponse()
-          is RequestFailedException -> networkErrorEmitter.emitRequestFailed(e.errorMessage)
+          is RequestFailedException -> networkErrorEmitter.emitRequestFailed(e.errorCode, e.errorMessage)
           is HttpException -> networkErrorEmitter.emitHttpError(
             errorMessage = NetworkUtils.parseSuccessResponse(
               moshi = moshi,
@@ -70,6 +70,7 @@ class ApiClient constructor(
           is ConnectionShutdownException -> networkErrorEmitter.emitNoInternet()
           is JsonDataException -> networkErrorEmitter.emitInvalidResponse()
           is JsonEncodingException -> networkErrorEmitter.emitInvalidResponse()
+          is RequestFailedException -> networkErrorEmitter.emitRequestFailed(e.errorCode, e.errorMessage)
           is HttpException -> networkErrorEmitter.emitHttpError(
             errorMessage = NetworkUtils.parseSuccessResponse(
               moshi = moshi,
