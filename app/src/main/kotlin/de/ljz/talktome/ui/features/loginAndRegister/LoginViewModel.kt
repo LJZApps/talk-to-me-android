@@ -39,7 +39,22 @@ class LoginViewModel @Inject constructor(
         updateState { copy(count=2) }
         sendEffect(Effect.NavigateRegisterScreen)
       }
+      Action.OnOpenLoginButtonClick -> {
+        sendEffect(Effect.NavigateLoginScreen)
+      }
     }
+  }
+
+  fun updatePassword(password: String) {
+    updateState { copy(password = password) }
+  }
+
+  fun updateUsername(username: String) {
+    updateState { copy(username = username) }
+  }
+
+  fun togglePasswordVisibility() {
+    updateState { copy(passwordVisible = !passwordVisible) }
   }
 
   fun login() {
@@ -51,6 +66,7 @@ class LoginViewModel @Inject constructor(
           Log.d(TAG, it.toString())
         },
         onError = {
+          updateState { copy(loginErrorMessage = it.localizedMessage) }
           Log.e(TAG, it.message.toString())
         }
       )
@@ -60,6 +76,7 @@ class LoginViewModel @Inject constructor(
   fun register() {
     viewModelScope.launch {
       loginRepository.register(
+        displayName = state.value.username,
         username = "LnZpk",
         onSuccess = { response ->
           Log.d(TAG, response.toString())

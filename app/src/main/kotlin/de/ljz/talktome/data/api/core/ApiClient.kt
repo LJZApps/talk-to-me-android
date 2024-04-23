@@ -6,6 +6,7 @@ import com.squareup.moshi.JsonEncodingException
 import com.squareup.moshi.Moshi
 import de.ljz.talktome.core.application.TAG
 import de.ljz.talktome.data.api.core.exceptions.RequestFailedException
+import de.ljz.talktome.data.api.responses.login.LoginResponse
 import de.ljz.talktome.data.api.services.LoginService
 import de.ljz.talktome.data.emitter.NetworkErrorEmitter
 import okhttp3.internal.http2.ConnectionShutdownException

@@ -18,6 +18,6 @@ interface LoginService {
     suspend fun register(
         @Query("display_name") displayName: String,
         @Query("username") username: String,
-        @Query("birthday") birthday: Date
+        @Query("biography") biography: String? = null,
     ): RegisterResponse
 }

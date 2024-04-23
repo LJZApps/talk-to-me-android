@@ -4,16 +4,20 @@ object LoginViewContract {
   data class State(
     val username: String = "",
     val password: String = "",
+    val passwordVisible: Boolean = false,
+    val loginErrorMessage: String? = null,
     val count: Int = 0
   )
 
   sealed interface Action {
-    data object OnLoginButtonClick : Action
     data object OnOpenRegisterButtonClick : Action
+    data object OnOpenLoginButtonClick : Action
+    data object OnLoginButtonClick : Action
   }
 
   sealed interface Effect {
     data object NavigateBack: Effect
     data object NavigateRegisterScreen : Effect
+    data object NavigateLoginScreen : Effect
   }
 }
