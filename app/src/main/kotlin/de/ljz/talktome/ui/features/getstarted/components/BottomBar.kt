@@ -13,7 +13,6 @@ import de.ljz.talktome.ui.features.NavGraphs
 import de.ljz.talktome.ui.features.appCurrentDestinationAsState
 import de.ljz.talktome.ui.features.destinations.Destination
 import de.ljz.talktome.ui.features.destinations.GetStartedMainDestination
-import de.ljz.talktome.ui.features.destinations.GetStartedNewsDestination
 import de.ljz.talktome.ui.features.startAppDestination
 
 @Composable
@@ -35,7 +34,7 @@ fun BottomBar(
     NavigationBarItem(
       selected = true,
       onClick = {
-        navController.navigate(GetStartedNewsDestination)
+
       },
       icon = { Icon(Icons.Default.Home, null) },
       label = { Text("hallo") },

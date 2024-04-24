@@ -6,7 +6,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Login
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
@@ -72,6 +71,9 @@ fun LoginScreen(
       },
       onTogglePasswordVisibility = {
         vm.togglePasswordVisibility()
+      },
+      onDissmissDialog = {
+        vm.dismissDialog()
       }
     )
   }
@@ -84,6 +86,7 @@ private fun LoginScreenContent(
   onUpdatePassword: (String) -> Unit,
   onUpdateUsername: (String) -> Unit,
   onTogglePasswordVisibility: () -> Unit,
+  onDissmissDialog: () -> Unit,
   modifier: Modifier = Modifier
 ) {
   Surface {
@@ -191,21 +194,16 @@ private fun LoginScreenContent(
           end.linkTo(parent.end, 12.dp)
 
           width = Dimension.fillToConstraints
-        }
+        },
+        enabled = !uiState.isLoading
       ) {
         Text(text = "Login")
       }
 
-      uiState.loginErrorMessage?.let {
+      if (uiState.isLoginErrorShown) {
         AlertDialog(
           onDismissRequest = {
-
-          },
-          icon = {
-            Icon(
-              Icons.Filled.Info,
-              contentDescription = "Info icon"
-            )
+            onDissmissDialog()
           },
           title = {
             Text(text = "Login failed")
@@ -218,14 +216,11 @@ private fun LoginScreenContent(
           confirmButton = {
             TextButton(
               onClick = {
-
+                onDissmissDialog()
               }
             ) {
               Text(text = "Got it")
             }
-          },
-          dismissButton = {
-            // Nothing
           },
         )
       }
@@ -246,6 +241,65 @@ private fun LoginScreenPreview() {
       onUpdatePassword = {},
       onUpdateUsername = {},
       onTogglePasswordVisibility = {},
+      onDissmissDialog = {}
+    )
+  }
+}
+
+@UIModePreviews
+@Composable
+private fun LoginScreenPreviewWithModal() {
+  TalkToMeTheme {
+    LoginScreenContent(
+      uiState = State(
+        username = "lnzpk.dev@gmail.com",
+        password = "PASSWORD",
+        isLoginErrorShown = true,
+        loginErrorMessage = "Your e-mail or password is incorrect."
+      ),
+      onAction = {},
+      onUpdatePassword = {},
+      onUpdateUsername = {},
+      onTogglePasswordVisibility = {},
+      onDissmissDialog = {}
+    )
+  }
+}
+
+@UIModePreviews
+@Composable
+private fun LoginScreenPreviewWithLoading() {
+  TalkToMeTheme {
+    LoginScreenContent(
+      uiState = State(
+        username = "lnzpk.dev@gmail.com",
+        password = "PASSWORD",
+        isLoading = true
+      ),
+      onAction = {},
+      onUpdatePassword = {},
+      onUpdateUsername = {},
+      onTogglePasswordVisibility = {},
+      onDissmissDialog = {}
+    )
+  }
+}
+
+@UIModePreviews
+@Composable
+private fun LoginScreenPreviewWithErrors() {
+  TalkToMeTheme {
+    LoginScreenContent(
+      uiState = State(
+        username = "lnzpk.dev@gmail.com",
+        password = "PASSWORD",
+        loginErrorMessage = "Arschloch"
+      ),
+      onAction = {},
+      onUpdatePassword = {},
+      onUpdateUsername = {},
+      onTogglePasswordVisibility = {},
+      onDissmissDialog = {}
     )
   }
 }

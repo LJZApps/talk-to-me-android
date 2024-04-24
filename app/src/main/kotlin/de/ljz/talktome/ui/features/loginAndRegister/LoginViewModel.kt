@@ -22,14 +22,17 @@ class LoginViewModel @Inject constructor(
   override fun onAction(action: Action) {
     when (action) {
       Action.OnLoginButtonClick -> {
+        updateState { copy(isLoading = true) }
         viewModelScope.launch {
           loginRepository.login(
             username = state.value.username,
             password = state.value.password,
             onSuccess = {
+              updateState { copy(isLoading = false) }
               Log.d(TAG, it.toString())
             },
             onError = {
+              updateState { copy(isLoading = false, loginErrorMessage = it.message.toString(), isLoginErrorShown = true) }
               Log.e(TAG, "${it.message}")
             }
           )
@@ -45,6 +48,10 @@ class LoginViewModel @Inject constructor(
     }
   }
 
+  fun dismissDialog() {
+    updateState { copy(isLoginErrorShown = false, loginErrorMessage = "") }
+  }
+
   fun updatePassword(password: String) {
     updateState { copy(password = password) }
   }
@@ -55,36 +62,5 @@ class LoginViewModel @Inject constructor(
 
   fun togglePasswordVisibility() {
     updateState { copy(passwordVisible = !passwordVisible) }
-  }
-
-  fun login() {
-    viewModelScope.launch {
-      loginRepository.login(
-        username = "leonzapke@gmail.com",
-        password = "Leon.230",
-        onSuccess = {
-          Log.d(TAG, it.toString())
-        },
-        onError = {
-          updateState { copy(loginErrorMessage = it.localizedMessage) }
-          Log.e(TAG, it.message.toString())
-        }
-      )
-    }
-  }
-
-  fun register() {
-    viewModelScope.launch {
-      loginRepository.register(
-        displayName = state.value.username,
-        username = "LnZpk",
-        onSuccess = { response ->
-          Log.d(TAG, response.toString())
-        },
-        onError = { exception ->
-          Log.d(TAG, exception.message.toString())
-        }
-      )
-    }
   }
 }

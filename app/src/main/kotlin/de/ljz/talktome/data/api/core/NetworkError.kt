@@ -18,6 +18,8 @@ sealed class NetworkError {
     override fun hashCode() = Random.nextInt()
   }
 
+
+
   data class HttpError(val errorMessage: String?) : NetworkError() {
     override fun equals(other: Any?) = false
     override fun hashCode() = Random.nextInt()

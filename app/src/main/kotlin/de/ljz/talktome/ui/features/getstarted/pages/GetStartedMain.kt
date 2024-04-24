@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.akinci.androidtemplate.ui.navigation.animations.FadeInOutAnimation
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import de.ljz.talktome.R
@@ -30,7 +31,7 @@ import de.ljz.talktome.ui.navigation.GetStartedNavGraph
 import de.ljz.talktome.util.bounceClick
 
 @GetStartedNavGraph(start = true)
-@Destination
+@Destination(style = FadeInOutAnimation::class)
 @Composable
 fun GetStartedMain(
   modifier: Modifier = Modifier,

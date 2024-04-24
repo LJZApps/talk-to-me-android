@@ -2,6 +2,7 @@ package de.ljz.talktome.ui.features.getstarted.components
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -11,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import de.ljz.talktome.core.compose.UIModePreviews
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
 
 @Composable
@@ -60,14 +62,16 @@ fun FeaturePage(
 }
 
 @Composable
-@Preview(showBackground = true)
+@UIModePreviews
 fun FeaturePagePreview() {
   TalkToMeTheme {
-    FeaturePage(
-      title = "FEATURE_NAME",
-      description = "LONG_FEATURE_DESCRIPTION",
-      onPageClick = {},
-      modifier = Modifier.fillMaxSize()
-    )
+    Surface {
+      FeaturePage(
+        title = "FEATURE_NAME",
+        description = "LONG_FEATURE_DESCRIPTION",
+        onPageClick = {},
+        modifier = Modifier.fillMaxSize()
+      )
+    }
   }
 }

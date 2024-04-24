@@ -5,7 +5,9 @@ object LoginViewContract {
     val username: String = "",
     val password: String = "",
     val passwordVisible: Boolean = false,
-    val loginErrorMessage: String? = null,
+    val isLoginErrorShown: Boolean = false,
+    val loginErrorMessage: String = "",
+    val isLoading: Boolean = false,
     val count: Int = 0
   )
 
