@@ -32,7 +32,7 @@ import de.ljz.talktome.ui.features.loginAndRegister.LoginViewModel
 import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
 
 @LoginAndRegisterNavGraph(start = true)
-@Destination(style = SlideHorizontallyAnimation::class)
+@Destination<LoginAndRegisterNavGraph>(start = true, style = SlideHorizontallyAnimation::class)
 @Composable
 fun LoginAndRegisterScreen(
   navigator: DestinationsNavigator,

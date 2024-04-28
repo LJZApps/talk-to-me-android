@@ -30,8 +30,7 @@ import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
 import de.ljz.talktome.ui.navigation.GetStartedNavGraph
 import de.ljz.talktome.util.bounceClick
 
-@GetStartedNavGraph(start = true)
-@Destination(style = FadeInOutAnimation::class)
+@Destination<GetStartedNavGraph>(start = true, style = FadeInOutAnimation::class)
 @Composable
 fun GetStartedMain(
   modifier: Modifier = Modifier,

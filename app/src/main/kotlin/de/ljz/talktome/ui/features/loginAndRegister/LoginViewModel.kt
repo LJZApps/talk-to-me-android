@@ -32,7 +32,13 @@ class LoginViewModel @Inject constructor(
               Log.d(TAG, it.toString())
             },
             onError = {
-              updateState { copy(isLoading = false, loginErrorMessage = it.message.toString(), isLoginErrorShown = true) }
+              updateState {
+                copy(
+                  isLoading = false,
+                  loginErrorMessage = it.message.toString(),
+                  isLoginErrorShown = true
+                )
+              }
               Log.e(TAG, "${it.message}")
             }
           )

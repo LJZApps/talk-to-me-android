@@ -1,10 +1,9 @@
 package de.ljz.talktome.ui.navigation
 
 import com.ramcosta.composedestinations.annotation.NavGraph
-import com.ramcosta.composedestinations.annotation.RootNavGraph
+import com.ramcosta.composedestinations.annotation.RootGraph
 
-@RootNavGraph(start = true)
-@NavGraph
+@NavGraph<RootGraph>(start = true)
 annotation class GetStartedNavGraph(
   val start: Boolean = false
 )

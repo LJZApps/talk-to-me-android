@@ -74,7 +74,7 @@ android {
 val okHttpVersion by extra("4.12.0")
 val roomVersion by extra("2.6.1")
 val composeVersion by extra("1.6.5")
-val composeDestinationsVersion by extra("1.10.2")
+val composeDestinationsVersion by extra("2.1.0-beta02")
 val ktorVersion by extra("2.2.1")
 
 dependencies {
@@ -85,6 +85,7 @@ dependencies {
     // Compose destinations
     ksp("io.github.raamcosta.compose-destinations:ksp:$composeDestinationsVersion")
     implementation("io.github.raamcosta.compose-destinations:core:$composeDestinationsVersion")
+    implementation("io.github.raamcosta.compose-destinations:bottom-sheet:$composeDestinationsVersion")
 
     // Arrow
     implementation(platform("io.arrow-kt:arrow-stack:1.1.2"))
