@@ -15,12 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.ramcosta.composedestinations.DestinationsNavHost
-import com.ramcosta.composedestinations.generated.NavGraphs
 import com.ramcosta.composedestinations.navigation.dependency
 import dagger.hilt.android.AndroidEntryPoint
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
 import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
 import de.ljz.talktome.ui.features.loginAndRegister.LoginViewModel
+import de.ljz.talktome.ui.navigation.NavGraphs
 
 @AndroidEntryPoint
 class ActivityMain : AppCompatActivity() {
@@ -54,7 +54,7 @@ class ActivityMain : AppCompatActivity() {
                 val parentEntry = remember(navBackStackEntry) {
                   navController.getBackStackEntry(NavGraphs.loginAndRegister.route)
                 }
-                hiltViewModel<LoginViewModel>(parentEntry)
+                dependency(hiltViewModel<LoginViewModel>(parentEntry))
               }
             },
             modifier = Modifier
