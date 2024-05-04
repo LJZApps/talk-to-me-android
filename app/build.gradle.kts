@@ -29,11 +29,11 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3"
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
 
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "19"
     }
 
     defaultConfig {
@@ -47,8 +47,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
 
     buildTypes {
@@ -133,7 +133,7 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     // Jetpack Compose
-    implementation(project.dependencies.platform("androidx.compose:compose-bom:2024.04.01")) // FIXME - DO NOT UPDATE TO 2024.02 (No MaterialYou colors) - REMEMBER 2024.02.00
+    implementation(project.dependencies.platform("androidx.compose:compose-bom:2024.05.00")) // FIXME - DO NOT UPDATE TO 2024.02 (No MaterialYou colors) - REMEMBER 2024.02.00
     implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
@@ -148,12 +148,12 @@ dependencies {
     implementation("com.google.accompanist:accompanist-swiperefresh:0.35.0-alpha")
 
     // Material
-    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.compose.material3:material3:1.2.1") // FIXME Remember Version 1.1.2
     implementation("androidx.compose.material3:material3-window-size-class:1.2.1") // FIXME Remember Version 1.1.2
 
     // androidx
-    implementation("androidx.core:core-ktx:1.13.0")
+    implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.activity:activity-ktx:1.9.0")
 
@@ -164,9 +164,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
 
     // Firebase
-    implementation("com.google.firebase:firebase-analytics:21.6.2")
-    implementation("com.google.firebase:firebase-crashlytics:18.6.4")
-    implementation(project.dependencies.platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-analytics:22.0.0")
+    implementation("com.google.firebase:firebase-crashlytics:19.0.0")
+    implementation(project.dependencies.platform("com.google.firebase:firebase-bom:33.0.0"))
 
     // Other
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.23")
