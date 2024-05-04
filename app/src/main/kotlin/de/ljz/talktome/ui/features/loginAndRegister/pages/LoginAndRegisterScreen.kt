@@ -48,6 +48,7 @@ fun LoginAndRegisterScreen(
       Effect.NavigateRegisterScreen -> navigator.navigate(RegisterScreenDestination)
       Effect.NavigateLoginScreen -> navigator.navigate(LoginScreenDestination)
       Effect.NavigateBack -> navigator.navigateUp()
+      Effect.NavigateSetupScreen -> {}
     }
   }
 

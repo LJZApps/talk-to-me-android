@@ -8,6 +8,7 @@ object LoginViewContract {
     val isLoginErrorShown: Boolean = false,
     val loginErrorMessage: String = "",
     val isLoading: Boolean = false,
+    val loadingText: String = "",
     val count: Int = 0
   )
 
@@ -21,5 +22,6 @@ object LoginViewContract {
     data object NavigateBack: Effect
     data object NavigateRegisterScreen : Effect
     data object NavigateLoginScreen : Effect
+    data object NavigateSetupScreen : Effect
   }
 }

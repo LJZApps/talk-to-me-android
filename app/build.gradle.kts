@@ -52,7 +52,10 @@ android {
     }
 
     buildTypes {
-        named("debug") {
+        getByName("release") {
+          signingConfig = signingConfigs.getByName("debug")
+        }
+      named("debug") {
             isDebuggable = true
 
             buildConfigField("String", "BASE_URL", "\"${properties.getProperty("DEBUG_BASE_URL")}\"")
@@ -130,14 +133,14 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     // Jetpack Compose
-    implementation(project.dependencies.platform("androidx.compose:compose-bom:2024.01.00")) // FIXME - DO NOT UPDATE TO 2024.02 (No MaterialYou colors)
+    implementation(project.dependencies.platform("androidx.compose:compose-bom:2024.04.01")) // FIXME - DO NOT UPDATE TO 2024.02 (No MaterialYou colors) - REMEMBER 2024.02.00
     implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
-    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation("androidx.activity:activity-compose:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
     // Google extensions
@@ -146,15 +149,13 @@ dependencies {
 
     // Material
     implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.compose.material3:material3:1.1.2") // FIXME Remember Version 1.1.2
-    implementation("androidx.compose.material3:material3-window-size-class:1.1.2") // FIXME Remember Version 1.1.2
+    implementation("androidx.compose.material3:material3:1.2.1") // FIXME Remember Version 1.1.2
+    implementation("androidx.compose.material3:material3-window-size-class:1.2.1") // FIXME Remember Version 1.1.2
 
     // androidx
-    implementation("androidx.biometric:biometric:1.1.0")
-    implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.core:core-ktx:1.13.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.activity:activity-ktx:1.8.2")
+    implementation("androidx.activity:activity-ktx:1.9.0")
 
     // Lifecycle
     implementation("android.arch.lifecycle:extensions:1.1.1")
@@ -169,7 +170,7 @@ dependencies {
 
     // Other
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.23")
-    implementation("com.android.billingclient:billing-ktx:6.2.0")
+    implementation("com.android.billingclient:billing-ktx:6.2.1")
 }
 repositories {
     mavenCentral()
