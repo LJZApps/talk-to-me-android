@@ -1,10 +1,14 @@
-package de.ljz.talktome.ui.features.loginAndRegister.pages
+package de.ljz.talktome.ui.features.loginandregister.pages
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountCircle
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -23,13 +27,13 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import de.ljz.talktome.core.compose.UIModePreviews
 import de.ljz.talktome.core.mvi.EffectCollector
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
-import de.ljz.talktome.ui.features.destinations.LoginScreenDestination
-import de.ljz.talktome.ui.features.destinations.RegisterScreenDestination
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewContract.Action
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewContract.Effect
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewContract.State
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewModel
+import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.Action
+import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.Effect
+import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.State
+import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
 import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
+import de.ljz.talktome.ui.navigation.destinations.LoginScreenDestination
+import de.ljz.talktome.ui.navigation.destinations.RegisterScreenDestination
 
 @LoginAndRegisterNavGraph(start = true)
 @Destination(style = SlideHorizontallyAnimation::class)

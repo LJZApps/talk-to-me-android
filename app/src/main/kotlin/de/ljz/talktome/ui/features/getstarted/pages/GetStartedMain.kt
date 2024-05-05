@@ -28,9 +28,9 @@ import com.akinci.androidtemplate.ui.navigation.animations.FadeInOutAnimation
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import de.ljz.talktome.R
-import de.ljz.talktome.ui.features.NavGraphs
 import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
 import de.ljz.talktome.ui.navigation.GetStartedNavGraph
+import de.ljz.talktome.ui.navigation.NavGraphs
 import de.ljz.talktome.util.bounceClick
 
 @GetStartedNavGraph(start = true)

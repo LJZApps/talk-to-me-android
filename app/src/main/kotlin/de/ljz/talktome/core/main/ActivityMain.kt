@@ -9,23 +9,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.glance.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.FirebaseAnalytics.ConsentType
-import com.google.firebase.analytics.setConsent
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.navigation.dependency
 import dagger.hilt.android.AndroidEntryPoint
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
-import de.ljz.talktome.ui.features.NavGraphs
 import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewModel
+import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
+import de.ljz.talktome.ui.navigation.NavGraphs
 
 @AndroidEntryPoint
 class ActivityMain : AppCompatActivity() {
@@ -38,7 +33,7 @@ class ActivityMain : AppCompatActivity() {
       val navController = rememberNavController()
       val vm: AppViewModel by viewModels()
 
-      val isLoggedIn = vm.isLoggedIn.collectAsState()
+      val uiState = vm.state.collectAsStateWithLifecycle()
 
       TalkToMeTheme {
         Scaffold(

@@ -1,4 +1,4 @@
-package de.ljz.talktome.ui.features.loginAndRegister.pages
+package de.ljz.talktome.ui.features.loginandregister.pages
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
@@ -11,12 +11,20 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Login
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material3.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -28,7 +36,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import androidx.core.view.HapticFeedbackConstantsCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.akinci.androidtemplate.ui.navigation.animations.SlideHorizontallyAnimation
 import com.ramcosta.composedestinations.annotation.Destination
@@ -36,13 +43,13 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import de.ljz.talktome.core.compose.UIModePreviews
 import de.ljz.talktome.core.mvi.EffectCollector
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
-import de.ljz.talktome.ui.features.destinations.LoginScreenDestination
-import de.ljz.talktome.ui.features.destinations.RegisterScreenDestination
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewContract.Action
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewContract.Effect
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewContract.State
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewModel
+import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.Action
+import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.Effect
+import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.State
+import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
 import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
+import de.ljz.talktome.ui.navigation.destinations.LoginScreenDestination
+import de.ljz.talktome.ui.navigation.destinations.RegisterScreenDestination
 
 @LoginAndRegisterNavGraph
 @Destination(style = SlideHorizontallyAnimation::class)
@@ -79,7 +86,7 @@ fun LoginScreen(
       onTogglePasswordVisibility = {
         vm.togglePasswordVisibility()
       },
-      onDissmissDialog = {
+      onDismissDialog = {
         vm.dismissDialog()
       }
     )
@@ -93,7 +100,7 @@ private fun LoginScreenContent(
   onUpdatePassword: (String) -> Unit,
   onUpdateUsername: (String) -> Unit,
   onTogglePasswordVisibility: () -> Unit,
-  onDissmissDialog: () -> Unit,
+  onDismissDialog: () -> Unit,
   modifier: Modifier = Modifier
 ) {
   Surface {
@@ -228,7 +235,7 @@ private fun LoginScreenContent(
       if (uiState.isLoginErrorShown) {
         AlertDialog(
           onDismissRequest = {
-            onDissmissDialog()
+            onDismissDialog()
           },
           title = {
             Text(text = "Login failed")
@@ -241,7 +248,7 @@ private fun LoginScreenContent(
           confirmButton = {
             TextButton(
               onClick = {
-                onDissmissDialog()
+                onDismissDialog()
               }
             ) {
               Text(text = "Got it")
@@ -266,7 +273,7 @@ private fun LoginScreenPreview() {
       onUpdatePassword = {},
       onUpdateUsername = {},
       onTogglePasswordVisibility = {},
-      onDissmissDialog = {}
+      onDismissDialog = {}
     )
   }
 }
@@ -286,7 +293,7 @@ private fun LoginScreenPreviewWithModal() {
       onUpdatePassword = {},
       onUpdateUsername = {},
       onTogglePasswordVisibility = {},
-      onDissmissDialog = {}
+      onDismissDialog = {}
     )
   }
 }
@@ -305,7 +312,7 @@ private fun LoginScreenPreviewWithLoading() {
       onUpdatePassword = {},
       onUpdateUsername = {},
       onTogglePasswordVisibility = {},
-      onDissmissDialog = {}
+      onDismissDialog = {}
     )
   }
 }
@@ -324,7 +331,7 @@ private fun LoginScreenPreviewWithErrors() {
       onUpdatePassword = {},
       onUpdateUsername = {},
       onTogglePasswordVisibility = {},
-      onDissmissDialog = {}
+      onDismissDialog = {}
     )
   }
 }

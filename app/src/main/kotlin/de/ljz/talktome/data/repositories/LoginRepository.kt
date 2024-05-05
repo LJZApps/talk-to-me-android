@@ -1,10 +1,12 @@
 package de.ljz.talktome.data.repositories
 
+import android.util.Log
+import de.ljz.talktome.core.application.TAG
 import de.ljz.talktome.data.api.core.ApiClient
+import de.ljz.talktome.data.api.core.exceptions.RequestFailedException
 import de.ljz.talktome.data.api.responses.login.LoginResponse
 import de.ljz.talktome.data.api.responses.register.RegisterResponse
 import de.ljz.talktome.data.sharedpreferences.SessionManager
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,10 +20,11 @@ class LoginRepository @Inject constructor(
     username: String,
     password: String,
     onSuccess: (suspend (LoginResponse) -> Unit)? = null,
-    onError: (suspend (Exception) -> Unit)? = null
+    onError: (suspend (RequestFailedException) -> Unit)? = null
   ) {
     apiClient.call(
       block = {
+        Log.d(TAG, "login: $username $password")
           apiClient.loginService.login(username, password)
       },
       onSuccess = { response ->

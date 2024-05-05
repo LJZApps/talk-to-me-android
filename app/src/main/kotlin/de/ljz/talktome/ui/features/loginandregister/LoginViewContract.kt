@@ -1,4 +1,4 @@
-package de.ljz.talktome.ui.features.loginAndRegister
+package de.ljz.talktome.ui.features.loginandregister
 
 object LoginViewContract {
   data class State(

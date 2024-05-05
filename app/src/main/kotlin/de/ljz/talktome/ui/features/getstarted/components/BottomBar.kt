@@ -9,11 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import com.ramcosta.composedestinations.navigation.navigate
-import de.ljz.talktome.ui.features.NavGraphs
-import de.ljz.talktome.ui.features.appCurrentDestinationAsState
-import de.ljz.talktome.ui.features.destinations.Destination
-import de.ljz.talktome.ui.features.destinations.GetStartedMainDestination
-import de.ljz.talktome.ui.features.startAppDestination
+import de.ljz.talktome.ui.navigation.NavGraphs
+import de.ljz.talktome.ui.navigation.appCurrentDestinationAsState
+import de.ljz.talktome.ui.navigation.destinations.Destination
+import de.ljz.talktome.ui.navigation.destinations.GetStartedMainDestination
+import de.ljz.talktome.ui.navigation.startAppDestination
 
 @Composable
 fun BottomBar(

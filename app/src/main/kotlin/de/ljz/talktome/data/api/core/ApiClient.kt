@@ -6,7 +6,6 @@ import com.squareup.moshi.JsonEncodingException
 import com.squareup.moshi.Moshi
 import de.ljz.talktome.core.application.TAG
 import de.ljz.talktome.data.api.core.exceptions.RequestFailedException
-import de.ljz.talktome.data.api.responses.login.LoginResponse
 import de.ljz.talktome.data.api.services.LoginService
 import de.ljz.talktome.data.emitter.NetworkErrorEmitter
 import okhttp3.internal.http2.ConnectionShutdownException
@@ -27,7 +26,7 @@ class ApiClient(
   suspend fun <T> call(
     block: suspend () -> T,
     onSuccess: suspend (T) -> Unit,
-    onError: (suspend (Exception) -> Unit)? = null,
+    onError: (suspend (RequestFailedException) -> Unit)? = null,
     emitErrors: Boolean = true
   ) {
     try {
@@ -35,24 +34,16 @@ class ApiClient(
     } catch (e: Exception) {
       Log.e(TAG, e.stackTraceToString())
 
-      if (emitErrors) {
-        when (e) {
-          is UnknownHostException -> networkErrorEmitter.emitNoInternet()
-          is SocketTimeoutException -> networkErrorEmitter.emitNoInternet()
-          is ConnectionShutdownException -> networkErrorEmitter.emitNoInternet()
-          is JsonDataException -> networkErrorEmitter.emitInvalidResponse()
-          is JsonEncodingException -> networkErrorEmitter.emitInvalidResponse()
-          is RequestFailedException -> networkErrorEmitter.emitRequestFailed(e.errorCode, e.errorMessage)
-          is HttpException -> networkErrorEmitter.emitHttpError(
-            errorMessage = NetworkUtils.parseSuccessResponse(
-              moshi = moshi,
-              response = e.response()?.errorBody()?.string() ?: ""
-            )?.message
-          )
-        }
+      if (e is RequestFailedException) {
+        networkErrorEmitter.emitRequestFailed(e.errorCode, e.errorMessage)
+      } else {
+        networkErrorEmitter.emitRequestFailed(
+          errorCode = "unknown_error",
+          errorMessage = "An unknown error has been thrown"
+        )
       }
 
-      onError?.invoke(e)
+      onError?.invoke(RequestFailedException("sdf", ""))
     }
   }
 

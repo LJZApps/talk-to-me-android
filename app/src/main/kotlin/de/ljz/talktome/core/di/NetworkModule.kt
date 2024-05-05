@@ -11,11 +11,9 @@ import dagger.hilt.components.SingletonComponent
 import de.ljz.talktome.BuildConfig
 import de.ljz.talktome.data.api.core.ApiClient
 import de.ljz.talktome.data.api.core.adapters.StringToDateAdapter
-import de.ljz.talktome.data.api.core.interceptors.AuthorizationInterceptor
-import de.ljz.talktome.data.api.core.interceptors.GeneralHeaderInterceptor
+import de.ljz.talktome.data.api.core.interceptors.FailedRequestInterceptor
 import de.ljz.talktome.data.emitter.NetworkErrorEmitter
 import de.ljz.talktome.data.sharedpreferences.SessionManager
-import de.ljz.talktome.data.api.core.interceptors.FailedRequestInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -68,8 +66,7 @@ object NetworkModule {
       readTimeout(Duration.ofMinutes(3))
       writeTimeout(Duration.ofMinutes(3))
 
-      addInterceptor(GeneralHeaderInterceptor(context))
-      addInterceptor(AuthorizationInterceptor(sessionManager))
+//      addInterceptor(AuthorizationInterceptor(sessionManager))
       addInterceptor(FailedRequestInterceptor(moshi))
 
       if (BuildConfig.DEBUG) {

@@ -36,6 +36,10 @@ android {
         jvmTarget = "19"
     }
 
+    ksp {
+        arg("compose-destinations.codeGenPackageName", "de.ljz.talktome.ui.navigation")
+    }
+
     defaultConfig {
         namespace = "de.ljz.talktome"
         applicationId = "de.ljz.talktome"

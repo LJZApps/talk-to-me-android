@@ -1,4 +1,4 @@
-package de.ljz.talktome.ui.features.loginAndRegister.pages
+package de.ljz.talktome.ui.features.loginandregister.pages
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -8,8 +8,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.akinci.androidtemplate.ui.navigation.animations.SlideHorizontallyAnimation
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewContract
-import de.ljz.talktome.ui.features.loginAndRegister.LoginViewModel
+import de.ljz.talktome.ui.features.loginandregister.LoginViewContract
+import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
 import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
 
 @LoginAndRegisterNavGraph
