@@ -21,7 +21,7 @@ class FailedRequestInterceptor(private val moshi: Moshi) : Interceptor {
         if (request.method.uppercase() != "GET" && response.isSuccessful && !request.url.toString().endsWith("/oauth/token")) {
             NetworkUtils.parseSuccessResponse(moshi, responseBody)?.let { successResponse ->
                 if (successResponse.success != true) {
-                    throw RequestFailedException(errorCode = successResponse.errorCode, errorMessage = successResponse.message)
+                    throw RequestFailedException(errorCode = successResponse.errorCode, errorMessage = successResponse.errorMessage)
                 }
             } ?: response
         }

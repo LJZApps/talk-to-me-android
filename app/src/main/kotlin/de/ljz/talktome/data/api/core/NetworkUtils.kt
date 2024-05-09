@@ -2,19 +2,22 @@ package de.ljz.talktome.data.api.core
 
 import android.util.Log
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapter
 import de.ljz.talktome.BuildConfig
 import de.ljz.talktome.core.application.TAG
+import de.ljz.talktome.data.api.responses.common.ErrorResponse
 import de.ljz.talktome.data.api.responses.common.SuccessResponse
 import de.ljz.talktome.data.api.responses.login.LoginResponse
-import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.engine.cio.*
-import io.ktor.client.plugins.contentnegotiation.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.http.*
-import io.ktor.serialization.kotlinx.json.*
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.parameter
+import io.ktor.client.request.request
+import io.ktor.client.request.url
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.HttpMethod
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 object NetworkUtils {
@@ -22,6 +25,14 @@ object NetworkUtils {
   fun parseSuccessResponse(moshi: Moshi, response: String): SuccessResponse? {
     return try {
       moshi.adapter(SuccessResponse::class.java)?.fromJson(response)
+    } catch (e: Exception) {
+      null
+    }
+  }
+
+  fun parseErrorResponse(moshi: Moshi, response: String): ErrorResponse? {
+    return try {
+      moshi.adapter(ErrorResponse::class.java)?.fromJson(response)
     } catch (e: Exception) {
       null
     }

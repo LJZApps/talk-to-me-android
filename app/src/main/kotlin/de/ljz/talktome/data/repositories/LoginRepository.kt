@@ -3,7 +3,7 @@ package de.ljz.talktome.data.repositories
 import android.util.Log
 import de.ljz.talktome.core.application.TAG
 import de.ljz.talktome.data.api.core.ApiClient
-import de.ljz.talktome.data.api.core.exceptions.RequestFailedException
+import de.ljz.talktome.data.api.responses.common.ErrorResponse
 import de.ljz.talktome.data.api.responses.login.LoginResponse
 import de.ljz.talktome.data.api.responses.register.RegisterResponse
 import de.ljz.talktome.data.sharedpreferences.SessionManager
@@ -14,18 +14,18 @@ import javax.inject.Singleton
 class LoginRepository @Inject constructor(
   private val apiClient: ApiClient,
   private val sessionManager: SessionManager
-): BaseRepository() {
+) : BaseRepository() {
 
   suspend fun login(
     username: String,
     password: String,
     onSuccess: (suspend (LoginResponse) -> Unit)? = null,
-    onError: (suspend (RequestFailedException) -> Unit)? = null
+    onError: (suspend (ErrorResponse) -> Unit)? = null
   ) {
     apiClient.call(
       block = {
         Log.d(TAG, "login: $username $password")
-          apiClient.loginService.login(username, password)
+        apiClient.loginService.login(username, password)
       },
       onSuccess = { response ->
         sessionManager.setAccessToken(response.accessToken.token)
@@ -45,7 +45,7 @@ class LoginRepository @Inject constructor(
     username: String,
     biography: String? = null,
     onSuccess: (suspend (RegisterResponse) -> Unit)? = null,
-    onError: (suspend (Exception) -> Unit)? = null
+    onError: (suspend (ErrorResponse) -> Unit)? = null
   ) {
     apiClient.call(
       block = {
@@ -58,8 +58,8 @@ class LoginRepository @Inject constructor(
       onSuccess = { response ->
         onSuccess?.invoke(response)
       },
-      onError = { exception ->
-        onError?.invoke(exception)
+      onError = {
+        onError?.invoke(it)
       }
     )
   }

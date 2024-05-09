@@ -28,8 +28,8 @@ class NetworkErrorEmitter {
     )
   }
 
-  suspend fun emitHttpError(errorMessage: String?) {
-    _channel.emit(NetworkError.HttpError(errorMessage))
+  suspend fun emitHttpError(errorCode: String?, errorMessage: String?) {
+    _channel.emit(NetworkError.HttpError(errorCode, errorMessage))
   }
 
 }

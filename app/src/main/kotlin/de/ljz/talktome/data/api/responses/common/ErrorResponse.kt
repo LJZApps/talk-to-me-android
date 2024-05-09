@@ -4,13 +4,10 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class SuccessResponse(
-    @Json(name = "success")
-    val success: Boolean? = false,
-
+data class ErrorResponse(
     @Json(name = "error_code")
-    val errorCode: String?,
+    val errorCode: String? = "unknown_error",
 
     @Json(name = "error_message")
-    val errorMessage: String?
+    val errorMessage: String? = "An unknown error occurred"
 )
