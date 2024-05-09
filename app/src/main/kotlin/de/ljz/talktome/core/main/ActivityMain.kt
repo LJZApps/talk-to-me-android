@@ -9,14 +9,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import com.ramcosta.composedestinations.DestinationsNavHost
+import de.ljz.talktome.core.main.MainViewContract.State
 import com.ramcosta.composedestinations.navigation.dependency
 import dagger.hilt.android.AndroidEntryPoint
+import de.ljz.talktome.core.mvi.EffectCollector
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
 import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
 import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
@@ -33,7 +37,9 @@ class ActivityMain : AppCompatActivity() {
       val navController = rememberNavController()
       val vm: AppViewModel by viewModels()
 
-      val uiState = vm.state.collectAsStateWithLifecycle()
+      val uiState: androidx.compose.runtime.State<State> = vm.state.collectAsStateWithLifecycle()
+      val isSetupDone by uiState.value.isSetupDone.collectAsState(initial = false)
+      val isLoggedIn = uiState.value.isLoggedIn
 
       TalkToMeTheme {
         Scaffold(
@@ -60,7 +66,7 @@ class ActivityMain : AppCompatActivity() {
             modifier = Modifier
               .fillMaxSize()
               .padding(innerPadding),
-            startRoute = NavGraphs.getStarted
+            startRoute = if (isLoggedIn) if (isSetupDone) NavGraphs.getStarted else NavGraphs.loginAndRegister else NavGraphs.loginAndRegister
           )
         }
       }
