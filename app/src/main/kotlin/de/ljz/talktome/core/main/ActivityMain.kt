@@ -28,12 +28,20 @@ import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
 import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
 import de.ljz.talktome.ui.features.setup.SetupViewModel
 import de.ljz.talktome.ui.navigation.NavGraphs
+import io.sentry.Sentry
 
 @AndroidEntryPoint
 class ActivityMain : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+
+    try {
+      throw Exception("This app uses Sentry! :)")
+    } catch (e: Exception) {
+      Sentry.captureException(e)
+    }
+
 
     setContent {
       val snackbarHostState = remember { SnackbarHostState() }

@@ -13,6 +13,8 @@ plugins {
   id("com.google.dagger.hilt.android")
   id("kotlinx-serialization")
   kotlin("plugin.serialization")
+
+  id("io.sentry.android.gradle") version "4.5.1"
 }
 
 android {
@@ -86,6 +88,15 @@ android {
   kapt {
     correctErrorTypes = true
   }
+  sentry {
+    org.set("ljz-apps")
+    projectName.set("android")
+
+    // this will upload your source code to Sentry to show it as part of the stack traces
+    // disable if you don't want to expose your sources
+    includeSourceContext.set(true)
+  }
+
 }
 
 val okHttpVersion by extra("4.12.0")

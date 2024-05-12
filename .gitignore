@@ -16,3 +16,6 @@
 .cxx
 /app/release/*
 .fleet
+
+# Sentry Config File
+sentry.properties
