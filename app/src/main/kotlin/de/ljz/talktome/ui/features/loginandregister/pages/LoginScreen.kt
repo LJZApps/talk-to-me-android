@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.akinci.androidtemplate.ui.navigation.animations.SlideHorizontallyAnimation
 import com.ramcosta.composedestinations.annotation.Destination
@@ -43,6 +44,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import de.ljz.talktome.core.compose.UIModePreviews
 import de.ljz.talktome.core.mvi.EffectCollector
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
+import de.ljz.talktome.ui.features.loginandregister.LoginViewContract
 import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.Action
 import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.Effect
 import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.State
@@ -50,6 +52,7 @@ import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
 import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
 import de.ljz.talktome.ui.navigation.destinations.LoginScreenDestination
 import de.ljz.talktome.ui.navigation.destinations.RegisterScreenDestination
+import de.ljz.talktome.ui.navigation.destinations.SetupAppThemeDestination
 
 @LoginAndRegisterNavGraph
 @Destination(style = SlideHorizontallyAnimation::class)
@@ -68,7 +71,9 @@ fun LoginScreen(
       Effect.NavigateRegisterScreen -> navigator.navigate(RegisterScreenDestination)
       Effect.NavigateLoginScreen -> navigator.navigate(LoginScreenDestination)
       Effect.NavigateBack -> navigator.navigateUp()
-      Effect.NavigateSetupScreen -> {}
+      Effect.NavigateSetupScreen -> {
+        navigator.navigate(SetupAppThemeDestination)
+      }
     }
   }
 
@@ -150,12 +155,12 @@ private fun LoginScreenContent(
 
             width = Dimension.fillToConstraints
           },
-        value = uiState.username,
+        value = uiState.loginState.username,
         onValueChange = {
           onUpdateUsername(it)
         },
         shape = RoundedCornerShape(16.dp),
-        label = { Text(text = "Username") },
+        label = { Text(text = "Email or username") },
         keyboardOptions = KeyboardOptions(
           keyboardType = KeyboardType.Email,
           imeAction = ImeAction.Next
@@ -173,7 +178,7 @@ private fun LoginScreenContent(
 
             width = Dimension.fillToConstraints
           },
-        value = uiState.password,
+        value = uiState.loginState.password,
         onValueChange = onUpdatePassword,
         shape = RoundedCornerShape(16.dp),
         label = { Text(text = "Password") },
@@ -182,14 +187,14 @@ private fun LoginScreenContent(
           imeAction = ImeAction.Done
         ),
         singleLine = true,
-        visualTransformation = if (uiState.passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+        visualTransformation = if (uiState.loginState.passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
         leadingIcon = {
-          val image = if (uiState.passwordVisible)
+          val image = if (uiState.loginState.passwordVisible)
             Icons.Filled.Visibility
           else Icons.Filled.VisibilityOff
 
           val description =
-            if (uiState.passwordVisible) "Hide password" else "Show password"
+            if (uiState.registerState.passwordVisible) "Hide password" else "Show password"
 
           IconButton(
             onClick = onTogglePasswordVisibility
@@ -232,7 +237,7 @@ private fun LoginScreenContent(
         }
       }
 
-      if (uiState.isLoginErrorShown) {
+      if (uiState.loginState.isLoginErrorShown) {
         AlertDialog(
           onDismissRequest = {
             onDismissDialog()
@@ -242,7 +247,7 @@ private fun LoginScreenContent(
           },
           text = {
             Text(
-              text = uiState.loginErrorMessage
+              text = uiState.loginState.loginErrorMessage
             )
           },
           confirmButton = {
@@ -265,10 +270,7 @@ private fun LoginScreenContent(
 private fun LoginScreenPreview() {
   TalkToMeTheme {
     LoginScreenContent(
-      uiState = State(
-        username = "lnzpk.dev@gmail.com",
-        password = "PASSWORD"
-      ),
+      uiState = State(),
       onAction = {},
       onUpdatePassword = {},
       onUpdateUsername = {},
@@ -284,10 +286,10 @@ private fun LoginScreenPreviewWithModal() {
   TalkToMeTheme {
     LoginScreenContent(
       uiState = State(
-        username = "lnzpk.dev@gmail.com",
-        password = "PASSWORD",
-        isLoginErrorShown = true,
-        loginErrorMessage = "Your e-mail or password is incorrect."
+        loginState = LoginViewContract.LoginState(
+          isLoginErrorShown = true,
+          loginErrorMessage = "Your e-mail or password is incorrect."
+        )
       ),
       onAction = {},
       onUpdatePassword = {},
@@ -304,8 +306,6 @@ private fun LoginScreenPreviewWithLoading() {
   TalkToMeTheme {
     LoginScreenContent(
       uiState = State(
-        username = "lnzpk.dev@gmail.com",
-        password = "PASSWORD",
         isLoading = true
       ),
       onAction = {},
@@ -320,12 +320,14 @@ private fun LoginScreenPreviewWithLoading() {
 @UIModePreviews
 @Composable
 private fun LoginScreenPreviewWithErrors() {
-  TalkToMeTheme {
+  TalkToMeTheme (
+    vm = hiltViewModel()
+  ) {
     LoginScreenContent(
       uiState = State(
-        username = "lnzpk.dev@gmail.com",
-        password = "PASSWORD",
-        loginErrorMessage = "Arschloch"
+        loginState = LoginViewContract.LoginState(
+          loginErrorMessage = "Müll"
+        )
       ),
       onAction = {},
       onUpdatePassword = {},

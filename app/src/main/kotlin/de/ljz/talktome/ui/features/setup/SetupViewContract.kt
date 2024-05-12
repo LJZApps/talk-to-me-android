@@ -6,7 +6,7 @@ object SetupViewContract {
     )
 
     sealed interface Action {
-
+        data object ChangeTheme : Action
     }
 
     sealed interface Effect {

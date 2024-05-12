@@ -16,7 +16,10 @@ data class AppSettings(
     val setupDone: Boolean = false,
 
     @SerialName("theme_behavior")
-    val themeBehavior: ThemeBehavior = ThemeBehavior.SYSTEM_STANDARD,
+    val themeBehavior: ThemeBehavior = ThemeBehavior.LIGHT,
+
+    @SerialName("dynamic_theme_colors")
+    val dynamicThemeColors: Boolean = true
 )
 
 object AppSettingsSerializer : Serializer<AppSettings> {

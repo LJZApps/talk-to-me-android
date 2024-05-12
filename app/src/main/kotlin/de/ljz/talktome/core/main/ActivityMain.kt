@@ -1,6 +1,7 @@
 package de.ljz.talktome.core.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -20,10 +21,12 @@ import com.ramcosta.composedestinations.DestinationsNavHost
 import de.ljz.talktome.core.main.MainViewContract.State
 import com.ramcosta.composedestinations.navigation.dependency
 import dagger.hilt.android.AndroidEntryPoint
+import de.ljz.talktome.core.application.TAG
 import de.ljz.talktome.core.mvi.EffectCollector
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
 import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
 import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
+import de.ljz.talktome.ui.features.setup.SetupViewModel
 import de.ljz.talktome.ui.navigation.NavGraphs
 
 @AndroidEntryPoint
@@ -62,11 +65,18 @@ class ActivityMain : AppCompatActivity() {
                 }
                 hiltViewModel<LoginViewModel>(parentEntry)
               }
+              dependency(NavGraphs.setup) {
+                val parentEntry = remember(navBackStackEntry) {
+                  navController.getBackStackEntry(NavGraphs.setup.route)
+                }
+                hiltViewModel<SetupViewModel>(parentEntry)
+              }
             },
             modifier = Modifier
               .fillMaxSize()
               .padding(innerPadding),
-            startRoute = if (isLoggedIn) if (isSetupDone) NavGraphs.getStarted else NavGraphs.loginAndRegister else NavGraphs.loginAndRegister
+            //                                              Setup/Login done     Login done (no setup)        Not logged in
+            startRoute = if (isLoggedIn) if (isSetupDone) NavGraphs.getStarted else NavGraphs.setup else NavGraphs.loginAndRegister
           )
         }
       }

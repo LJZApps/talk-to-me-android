@@ -9,13 +9,6 @@ import kotlinx.serialization.json.Json
 import java.io.InputStream
 import java.io.OutputStream
 
-/**
- * This file belongs to meindeal
- *
- * Created by Daniel Reinhold on 15.02.24 09:51
- * Copyright © 2024 2peaches GmbH. All rights reserved.
- */
-
 @Serializable
 data class PushSettings(
     @SerialName("push_notifications_enabled")

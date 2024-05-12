@@ -21,6 +21,4 @@ fun RegisterScreen(
   vm: LoginViewModel
 ) {
   val uiState: LoginViewContract.State by vm.state.collectAsStateWithLifecycle()
-
-  Text(text = uiState.count.toString())
 }

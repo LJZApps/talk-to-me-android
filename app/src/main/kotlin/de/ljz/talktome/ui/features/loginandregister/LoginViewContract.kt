@@ -2,14 +2,26 @@ package de.ljz.talktome.ui.features.loginandregister
 
 object LoginViewContract {
   data class State(
+    val isLoading: Boolean = false,
+    val loadingText: String = "",
+    val loginState: LoginState = LoginState(),
+    val registerState: RegisterState = RegisterState(),
+  )
+
+  data class LoginState(
     val username: String = "",
     val password: String = "",
     val passwordVisible: Boolean = false,
     val isLoginErrorShown: Boolean = false,
     val loginErrorMessage: String = "",
-    val isLoading: Boolean = false,
-    val loadingText: String = "",
-    val count: Int = 0
+  )
+
+  data class RegisterState(
+    val username: String = "",
+    val password: String = "",
+    val passwordVisible: Boolean = false,
+    val isLoginErrorShown: Boolean = false,
+    val loginErrorMessage: String = "",
   )
 
   sealed interface Action {

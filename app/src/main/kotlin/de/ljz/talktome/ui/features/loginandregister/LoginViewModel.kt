@@ -37,8 +37,8 @@ class LoginViewModel @Inject constructor(
     updateState { copy(isLoading = true, loadingText = "Logging in") }
     viewModelScope.launch {
       loginRepository.login(
-        username = state.value.username,
-        password = state.value.password,
+        username = state.value.loginState.username,
+        password = state.value.loginState.password,
         onSuccess = {
           if (it.success) {
             sessionManager.setAccessToken(it.accessToken.token)
@@ -58,9 +58,11 @@ class LoginViewModel @Inject constructor(
           updateState {
             copy(
               isLoading = false,
-              loginErrorMessage = it.errorMessage.toString(),
-              isLoginErrorShown = true,
-              loadingText = ""
+              loadingText = "",
+              loginState.copy(
+                loginErrorMessage = it.errorMessage.toString(),
+                isLoginErrorShown = true,
+              )
             )
           }
         }
@@ -69,18 +71,25 @@ class LoginViewModel @Inject constructor(
   }
 
   fun dismissDialog() {
-    updateState { copy(isLoginErrorShown = false, loginErrorMessage = "") }
+    updateState {
+      copy(
+        loginState = loginState.copy(
+          isLoginErrorShown = false,
+          loginErrorMessage = ""
+        )
+      )
+    }
   }
 
   fun updatePassword(password: String) {
-    updateState { copy(password = password) }
+    updateState { copy(loginState = loginState.copy(password = password)) }
   }
 
   fun updateUsername(username: String) {
-    updateState { copy(username = username) }
+    updateState { copy(loginState = loginState.copy(username = username)) }
   }
 
   fun togglePasswordVisibility() {
-    updateState { copy(passwordVisible = !passwordVisible) }
+    updateState { copy(loginState = loginState.copy(passwordVisible = !loginState.passwordVisible)) }
   }
 }

@@ -34,6 +34,7 @@ import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
 import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
 import de.ljz.talktome.ui.navigation.destinations.LoginScreenDestination
 import de.ljz.talktome.ui.navigation.destinations.RegisterScreenDestination
+import de.ljz.talktome.ui.navigation.destinations.SetupAppThemeDestination
 
 @LoginAndRegisterNavGraph(start = true)
 @Destination(style = SlideHorizontallyAnimation::class)
@@ -52,7 +53,9 @@ fun LoginAndRegisterScreen(
       Effect.NavigateRegisterScreen -> navigator.navigate(RegisterScreenDestination)
       Effect.NavigateLoginScreen -> navigator.navigate(LoginScreenDestination)
       Effect.NavigateBack -> navigator.navigateUp()
-      Effect.NavigateSetupScreen -> {}
+      Effect.NavigateSetupScreen -> {
+        navigator.navigate(SetupAppThemeDestination)
+      }
     }
   }
 
