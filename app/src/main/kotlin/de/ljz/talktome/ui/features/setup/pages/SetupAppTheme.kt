@@ -4,6 +4,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -13,11 +14,13 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import de.ljz.talktome.core.compose.UIModePreviews
 import de.ljz.talktome.core.mvi.EffectCollector
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
-import de.ljz.talktome.ui.features.setup.SetupViewContract.State
 import de.ljz.talktome.ui.features.setup.SetupViewContract.Action
+import de.ljz.talktome.ui.features.setup.SetupViewContract.State
 import de.ljz.talktome.ui.features.setup.SetupViewModel
 import de.ljz.talktome.ui.navigation.SetupNavGraph
+import io.sentry.compose.SentryTraced
 
+@OptIn(ExperimentalComposeUiApi::class)
 @SetupNavGraph(start = true)
 @Destination(style = SlideHorizontallyAnimation::class)
 @Composable
@@ -37,11 +40,13 @@ fun SetupAppTheme(
   }
 
   TalkToMeTheme {
-    SetupAppThemeContent(
-      uiState = uiState,
-      onAction = vm::onAction,
-      modifier = modifier
-    )
+    SentryTraced(tag = "setup_app_theme") {
+      SetupAppThemeContent(
+        uiState = uiState,
+        onAction = vm::onAction,
+        modifier = modifier
+      )
+    }
   }
 }
 

@@ -13,6 +13,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -32,7 +33,9 @@ import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
 import de.ljz.talktome.ui.navigation.GetStartedNavGraph
 import de.ljz.talktome.ui.navigation.NavGraphs
 import de.ljz.talktome.util.bounceClick
+import io.sentry.compose.SentryTraced
 
+@OptIn(ExperimentalComposeUiApi::class)
 @GetStartedNavGraph(start = true)
 @Destination(style = FadeInOutAnimation::class)
 @Composable
@@ -41,56 +44,58 @@ fun GetStartedMain(
   navigator: DestinationsNavigator,
   vm: GetStartedViewModel
 ) {
-  ConstraintLayout(
-    modifier = modifier
-      .fillMaxSize()
-  ) {
-    val (
-      logoAndTitleRef,
-    ) = createRefs()
-
-    Column(
-      modifier = Modifier
-        .constrainAs(logoAndTitleRef) {
-          top.linkTo(parent.top)
-          start.linkTo(parent.start)
-          end.linkTo(parent.end)
-          bottom.linkTo(parent.bottom)
-
-          width = Dimension.fillToConstraints
-        },
-      horizontalAlignment = Alignment.CenterHorizontally
+  SentryTraced(tag = "get_started_main") {
+    ConstraintLayout(
+      modifier = modifier
+        .fillMaxSize()
     ) {
-      Text(
-        text = "Welcome to",
-        modifier = Modifier
-          .padding(bottom = 24.dp),
-        textAlign = TextAlign.Center,
-        fontSize = 32.sp,
-      )
+      val (
+        logoAndTitleRef,
+      ) = createRefs()
 
-      Image(
-        painter = painterResource(id = R.drawable.ic_launcher_playstore_new),
-        contentDescription = "Talk to me logo",
+      Column(
         modifier = Modifier
-          .fillMaxWidth(0.5f)
-          .clip(RoundedCornerShape(20.dp)),
-        contentScale = ContentScale.FillWidth
-      )
+          .constrainAs(logoAndTitleRef) {
+            top.linkTo(parent.top)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            bottom.linkTo(parent.bottom)
 
-      Button(
-        onClick = {
-          navigator.navigate(NavGraphs.loginAndRegister)
-        },
-        modifier = Modifier
-          .padding(top = 24.dp)
-          .bounceClick()
+            width = Dimension.fillToConstraints
+          },
+        horizontalAlignment = Alignment.CenterHorizontally
       ) {
-        Image(
-          imageVector = Icons.AutoMirrored.Filled.NavigateNext,
-          contentDescription = null,
-          colorFilter = ColorFilter.tint(if (isSystemInDarkTheme()) Color.Black else Color.White)
+        Text(
+          text = "Welcome to",
+          modifier = Modifier
+            .padding(bottom = 24.dp),
+          textAlign = TextAlign.Center,
+          fontSize = 32.sp,
         )
+
+        Image(
+          painter = painterResource(id = R.drawable.ic_launcher_playstore_new),
+          contentDescription = "Talk to me logo",
+          modifier = Modifier
+            .fillMaxWidth(0.5f)
+            .clip(RoundedCornerShape(20.dp)),
+          contentScale = ContentScale.FillWidth
+        )
+
+        Button(
+          onClick = {
+            navigator.navigate(NavGraphs.loginAndRegister)
+          },
+          modifier = Modifier
+            .padding(top = 24.dp)
+            .bounceClick()
+        ) {
+          Image(
+            imageVector = Icons.AutoMirrored.Filled.NavigateNext,
+            contentDescription = null,
+            colorFilter = ColorFilter.tint(if (isSystemInDarkTheme()) Color.Black else Color.White)
+          )
+        }
       }
     }
   }
