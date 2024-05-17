@@ -36,13 +36,6 @@ class ActivityMain : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    try {
-      throw Exception("This app uses Sentry! :)")
-    } catch (e: Exception) {
-      Sentry.captureException(e)
-    }
-
-
     setContent {
       val snackbarHostState = remember { SnackbarHostState() }
       val navController = rememberNavController()

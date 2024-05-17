@@ -96,7 +96,6 @@ android {
     // disable if you don't want to expose your sources
     includeSourceContext.set(true)
   }
-
 }
 
 val okHttpVersion by extra("4.12.0")
@@ -174,8 +173,8 @@ dependencies {
 
   // Material
   implementation("com.google.android.material:material:1.12.0")
-  implementation("androidx.compose.material3:material3:1.2.1") // FIXME Remember Version 1.1.2
-  implementation("androidx.compose.material3:material3-window-size-class:1.2.1") // FIXME Remember Version 1.1.2
+  implementation("androidx.compose.material3:material3:1.3.0-beta01") // FIXME Remember Version 1.1.2
+  implementation("androidx.compose.material3:material3-window-size-class:1.3.0-beta01") // FIXME Remember Version 1.1.2
 
   // androidx
   implementation("androidx.core:core-ktx:1.13.1")
@@ -184,9 +183,9 @@ dependencies {
 
   // Lifecycle
   implementation("android.arch.lifecycle:extensions:1.1.1")
-  implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-  implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
-  implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+  implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.0")
+  implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
+  implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.0")
 
   // Firebase
   implementation("com.google.firebase:firebase-analytics:22.0.0")
@@ -195,7 +194,7 @@ dependencies {
 
   // Other
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.23")
-  implementation("com.android.billingclient:billing-ktx:6.2.1")
+  implementation("com.android.billingclient:billing-ktx:7.0.0")
 }
 repositories {
   mavenCentral()

@@ -16,7 +16,7 @@ data class AppSettings(
     val setupDone: Boolean = false,
 
     @SerialName("theme_behavior")
-    val themeBehavior: ThemeBehavior = ThemeBehavior.LIGHT,
+    val themeBehavior: ThemeBehavior = ThemeBehavior.SYSTEM_STANDARD,
 
     @SerialName("dynamic_theme_colors")
     val dynamicThemeColors: Boolean = true
