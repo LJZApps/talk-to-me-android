@@ -1,4 +1,6 @@
+import io.sentry.android.gradle.extensions.InstrumentationFeature
 import java.io.FileInputStream
+import java.util.EnumSet
 import java.util.Properties
 
 plugins {
@@ -95,6 +97,11 @@ android {
     // this will upload your source code to Sentry to show it as part of the stack traces
     // disable if you don't want to expose your sources
     includeSourceContext.set(true)
+
+    tracingInstrumentation {
+      enabled.set(true)
+      features.set(EnumSet.allOf(InstrumentationFeature::class.java) - InstrumentationFeature.DATABASE - InstrumentationFeature.OKHTTP)
+    }
   }
 }
 
@@ -105,6 +112,12 @@ val composeDestinationsVersion by extra("1.10.2")
 val ktorVersion by extra("2.2.1")
 
 dependencies {
+  // Sentry
+  implementation(platform("io.sentry:sentry-bom:7.9.0")) //import bom
+  implementation("io.sentry:sentry-android") //no version specified
+  implementation("io.sentry:sentry-compose-android")
+
+
   // KotlinX Serialization
   implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7")
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")

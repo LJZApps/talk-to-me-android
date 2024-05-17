@@ -11,6 +11,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
@@ -35,7 +36,9 @@ import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
 import de.ljz.talktome.ui.navigation.destinations.LoginScreenDestination
 import de.ljz.talktome.ui.navigation.destinations.RegisterScreenDestination
 import de.ljz.talktome.ui.navigation.destinations.SetupAppThemeDestination
+import io.sentry.compose.SentryTraced
 
+@OptIn(ExperimentalComposeUiApi::class)
 @LoginAndRegisterNavGraph(start = true)
 @Destination(style = SlideHorizontallyAnimation::class)
 @Composable
@@ -60,11 +63,13 @@ fun LoginAndRegisterScreen(
   }
 
   TalkToMeTheme {
-    LoginAndRegisterScreenContent(
-      uiState = uiState,
-      onAction = vm::onAction,
-      modifier = modifier
-    )
+    SentryTraced(tag = "login_and_register") {
+      LoginAndRegisterScreenContent(
+        uiState = uiState,
+        onAction = vm::onAction,
+        modifier = modifier
+      )
+    }
   }
 }
 

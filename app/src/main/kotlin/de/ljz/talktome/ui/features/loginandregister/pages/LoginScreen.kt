@@ -24,6 +24,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -53,7 +54,9 @@ import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
 import de.ljz.talktome.ui.navigation.destinations.LoginScreenDestination
 import de.ljz.talktome.ui.navigation.destinations.RegisterScreenDestination
 import de.ljz.talktome.ui.navigation.destinations.SetupAppThemeDestination
+import io.sentry.compose.SentryTraced
 
+@OptIn(ExperimentalComposeUiApi::class)
 @LoginAndRegisterNavGraph
 @Destination(style = SlideHorizontallyAnimation::class)
 @Composable
@@ -78,23 +81,25 @@ fun LoginScreen(
   }
 
   TalkToMeTheme {
-    LoginScreenContent(
-      uiState = uiState,
-      onAction = vm::onAction,
-      modifier = modifier,
-      onUpdatePassword = {
-        vm.updatePassword(it)
-      },
-      onUpdateUsername = {
-        vm.updateUsername(it)
-      },
-      onTogglePasswordVisibility = {
-        vm.togglePasswordVisibility()
-      },
-      onDismissDialog = {
-        vm.dismissDialog()
-      }
-    )
+    SentryTraced(tag = "login_screen") {
+      LoginScreenContent(
+        uiState = uiState,
+        onAction = vm::onAction,
+        modifier = modifier,
+        onUpdatePassword = {
+          vm.updatePassword(it)
+        },
+        onUpdateUsername = {
+          vm.updateUsername(it)
+        },
+        onTogglePasswordVisibility = {
+          vm.togglePasswordVisibility()
+        },
+        onDismissDialog = {
+          vm.dismissDialog()
+        }
+      )
+    }
   }
 }
 
