@@ -1,19 +1,11 @@
 package de.ljz.talktome.core.provider
 
+import androidx.lifecycle.viewmodel.viewModelFactory
+
 object ModelProvider {
   val Factory = viewModelFactory {
-    initializer {
-      //Not yet implemented
-      ThemeModel(appViewModelProvider().storeRepository)
-    }
-
-    initializer {
-      //Not yet implemented
-      SettingsModel(appViewModelProvider().storeRepository)
-    }
+//    initializer {
+////      ThemeViewModel(AppSettingsRepository(DataStore<AppSettings>))
+//    }
   }
 }
-
-
-fun CreationExtras.appViewModelProvider(): ApplicationSetup =
-  (this[AndroidViewModelFactory.APPLICATION_KEY] as ApplicationSetup)

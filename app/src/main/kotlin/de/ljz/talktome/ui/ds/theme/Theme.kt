@@ -2,10 +2,12 @@ package de.ljz.talktome.ui.ds.theme
 
 import android.app.Activity
 import android.os.Build
-import androidx.activity.viewModels
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.SideEffect
@@ -15,12 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import de.ljz.talktome.core.main.AppViewModel
-import de.ljz.talktome.data.repositories.AppSettingsRepository
 import de.ljz.talktome.ui.state.ThemeBehavior
-import kotlinx.coroutines.flow.collectLatest
-import javax.inject.Inject
 
 private val lightScheme = lightColorScheme(
   primary = primaryLight,
@@ -266,9 +263,10 @@ val unspecified_scheme = ColorFamily(
 fun TalkToMeTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
   // Dynamic color is available on Android 12+
-  vm: ThemeViewModel = hiltViewModel(),
   content: @Composable () -> Unit,
 ) {
+  val vm: ThemeViewModel = hiltViewModel()
+
   val colorScheme = when (vm.themeBehavior) {
     ThemeBehavior.DARK -> {
       if (vm.dynamicTheming && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
