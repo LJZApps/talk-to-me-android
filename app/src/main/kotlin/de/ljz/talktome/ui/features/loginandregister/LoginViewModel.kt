@@ -21,7 +21,7 @@ class LoginViewModel @Inject constructor(
 
   override fun onAction(action: Action) {
     when (action) {
-      Action.OnLoginButtonClick -> login()
+      Action.OnLoginButtonClick -> checkData()
 
       Action.OnOpenRegisterButtonClick -> {
         sendEffect(Effect.NavigateRegisterScreen)
@@ -29,6 +29,48 @@ class LoginViewModel @Inject constructor(
 
       Action.OnOpenLoginButtonClick -> {
         sendEffect(Effect.NavigateLoginScreen)
+      }
+    }
+  }
+
+  fun checkData() {
+    val username = state.value.loginState.username
+    val password = state.value.loginState.password
+
+    when {
+      username.isEmpty() -> {
+        updateState {
+          copy(
+            loginState = loginState.copy(
+              loginErrorMessage = "Username cannot be empty",
+              isLoginErrorShown = true,
+            )
+          )
+        }
+      }
+      password.isEmpty() -> {
+        updateState {
+          copy(
+            loginState = loginState.copy(
+              loginErrorMessage = "Password cannot be empty",
+              isLoginErrorShown = true,
+            )
+          )
+        }
+      }
+      password.length < 8 -> {
+        updateState {
+          copy(
+            loginState = loginState.copy(
+              loginErrorMessage = "Password must be at least 8 characters long",
+              isLoginErrorShown = true,
+            )
+          )
+        }
+      }
+      else -> {
+        // Daten sind gültig, Login-Prozess starten
+        login()
       }
     }
   }
@@ -47,7 +89,7 @@ class LoginViewModel @Inject constructor(
 
             updateState {
               copy(
-                loadingText = "Done! Now setup your app!"
+                loadingText = "Done! Now setup your app."
               )
             }
 

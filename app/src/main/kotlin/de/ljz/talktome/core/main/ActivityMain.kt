@@ -25,6 +25,7 @@ import de.ljz.talktome.ui.features.getstarted.GetStartedViewModel
 import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
 import de.ljz.talktome.ui.features.setup.SetupViewModel
 import de.ljz.talktome.ui.navigation.NavGraphs
+import de.ljz.talktome.ui.navigation.destinations.ErrorDialogDestination
 
 @AndroidEntryPoint
 class ActivityMain : AppCompatActivity() {
@@ -68,6 +69,9 @@ class ActivityMain : AppCompatActivity() {
                   navController.getBackStackEntry(NavGraphs.setup.route)
                 }
                 hiltViewModel<SetupViewModel>(parentEntry)
+              }
+              dependency(ErrorDialogDestination) {
+
               }
             },
             modifier = Modifier

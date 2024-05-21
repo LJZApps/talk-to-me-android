@@ -292,6 +292,7 @@ fun TalkToMeTheme(
         if (isSystemInDarkTheme()) darkScheme else lightScheme
       }
     }
+    else -> lightScheme
   }
 
   val view = LocalView.current

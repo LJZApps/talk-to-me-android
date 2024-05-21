@@ -50,6 +50,7 @@ import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.Effect
 import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.State
 import de.ljz.talktome.ui.features.loginandregister.LoginViewModel
 import de.ljz.talktome.ui.navigation.LoginAndRegisterNavGraph
+import de.ljz.talktome.ui.navigation.destinations.ErrorDialogDestination
 import de.ljz.talktome.ui.navigation.destinations.LoginScreenDestination
 import de.ljz.talktome.ui.navigation.destinations.RegisterScreenDestination
 import de.ljz.talktome.ui.navigation.destinations.SetupAppThemeDestination
@@ -83,6 +84,7 @@ fun LoginScreen(
     SentryTraced(tag = "login_screen") {
       LoginScreenContent(
         uiState = uiState,
+        navigator = navigator,
         onAction = vm::onAction,
         modifier = modifier,
         onUpdatePassword = {
@@ -94,9 +96,6 @@ fun LoginScreen(
         onTogglePasswordVisibility = {
           vm.togglePasswordVisibility()
         },
-        onDismissDialog = {
-          vm.dismissDialog()
-        }
       )
     }
   }
@@ -105,11 +104,11 @@ fun LoginScreen(
 @Composable
 private fun LoginScreenContent(
   uiState: State,
+  navigator: DestinationsNavigator,
   onAction: (Action) -> Unit,
   onUpdatePassword: (String) -> Unit,
   onUpdateUsername: (String) -> Unit,
   onTogglePasswordVisibility: () -> Unit,
-  onDismissDialog: () -> Unit,
   modifier: Modifier = Modifier
 ) {
   Surface {
@@ -242,32 +241,18 @@ private fun LoginScreenContent(
       }
 
       if (uiState.loginState.isLoginErrorShown) {
-        AlertDialog(
-          onDismissRequest = {
-            onDismissDialog()
-          },
-          title = {
-            Text(text = "Login failed")
-          },
-          text = {
-            Text(
-              text = uiState.loginState.loginErrorMessage
-            )
-          },
-          confirmButton = {
-            TextButton(
-              onClick = {
-                onDismissDialog()
-              }
-            ) {
-              Text(text = "Got it")
-            }
-          },
+        navigator.navigate(
+          ErrorDialogDestination(
+            title = "Login error",
+            message = uiState.loginState.loginErrorMessage,
+          )
         )
       }
     }
   }
 }
+
+/* Previews
 
 @UIModePreviews
 @Composable
@@ -278,8 +263,7 @@ private fun LoginScreenPreview() {
       onAction = {},
       onUpdatePassword = {},
       onUpdateUsername = {},
-      onTogglePasswordVisibility = {},
-      onDismissDialog = {}
+      onTogglePasswordVisibility = {}
     )
   }
 }
@@ -298,8 +282,7 @@ private fun LoginScreenPreviewWithModal() {
       onAction = {},
       onUpdatePassword = {},
       onUpdateUsername = {},
-      onTogglePasswordVisibility = {},
-      onDismissDialog = {}
+      onTogglePasswordVisibility = {}
     )
   }
 }
@@ -315,8 +298,7 @@ private fun LoginScreenPreviewWithLoading() {
       onAction = {},
       onUpdatePassword = {},
       onUpdateUsername = {},
-      onTogglePasswordVisibility = {},
-      onDismissDialog = {}
+      onTogglePasswordVisibility = {}
     )
   }
 }
@@ -334,8 +316,7 @@ private fun LoginScreenPreviewWithErrors() {
       onAction = {},
       onUpdatePassword = {},
       onUpdateUsername = {},
-      onTogglePasswordVisibility = {},
-      onDismissDialog = {}
+      onTogglePasswordVisibility = {}
     )
   }
-}
+}*/
