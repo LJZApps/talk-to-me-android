@@ -1,13 +1,15 @@
 package de.ljz.talktome.data.api.responses.common
 
+import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class ErrorResponse(
-    @Json(name = "error_code")
-    val errorCode: String? = "unknown_error",
+    @SerializedName("error_code")
+    val errorCode: Int? = 200,
 
-    @Json(name = "error_message")
+    @SerializedName("error_message")
     val errorMessage: String? = "An unknown error occurred"
 )

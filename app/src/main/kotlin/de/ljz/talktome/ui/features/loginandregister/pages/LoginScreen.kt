@@ -11,16 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Login
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -41,10 +32,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.akinci.androidtemplate.ui.navigation.animations.SlideHorizontallyAnimation
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import de.ljz.talktome.core.compose.UIModePreviews
 import de.ljz.talktome.core.mvi.EffectCollector
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
-import de.ljz.talktome.ui.features.loginandregister.LoginViewContract
 import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.Action
 import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.Effect
 import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.State
@@ -63,7 +52,7 @@ import io.sentry.compose.SentryTraced
 fun LoginScreen(
   navigator: DestinationsNavigator,
   modifier: Modifier = Modifier,
-  vm: LoginViewModel
+  vm: LoginViewModel,
 ) {
   val context = LocalContext.current
 
@@ -84,8 +73,10 @@ fun LoginScreen(
     SentryTraced(tag = "login_screen") {
       LoginScreenContent(
         uiState = uiState,
-        navigator = navigator,
         onAction = vm::onAction,
+        onDismissDialog = {
+          vm.dismissDialog()
+        },
         modifier = modifier,
         onUpdatePassword = {
           vm.updatePassword(it)
@@ -104,12 +95,12 @@ fun LoginScreen(
 @Composable
 private fun LoginScreenContent(
   uiState: State,
-  navigator: DestinationsNavigator,
   onAction: (Action) -> Unit,
+  onDismissDialog: () -> Unit,
   onUpdatePassword: (String) -> Unit,
   onUpdateUsername: (String) -> Unit,
   onTogglePasswordVisibility: () -> Unit,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   Surface {
     ConstraintLayout(
@@ -121,7 +112,7 @@ private fun LoginScreenContent(
         titleRef,
         usernameRef,
         passwordRef,
-        loginButtonRef
+        loginButtonRef,
       ) = createRefs()
 
       Icon(
@@ -241,82 +232,29 @@ private fun LoginScreenContent(
       }
 
       if (uiState.loginState.isLoginErrorShown) {
-        navigator.navigate(
-          ErrorDialogDestination(
-            title = "Login error",
-            message = uiState.loginState.loginErrorMessage,
-          )
+        AlertDialog(
+          onDismissRequest = {
+            onDismissDialog()
+          },
+          title = {
+            Text(text = "Login failed")
+          },
+          text = {
+            Text(
+              text = uiState.loginState.loginErrorMessage
+            )
+          },
+          confirmButton = {
+            TextButton(
+              onClick = {
+                onDismissDialog()
+              }
+            ) {
+              Text(text = "Got it")
+            }
+          },
         )
       }
     }
   }
 }
-
-/* Previews
-
-@UIModePreviews
-@Composable
-private fun LoginScreenPreview() {
-  TalkToMeTheme {
-    LoginScreenContent(
-      uiState = State(),
-      onAction = {},
-      onUpdatePassword = {},
-      onUpdateUsername = {},
-      onTogglePasswordVisibility = {}
-    )
-  }
-}
-
-@UIModePreviews
-@Composable
-private fun LoginScreenPreviewWithModal() {
-  TalkToMeTheme {
-    LoginScreenContent(
-      uiState = State(
-        loginState = LoginViewContract.LoginState(
-          isLoginErrorShown = true,
-          loginErrorMessage = "Your e-mail or password is incorrect."
-        )
-      ),
-      onAction = {},
-      onUpdatePassword = {},
-      onUpdateUsername = {},
-      onTogglePasswordVisibility = {}
-    )
-  }
-}
-
-@UIModePreviews
-@Composable
-private fun LoginScreenPreviewWithLoading() {
-  TalkToMeTheme {
-    LoginScreenContent(
-      uiState = State(
-        isLoading = true
-      ),
-      onAction = {},
-      onUpdatePassword = {},
-      onUpdateUsername = {},
-      onTogglePasswordVisibility = {}
-    )
-  }
-}
-
-@UIModePreviews
-@Composable
-private fun LoginScreenPreviewWithErrors() {
-  TalkToMeTheme{
-    LoginScreenContent(
-      uiState = State(
-        loginState = LoginViewContract.LoginState(
-          loginErrorMessage = "Müll"
-        )
-      ),
-      onAction = {},
-      onUpdatePassword = {},
-      onUpdateUsername = {},
-      onTogglePasswordVisibility = {}
-    )
-  }
-}*/

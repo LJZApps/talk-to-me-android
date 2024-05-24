@@ -112,11 +112,15 @@ val composeDestinationsVersion by extra("1.10.2")
 val ktorVersion by extra("2.2.1")
 
 dependencies {
+  // Sandwich
+  implementation("com.github.skydoves:sandwich:2.0.8")
+  implementation("com.github.skydoves:sandwich-retrofit:2.0.8") // For Retrofit (Android)
+  implementation("com.github.skydoves:sandwich-retrofit-serialization:2.0.8")
+
   // Sentry
   implementation(platform("io.sentry:sentry-bom:7.9.0")) //import bom
   implementation("io.sentry:sentry-android") //no version specified
   implementation("io.sentry:sentry-compose-android")
-
 
   // KotlinX Serialization
   implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7")

@@ -1,11 +1,15 @@
 package de.ljz.talktome.data.repositories
 
 import android.util.Log
+import com.skydoves.sandwich.suspendOnError
+import com.skydoves.sandwich.suspendOnException
+import com.skydoves.sandwich.suspendOnSuccess
 import de.ljz.talktome.core.application.TAG
 import de.ljz.talktome.data.api.core.ApiClient
 import de.ljz.talktome.data.api.responses.common.ErrorResponse
 import de.ljz.talktome.data.api.responses.login.LoginResponse
 import de.ljz.talktome.data.api.responses.register.RegisterResponse
+import de.ljz.talktome.data.mapper.ErrorResponseMapper
 import de.ljz.talktome.data.sharedpreferences.SessionManager
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,22 +26,22 @@ class LoginRepository @Inject constructor(
     onSuccess: (suspend (LoginResponse) -> Unit)? = null,
     onError: (suspend (ErrorResponse) -> Unit)? = null
   ) {
-    apiClient.call(
-      block = {
-        Log.d(TAG, "login: $username $password")
-        apiClient.loginService.login(username, password)
-      },
-      onSuccess = { response ->
-        sessionManager.setAccessToken(response.accessToken.token)
-        sessionManager.setRefreshToken(response.refreshToken.token)
-        sessionManager.setExpirationTime(response.accessToken.exp)
+    apiClient.loginService.login(username, password)
+      .suspendOnSuccess {
+        sessionManager.setAccessToken(data.accessToken.token)
+        sessionManager.setRefreshToken(data.refreshToken.token)
+        sessionManager.setExpirationTime(data.accessToken.exp)
 
-        onSuccess?.invoke(response)
-      },
-      onError = {
-        onError?.invoke(it)
+        onSuccess?.invoke(data)
       }
-    )
+      .suspendOnError(ErrorResponseMapper) {
+        onError?.invoke(this)
+      }
+      .suspendOnException {
+        this.run {
+          Log.d(TAG, message.toString())
+        }
+      }
   }
 
   suspend fun register(
@@ -47,20 +51,12 @@ class LoginRepository @Inject constructor(
     onSuccess: (suspend (RegisterResponse) -> Unit)? = null,
     onError: (suspend (ErrorResponse) -> Unit)? = null
   ) {
-    apiClient.call(
-      block = {
-        apiClient.loginService.register(
-          displayName = displayName,
-          username = username,
-          biography = biography,
-        )
-      },
-      onSuccess = { response ->
-        onSuccess?.invoke(response)
-      },
-      onError = {
-        onError?.invoke(it)
+    apiClient.loginService.register(displayName, username, biography)
+      .suspendOnSuccess {
+        onSuccess?.invoke(data)
       }
-    )
+      .suspendOnError(ErrorResponseMapper) {
+        onError?.invoke(this)
+      }
   }
 }

@@ -33,7 +33,6 @@ class ActivityMain : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-
     setContent {
       val snackbarHostState = remember { SnackbarHostState() }
       val navController = rememberNavController()

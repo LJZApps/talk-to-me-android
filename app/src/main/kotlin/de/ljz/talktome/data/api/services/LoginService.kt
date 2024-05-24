@@ -1,5 +1,7 @@
 package de.ljz.talktome.data.api.services
 
+import com.skydoves.sandwich.ApiResponse
+import de.ljz.talktome.data.api.responses.common.SuccessResponse
 import de.ljz.talktome.data.api.responses.login.LoginResponse
 import de.ljz.talktome.data.api.responses.register.RegisterResponse
 import retrofit2.http.POST
@@ -11,12 +13,12 @@ interface LoginService {
   suspend fun login(
     @Query("username") username: String,
     @Query("password") password: String,
-  ): LoginResponse
+  ): ApiResponse<LoginResponse>
 
   @POST("/api/register")
   suspend fun register(
     @Query("display_name") displayName: String,
     @Query("username") username: String,
     @Query("biography") biography: String? = null,
-  ): RegisterResponse
+  ): ApiResponse<RegisterResponse>
 }

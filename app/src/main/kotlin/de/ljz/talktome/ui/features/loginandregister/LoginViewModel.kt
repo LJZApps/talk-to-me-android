@@ -101,7 +101,7 @@ class LoginViewModel @Inject constructor(
             copy(
               isLoading = false,
               loadingText = "",
-              loginState.copy(
+              loginState = loginState.copy(
                 loginErrorMessage = it.errorMessage.toString(),
                 isLoginErrorShown = true,
               )

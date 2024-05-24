@@ -1,6 +1,7 @@
 package de.ljz.talktome.core.di
 
 import android.content.Context
+import com.skydoves.sandwich.retrofit.adapters.ApiResponseCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -50,6 +51,7 @@ object NetworkModule {
       .baseUrl(BuildConfig.BASE_URL)
       .client(okHttpClient)
       .addConverterFactory(MoshiConverterFactory.create(moshi))
+      .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
       .build()
   }
 
@@ -82,14 +84,10 @@ object NetworkModule {
   @Singleton
   @Provides
   fun provideApiClient(
-    moshi: Moshi,
     retrofit: Retrofit,
-    networkErrorEmitter: NetworkErrorEmitter
   ): ApiClient {
     return ApiClient(
-      moshi = moshi,
       retrofit = retrofit,
-      networkErrorEmitter = networkErrorEmitter
     )
   }
 }

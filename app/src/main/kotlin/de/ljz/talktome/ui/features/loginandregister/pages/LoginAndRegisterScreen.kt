@@ -25,7 +25,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.akinci.androidtemplate.ui.navigation.animations.SlideHorizontallyAnimation
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import de.ljz.talktome.core.compose.UIModePreviews
 import de.ljz.talktome.core.mvi.EffectCollector
 import de.ljz.talktome.ui.ds.theme.TalkToMeTheme
 import de.ljz.talktome.ui.features.loginandregister.LoginViewContract.Action
@@ -161,16 +160,5 @@ private fun LoginAndRegisterScreenContent(
         Text(text = "Login")
       }
     }
-  }
-}
-
-@UIModePreviews
-@Composable
-private fun LoginAndRegisterScreenPreview() {
-  TalkToMeTheme {
-    LoginAndRegisterScreenContent(
-      uiState = State(),
-      onAction = {}
-    )
   }
 }
