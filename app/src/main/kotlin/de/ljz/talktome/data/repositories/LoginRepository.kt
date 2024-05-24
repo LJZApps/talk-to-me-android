@@ -1,10 +1,8 @@
 package de.ljz.talktome.data.repositories
 
-import android.util.Log
 import com.skydoves.sandwich.suspendOnError
 import com.skydoves.sandwich.suspendOnException
 import com.skydoves.sandwich.suspendOnSuccess
-import de.ljz.talktome.core.application.TAG
 import de.ljz.talktome.data.api.core.ApiClient
 import de.ljz.talktome.data.api.responses.common.ErrorResponse
 import de.ljz.talktome.data.api.responses.login.LoginResponse
@@ -38,9 +36,7 @@ class LoginRepository @Inject constructor(
         onError?.invoke(this)
       }
       .suspendOnException {
-        this.run {
-          Log.d(TAG, message.toString())
-        }
+        onError?.invoke(ErrorResponse(500, "Something went wrong"))
       }
   }
 
@@ -57,6 +53,9 @@ class LoginRepository @Inject constructor(
       }
       .suspendOnError(ErrorResponseMapper) {
         onError?.invoke(this)
+      }
+      .suspendOnException {
+        onError?.invoke(ErrorResponse(500, "Something went wrong"))
       }
   }
 }
